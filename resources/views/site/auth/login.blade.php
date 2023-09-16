@@ -11,7 +11,7 @@
 
             <x-flash-messages />
 
-            <form action="{{ route('auth.login') }}" method="POST">
+            <form action="{{ $routePrefix == 'admin' ? route('admin.login') : route('auth.login') }}" method="POST">
                 @csrf
                 <x-form.input label="اسم المستخدم" type="text" name="email" placeholder="أدخل اسم المستخدم" value=""/>
                 <x-form.input label="كلمة المرور" type="password" name="password" placeholder="أدخل كلمة المرور" value=""/>

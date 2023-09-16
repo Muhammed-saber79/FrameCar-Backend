@@ -12,14 +12,27 @@ use Illuminate\View\View;
 
 class LoginController extends Controller
 {
+    protected $guard = 'web';
+
+    public function __construct(Request $request)
+    {
+        if ($request->is('admin/*'))
+        {
+            $this->guard = 'admin';
+        }
+    }
+
     public function create(): View
     {
-        return view('site.auth.login');
+        return view('site.auth.login')
+            ->with([
+                'routePrefix' => $this->guard,
+            ]);
     }
 
     public function store(LoginRequest $request): RedirectResponse
     {
-        if(! Auth::attempt($request->only('email', 'password'), $request->boolean('remember'))) {
+        if(! Auth::guard($this->guard)->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             throw ValidationException::withMessages([
                 'email' => 'نأسف, هذه البيانات لا تطابق البيانات المسجلة لدينا...!'
             ]);
@@ -31,7 +44,7 @@ class LoginController extends Controller
 
     public function destroy(Request $request): RedirectResponse
     {
-        Auth::logout();
+        Auth::guard($this->guard)->logout();
         $request->session()->invalidate();
         $request->session()->regenerateToken();
         return redirect()->route('site');

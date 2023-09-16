@@ -17,8 +17,6 @@ Route::get('/', function () {
     return view('site.index');
 })->name('site');
 
-Route::get('/admin', function () {
-    return view('admin.index');
-});
+require __DIR__.'/dashboard.php';
 
 require __DIR__.'/auth.php';

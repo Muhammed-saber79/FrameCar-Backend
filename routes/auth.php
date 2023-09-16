@@ -17,9 +17,6 @@ Route::group([
         ->name('login');
 
     Route::post('login', [LoginController::class, 'store']);
-
-    Route::post('logout', [LoginController::class, 'destroy'])
-        ->name('logout');
 });
 
 Route::group([
