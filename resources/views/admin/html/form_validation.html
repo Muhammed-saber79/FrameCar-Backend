@@ -13,6 +13,12 @@
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
     <!-- Icons CSS -->
     <link rel="stylesheet" href="css/feather.css">
+    <link rel="stylesheet" href="css/select2.css">
+    <link rel="stylesheet" href="css/dropzone.css">
+    <link rel="stylesheet" href="css/uppy.min.css">
+    <link rel="stylesheet" href="css/jquery.steps.css">
+    <link rel="stylesheet" href="css/jquery.timepicker.css">
+    <link rel="stylesheet" href="css/quill.snow.css">
     <!-- Date Range Picker CSS -->
     <link rel="stylesheet" href="css/daterangepicker.css">
     <!-- App CSS -->
@@ -360,231 +366,254 @@
         <div class="container-fluid">
           <div class="row justify-content-center">
             <div class="col-12">
-              <h2 class="h3 mb-4 page-title">Profile</h2>
-              <div class="row mt-5 align-items-center">
-                <div class="col-md-3 text-center mb-5">
-                  <div class="avatar avatar-xl">
-                    <img src="./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
-                  </div>
-                </div>
-                <div class="col">
-                  <div class="row align-items-center">
-                    <div class="col-md-7">
-                      <h4 class="mb-1">Brown, Asher</h4>
-                      <p class="small mb-3"><span class="badge badge-dark">New York, USA</span></p>
+              <h2 class="page-title">Form validation</h2>
+              <p class="text-muted">Provide valuable, actionable feedback to your users with HTML5 form validation</p>
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="card shadow mb-4">
+                    <div class="card-header">
+                      <strong class="card-title">Default Validation</strong>
                     </div>
-                  </div>
-                  <div class="row mb-4">
-                    <div class="col-md-7">
-                      <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus. In hac habitasse platea dictumst. Cras urna quam, malesuada vitae risus at, pretium blandit sapien. </p>
+                    <div class="card-body">
+                      <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                          <div class="col-md-8 mb-3">
+                            <label for="exampleInputEmail1">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+                            <div class="invalid-feedback"> Please use a valid email </div>
+                            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="validationCustomUsername">Username</label>
+                            <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupPrepend">@</span>
+                              </div>
+                              <input type="text" class="form-control" id="validationCustomUsername" aria-describedby="inputGroupPrepend" required>
+                              <div class="invalid-feedback"> Please choose a username. </div>
+                            </div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom01">First name</label>
+                            <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+                            <div class="valid-feedback"> Looks good! </div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom02">Last name</label>
+                            <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+                            <div class="valid-feedback"> Looks good! </div>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom03">City</label>
+                            <input type="text" class="form-control" id="validationCustom03" required>
+                            <div class="invalid-feedback"> Please provide a valid city. </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label for="validationCustom04">State</label>
+                            <select class="custom-select" id="validationCustom04" required>
+                              <option selected disabled value="">Choose...</option>
+                              <option>...</option>
+                            </select>
+                            <div class="invalid-feedback"> Please select a valid state. </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label for="validationCustom05">Zip</label>
+                            <input type="text" class="form-control" id="validationCustom05" required>
+                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                          </div>
+                        </div>
+                        <div class="form-group mb-3">
+                          <label for="validationTextarea">About your self</label>
+                          <textarea class="form-control" id="validationTextarea" placeholder="Required example textarea" required></textarea>
+                          <div class="invalid-feedback"> Please enter a message in the textarea. </div>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="customControlValidation1" required>
+                          <label class="custom-control-label" for="customControlValidation1">Check this custom checkbox</label>
+                          <div class="invalid-feedback">Example invalid feedback text</div>
+                        </div>
+                        <div class="custom-control custom-radio">
+                          <input type="radio" class="custom-control-input" id="customControlValidation2" name="radio-stacked" required>
+                          <label class="custom-control-label" for="customControlValidation2">Toggle this custom radio</label>
+                        </div>
+                        <div class="custom-control custom-radio mb-3">
+                          <input type="radio" class="custom-control-input" id="customControlValidation3" name="radio-stacked" required>
+                          <label class="custom-control-label" for="customControlValidation3">Or toggle this other custom radio</label>
+                          <div class="invalid-feedback">More example invalid feedback text</div>
+                        </div>
+                        <div class="form-group mb-4">
+                          <label for="example-multiselect">Select your level</label>
+                          <select id="example-multiselect" multiple="" class="form-control" required>
+                            <option>Level 1</option>
+                            <option>Level 2</option>
+                            <option>Level 3</option>
+                            <option>Level 4</option>
+                            <option>Level 5</option>
+                          </select>
+                          <div class="invalid-feedback">Please select one option</div>
+                        </div>
+                        <div class="custom-file mb-3">
+                          <input type="file" class="custom-file-input" id="validatedCustomFile" required>
+                          <label class="custom-file-label" for="validatedCustomFile">Choose file...</label>
+                          <div class="invalid-feedback">Example invalid custom file feedback</div>
+                        </div>
+                        <div class="form-group">
+                          <div class="form-check">
+                            <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+                            <label class="form-check-label" for="invalidCheck"> Agree to terms and conditions </label>
+                            <div class="invalid-feedback"> You must agree before submitting. </div>
+                          </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                      </form>
+                    </div> <!-- /.card-body -->
+                  </div> <!-- /.card -->
+                </div> <!-- /.col -->
+                <div class="col-md-6">
+                  <div class="card shadow mb-4">
+                    <div class="card-header">
+                      <strong class="card-title">Advanced Validation</strong>
                     </div>
-                    <div class="col">
-                      <p class="small mb-0 text-muted">Nec Urna Suscipit Ltd</p>
-                      <p class="small mb-0 text-muted">P.O. Box 464, 5975 Eget Avenue</p>
-                      <p class="small mb-0 text-muted">(537) 315-1481</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="row my-4">
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow">
-                    <div class="card-body my-n3">
-                      <div class="row align-items-center">
-                        <div class="col-3 text-center">
-                          <span class="circle circle-lg bg-light">
-                            <i class="fe fe-user fe-24 text-primary"></i>
-                          </span>
-                        </div> <!-- .col -->
-                        <div class="col">
-                          <a href="#">
-                            <h3 class="h5 mt-4 mb-1">Personal</h3>
-                          </a>
-                          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                        </div> <!-- .col -->
-                      </div> <!-- .row -->
-                    </div> <!-- .card-body -->
-                    <div class="card-footer">
-                      <a href="" class="d-flex justify-content-between text-muted"><span>Account Settings</span><i class="fe fe-chevron-right"></i></a>
-                    </div> <!-- .card-footer -->
-                  </div> <!-- .card -->
-                </div> <!-- .col-md-->
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow">
-                    <div class="card-body my-n3">
-                      <div class="row align-items-center">
-                        <div class="col-3 text-center">
-                          <span class="circle circle-lg bg-light">
-                            <i class="fe fe-shield fe-24 text-primary"></i>
-                          </span>
-                        </div> <!-- .col -->
-                        <div class="col">
-                          <a href="#">
-                            <h3 class="h5 mt-4 mb-1">Security</h3>
-                          </a>
-                          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                        </div> <!-- .col -->
-                      </div> <!-- .row -->
-                    </div> <!-- .card-body -->
-                    <div class="card-footer">
-                      <a href="" class="d-flex justify-content-between text-muted"><span>Security Settings</span><i class="fe fe-chevron-right"></i></a>
-                    </div> <!-- .card-footer -->
-                  </div> <!-- .card -->
-                </div> <!-- .col-md-->
-                <div class="col-md-4">
-                  <div class="card mb-4 shadow">
-                    <div class="card-body my-n3">
-                      <div class="row align-items-center">
-                        <div class="col-3 text-center">
-                          <span class="circle circle-lg bg-light">
-                            <i class="fe fe-bell fe-24 text-primary"></i>
-                          </span>
-                        </div> <!-- .col -->
-                        <div class="col">
-                          <a href="#">
-                            <h3 class="h5 mt-4 mb-1">Notifications</h3>
-                          </a>
-                          <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-                        </div> <!-- .col -->
-                      </div> <!-- .row -->
-                    </div> <!-- .card-body -->
-                    <div class="card-footer">
-                      <a href="" class="d-flex justify-content-between text-muted"><span>Notification Settings</span><i class="fe fe-chevron-right"></i></a>
-                    </div> <!-- .card-footer -->
-                  </div> <!-- .card -->
-                </div> <!-- .col-md-->
-              </div> <!-- .row-->
-              <h3>Subscription</h3>
-              <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris blandit nisl ullamcorper, rutrum metus in, congue lectus.</p>
-              <div class="card-deck my-4">
-                <div class="card mb-4 shadow">
-                  <div class="card-body text-center my-4">
-                    <a href="#">
-                      <h3 class="h5 mt-4 mb-0">Basic</h3>
-                    </a>
-                    <p class="text-muted">package</p>
-                    <span class="h1 mb-0">$9.9</span>
-                    <p class="text-muted">year</p>
-                    <ul class="list-unstyled">
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Eget porttitor lorem</li>
-                    </ul>
-                    <span class="dot dot-lg bg-success"></span>
-                    <span class="text-muted ml-3">Active</span>
-                  </div> <!-- .card-body -->
-                </div> <!-- .card -->
-                <div class="card mb-4">
-                  <div class="card-body text-center my-4">
-                    <a href="#">
-                      <h3 class="h5 mt-4 mb-0">Professional</h3>
-                    </a>
-                    <p class="text-muted">package</p>
-                    <span class="h1 mb-0">$16.9</span>
-                    <p class="text-muted">year</p>
-                    <ul class="list-unstyled">
-                      <li>Lorem ipsum dolor sit amet</li>
-                      <li>Consectetur adipiscing elit</li>
-                      <li>Integer molestie lorem at massa</li>
-                      <li>Eget porttitor lorem</li>
-                    </ul>
-                    <button type="button" class="btn mb-2 btn-primary btn-lg">Ugrade</button>
-                  </div> <!-- .card-body -->
-                </div> <!-- .card -->
-              </div> <!-- .card-group -->
-              <h6 class="mb-3">Last payment</h6>
-              <table class="table table-borderless table-striped">
-                <thead>
-                  <tr role="row">
-                    <th>ID</th>
-                    <th>Purchase Date</th>
-                    <th>Total</th>
-                    <th>Payment</th>
-                    <th>Status</th>
-                    <th>Action</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <th scope="col">1331</th>
-                    <td>2020-12-26 01:32:21</td>
-                    <td>$16.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-warning mr-2"></span>Due</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
+                    <div class="card-body">
+                      <form class="needs-validation" novalidate>
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom3">First name</label>
+                            <input type="text" class="form-control" id="validationCustom3" value="Mark" required>
+                            <div class="valid-feedback"> Looks good! </div>
+                          </div>
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom4">Last name</label>
+                            <input type="text" class="form-control" id="validationCustom4" value="Otto" required>
+                            <div class="valid-feedback"> Looks good! </div>
+                          </div>
+                        </div> <!-- /.form-row -->
+                        <div class="form-row">
+                          <div class="col-md-8 mb-3">
+                            <label for="exampleInputEmail2">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail2" aria-describedby="emailHelp1" required>
+                            <div class="invalid-feedback"> Please use a valid email </div>
+                            <small id="emailHelp1" class="form-text text-muted">We'll never share your email with anyone else.</small>
+                          </div>
+                          <div class="col-md-4 mb-3">
+                            <label for="custom-phone">US Telephone</label>
+                            <input class="form-control input-phoneus" id="custom-phone" maxlength="14" required>
+                            <div class="invalid-feedback"> Please enter a correct phone </div>
+                          </div>
+                        </div> <!-- /.form-row -->
+                        <div class="form-group mb-3">
+                          <label for="address-wpalaceholder">Address</label>
+                          <input type="text" id="address-wpalaceholder" class="form-control" placeholder="Enter your address">
+                          <div class="valid-feedback"> Looks good! </div>
+                          <div class="invalid-feedback"> Badd address </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="col">1156</th>
-                    <td>2020-04-21 00:38:38</td>
-                    <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-danger mr-2"></span>False</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
+                        <div class="form-row">
+                          <div class="col-md-6 mb-3">
+                            <label for="validationCustom33">City</label>
+                            <input type="text" class="form-control" id="validationCustom33" required>
+                            <div class="invalid-feedback"> Please provide a valid city. </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label for="validationSelect2">State</label>
+                            <select class="form-control select2" id="validationSelect2" required>
+                              <option value="">Select state</option>
+                              <optgroup label="Mountain Time Zone">
+                                <option value="AZ">Arizona</option>
+                                <option value="CO">Colorado</option>
+                                <option value="ID">Idaho</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="UT">Utah</option>
+                                <option value="WY">Wyoming</option>
+                              </optgroup>
+                              <optgroup label="Central Time Zone">
+                                <option value="AL">Alabama</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TX">Texas</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="WI">Wisconsin</option>
+                              </optgroup>
+                            </select>
+                            <div class="invalid-feedback"> Please select a valid state. </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label for="custom-zip">Zip code</label>
+                            <input class="form-control input-zip" id="custom-zip" autocomplete="off" maxlength="9" required>
+                            <div class="invalid-feedback"> Please provide a valid zip. </div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="col">1038</th>
-                    <td>2019-06-25 19:13:36</td>
-                    <td>$9.9</td>
-                    <td>Credit Card </td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
+                        <div class="form-row mb-3">
+                          <div class="col-md-6 mb-3">
+                            <label for="date-input1">Date Picker</label>
+                            <div class="input-group">
+                              <input type="text" class="form-control drgpicker" id="date-input1" value="04/24/2020" aria-describedby="button-addon2">
+                              <div class="input-group-append">
+                                <div class="input-group-text" id="button-addon-date"><span class="fe fe-calendar fe-16 mx-2"></span></div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="col-md-3 mb-3">
+                            <label for="example-time">Time</label>
+                            <input class="form-control" id="example-time" type="time" name="time" required>
+                          </div>
+                          <div class="col-md-3 mx-auto mb-3">
+                            <p class="mb-3">Pick Up</p>
+                            <div class="custom-control custom-switch">
+                              <input type="checkbox" class="custom-control-input" id="customSwitch1" required>
+                              <label class="custom-control-label" for="customSwitch1">Yes</label>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th scope="col">1227</th>
-                    <td>2021-01-22 13:28:00</td>
-                    <td>$9.9</td>
-                    <td>Paypal</td>
-                    <td><span class="dot dot-lg bg-success mr-2"></span>Paid</td>
-                    <td>
-                      <div class="dropdown">
-                        <button class="btn btn-sm dropdown-toggle more-vertical" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                          <span class="text-muted sr-only">Action</span>
-                        </button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                          <a class="dropdown-item" href="#">Edit</a>
-                          <a class="dropdown-item" href="#">Remove</a>
-                          <a class="dropdown-item" href="#">Assign</a>
+                        <div class="mb-3">
+                          <p class="mb-2">Payment</p>
+                          <div class="form-row">
+                            <div class="col-md-6">
+                              <div class="custom-control custom-radio">
+                                <input type="radio" class="custom-control-input" id="customControlValidation22" name="radio-stacked" required>
+                                <label class="custom-control-label" for="customControlValidation22">Card</label>
+                                <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                              </div>
+                            </div>
+                            <div class="col-md-6">
+                              <div class="custom-control custom-radio mb-3">
+                                <input type="radio" class="custom-control-input" id="customControlValidation33" name="radio-stacked" required>
+                                <label class="custom-control-label" for="customControlValidation33">Paypal</label>
+                                <p class="text-muted"> Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+                              </div>
+                            </div>
+                          </div>
                         </div>
-                      </div>
-                    </td>
-                  </tr>
-                </tbody>
-              </table>
-            </div> <!-- /.col-12 -->
+                        <div class="form-group mb-3">
+                          <label for="validationTextarea1">Note</label>
+                          <textarea class="form-control" id="validationTextarea1" placeholder="Take a note here" required="" rows="3"></textarea>
+                          <div class="invalid-feedback"> Please enter a message in the textarea. </div>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                          <input type="checkbox" class="custom-control-input" id="customControlValidation16" required="">
+                          <label class="custom-control-label" for="customControlValidation16"> Agree to terms and conditions</label>
+                          <div class="invalid-feedback"> You must agree before submitting. </div>
+                        </div>
+                        <button class="btn btn-primary" type="submit">Submit form</button>
+                      </form>
+                    </div> <!-- /.card-body -->
+                  </div> <!-- /.card -->
+                </div> <!-- /.col -->
+              </div> <!-- end section -->
+            </div> <!-- /.col-12 col-lg-10 col-xl-10 -->
           </div> <!-- .row -->
         </div> <!-- .container-fluid -->
         <div class="modal fade modal-notif modal-slide" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
@@ -721,6 +750,217 @@
     <script src='js/jquery.stickOnScroll.js'></script>
     <script src="js/tinycolor-min.js"></script>
     <script src="js/config.js"></script>
+    <script src='js/jquery.mask.min.js'></script>
+    <script src='js/select2.min.js'></script>
+    <script src='js/jquery.steps.min.js'></script>
+    <script src='js/jquery.validate.min.js'></script>
+    <script src='js/jquery.timepicker.js'></script>
+    <script src='js/dropzone.min.js'></script>
+    <script src='js/uppy.min.js'></script>
+    <script src='js/quill.min.js'></script>
+    <script>
+      $('.select2').select2(
+      {
+        theme: 'bootstrap4',
+      });
+      $('.select2-multi').select2(
+      {
+        multiple: true,
+        theme: 'bootstrap4',
+      });
+      $('.drgpicker').daterangepicker(
+      {
+        singleDatePicker: true,
+        timePicker: false,
+        showDropdowns: true,
+        locale:
+        {
+          format: 'MM/DD/YYYY'
+        }
+      });
+      $('.time-input').timepicker(
+      {
+        'scrollDefault': 'now',
+        'zindex': '9999' /* fix modal open */
+      });
+      /** date range picker */
+      if ($('.datetimes').length)
+      {
+        $('.datetimes').daterangepicker(
+        {
+          timePicker: true,
+          startDate: moment().startOf('hour'),
+          endDate: moment().startOf('hour').add(32, 'hour'),
+          locale:
+          {
+            format: 'M/DD hh:mm A'
+          }
+        });
+      }
+      var start = moment().subtract(29, 'days');
+      var end = moment();
+
+      function cb(start, end)
+      {
+        $('#reportrange span').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+      }
+      $('#reportrange').daterangepicker(
+      {
+        startDate: start,
+        endDate: end,
+        ranges:
+        {
+          'Today': [moment(), moment()],
+          'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],
+          'Last 7 Days': [moment().subtract(6, 'days'), moment()],
+          'Last 30 Days': [moment().subtract(29, 'days'), moment()],
+          'This Month': [moment().startOf('month'), moment().endOf('month')],
+          'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]
+        }
+      }, cb);
+      cb(start, end);
+      $('.input-placeholder').mask("00/00/0000",
+      {
+        placeholder: "__/__/____"
+      });
+      $('.input-zip').mask('00000-000',
+      {
+        placeholder: "____-___"
+      });
+      $('.input-money').mask("#.##0,00",
+      {
+        reverse: true
+      });
+      $('.input-phoneus').mask('(000) 000-0000');
+      $('.input-mixed').mask('AAA 000-S0S');
+      $('.input-ip').mask('0ZZ.0ZZ.0ZZ.0ZZ',
+      {
+        translation:
+        {
+          'Z':
+          {
+            pattern: /[0-9]/,
+            optional: true
+          }
+        },
+        placeholder: "___.___.___.___"
+      });
+      // editor
+      var editor = document.getElementById('editor');
+      if (editor)
+      {
+        var toolbarOptions = [
+          [
+          {
+            'font': []
+          }],
+          [
+          {
+            'header': [1, 2, 3, 4, 5, 6, false]
+          }],
+          ['bold', 'italic', 'underline', 'strike'],
+          ['blockquote', 'code-block'],
+          [
+          {
+            'header': 1
+          },
+          {
+            'header': 2
+          }],
+          [
+          {
+            'list': 'ordered'
+          },
+          {
+            'list': 'bullet'
+          }],
+          [
+          {
+            'script': 'sub'
+          },
+          {
+            'script': 'super'
+          }],
+          [
+          {
+            'indent': '-1'
+          },
+          {
+            'indent': '+1'
+          }], // outdent/indent
+          [
+          {
+            'direction': 'rtl'
+          }], // text direction
+          [
+          {
+            'color': []
+          },
+          {
+            'background': []
+          }], // dropdown with defaults from theme
+          [
+          {
+            'align': []
+          }],
+          ['clean'] // remove formatting button
+        ];
+        var quill = new Quill(editor,
+        {
+          modules:
+          {
+            toolbar: toolbarOptions
+          },
+          theme: 'snow'
+        });
+      }
+      // Example starter JavaScript for disabling form submissions if there are invalid fields
+      (function()
+      {
+        'use strict';
+        window.addEventListener('load', function()
+        {
+          // Fetch all the forms we want to apply custom Bootstrap validation styles to
+          var forms = document.getElementsByClassName('needs-validation');
+          // Loop over them and prevent submission
+          var validation = Array.prototype.filter.call(forms, function(form)
+          {
+            form.addEventListener('submit', function(event)
+            {
+              if (form.checkValidity() === false)
+              {
+                event.preventDefault();
+                event.stopPropagation();
+              }
+              form.classList.add('was-validated');
+            }, false);
+          });
+        }, false);
+      })();
+    </script>
+    <script>
+      var uptarg = document.getElementById('drag-drop-area');
+      if (uptarg)
+      {
+        var uppy = Uppy.Core().use(Uppy.Dashboard,
+        {
+          inline: true,
+          target: uptarg,
+          proudlyDisplayPoweredByUppy: false,
+          theme: 'dark',
+          width: 770,
+          height: 210,
+          plugins: ['Webcam']
+        }).use(Uppy.Tus,
+        {
+          endpoint: 'https://master.tus.io/files/'
+        });
+        uppy.on('complete', (result) =>
+        {
+          console.log('Upload complete! We’ve uploaded these files:', result.successful)
+        });
+      }
+    </script>
     <script src="js/apps.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
