@@ -11,13 +11,13 @@
 
             <x-flash-messages />
 
-            <form action="{{ $routePrefix == 'admin' ? route('admin.forgot-password') : route('auth.forgot-password') }}" method="POST">
+            <form action="{{ $routePrefix == 'admin' ? route('admin.password.request') : route('password.request') }}" method="POST">
                 @csrf
                 <x-form.input label="البريد الالكتروني" type="email" name="email" placeholder="أدخل بريدك الالكتروني للبحث عن الحساب الخاص بك" value=""/>
                 <button type="submit">بحث</button>
                 <hr>
                 <div>
-                    <a href="{{ $routePrefix == 'admin' ? route('admin.login') : route('auth.login') }}"><span>العودة لتسجيل الدخول</span></a>
+                    <a href="{{ route('login') }}"><span>العودة لتسجيل الدخول</span></a>
                 </div>
             </form>
         </div>

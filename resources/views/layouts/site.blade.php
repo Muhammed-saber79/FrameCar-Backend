@@ -64,7 +64,7 @@
                                 </ul>
                             </li>
                         @else
-                            <li><a id="loginBtn" class="getstarted scrollto" href="{{ route('auth.login') }}">تسجيل الدخول</a></li>
+                            <li><a id="loginBtn" class="getstarted scrollto" href="{{ route('login') }}">تسجيل الدخول</a></li>
                         @endauth
                     </ul>
                     <i class="bi bi-list mobile-nav-toggle"></i>
@@ -80,7 +80,7 @@
         <a href="{{ route('site') . '#' }}" class="back-to-top d-flex align-items-center justify-content-center">
             <i class="bi bi-arrow-up-short"></i>
         </a>
-        <form id="logoutForm" action="{{ route('auth.logout') }}" method="post" style="display: none">
+        <form id="logoutForm" action="{{ route('logout') }}" method="post" style="display: none">
             @csrf
         </form>
         <!-- Vendor JS Files -->

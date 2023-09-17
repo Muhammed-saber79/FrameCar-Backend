@@ -11,7 +11,7 @@
 
             <x-flash-messages />
 
-            <form action="{{ route('auth.register') }}" method="POST">
+            <form action="{{ route('register') }}" method="POST">
                 @csrf
                 <x-form.input label="اسم المستخدم" type="text" name="name" placeholder="أدخل اسم المستخدم" value=""/>
 
@@ -24,7 +24,7 @@
                 <button type="submit">إنشاء الحساب</button>
                 <hr>
                 <div>
-                    <a href="{{ route('auth.login') }}"><span>تسجيل الدخول</span></a>
+                    <a href="{{ route('login') }}"><span>تسجيل الدخول</span></a>
                 </div>
             </form>
         </div>

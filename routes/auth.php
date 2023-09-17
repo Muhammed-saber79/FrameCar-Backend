@@ -7,34 +7,23 @@ use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 
 Route::group([
-    'middleware' => 'guest',
-    'as' => 'auth.'
+    'middleware' => ['guest']
 ], function () {
-    Route::get('register', [RegisterController::class, 'create'])
-        ->name('register');
-
+    Route::get('register', [RegisterController::class, 'create'])->name('register');
     Route::post('register', [RegisterController::class, 'store']);
 
-    Route::get('login', [LoginController::class, 'create'])
-        ->name('login');
-
+    Route::get('login', [LoginController::class, 'create'])->name('login');
     Route::post('login', [LoginController::class, 'store']);
 
-    Route::get('forgot-password', [ForgotPasswordController::class, 'create'])
-        ->name('forgot-password');
+    Route::get('forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
 
-    Route::post('forgot-password', [ForgotPasswordController::class, 'store']);
-
-    Route::get('password-reset/{token}', [ResetPasswordController::class, 'create'])
-        ->name('password-reset');
-
-    Route::post('password-reset', [ResetPasswordController::class, 'store']);
+    Route::get('reset-password/{token}', [ResetPasswordController::class, 'create'])->name('password.reset');
+    Route::post('reset-password', [ResetPasswordController::class, 'store'])->name('password.store');
 });
 
 Route::group([
-    'middleware' => 'auth',
-    'as' => 'auth.'
+    'middleware' => ['auth:admin,web'],
 ], function () {
-    Route::post('logout', [LoginController::class, 'destroy'])
-        ->name('logout');
+    Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });

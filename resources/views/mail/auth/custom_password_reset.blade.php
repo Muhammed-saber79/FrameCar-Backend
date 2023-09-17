@@ -58,7 +58,7 @@
                 <p>Hello!</p>
                 <p>You have requested to reset your password for our website. To proceed, please click the button below:</p>
                 <p>
-                    <a href="{{ route( $routePrefix == 'admin' ? 'admin.password-reset' : 'auth.password-reset' , ['token' => $token, 'email' => $email]) }}" class="button">Reset Password</a>
+                    <a href="{{ $resetUrl }}" class="button">Reset Password</a>
                 </p>
                 <p>If you did not request a password reset, please ignore this email.</p>
                 <p>Thank you!</p>

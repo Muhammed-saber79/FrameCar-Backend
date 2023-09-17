@@ -11,18 +11,12 @@ Route::group([
     'middleware' => 'guest:admin',
 ], function () {
     Route::get('login', [LoginController::class, 'create'])->name('login');
-
     Route::post('login', [LoginController::class, 'store']);
 
-    Route::get('forgot-password', [ForgotPasswordController::class, 'create'])
-        ->name('forgot-password');
+    Route::get('forgot-password', [ForgotPasswordController::class, 'create'])->name('password.request');
+    Route::post('forgot-password', [ForgotPasswordController::class, 'store'])->name('password.email');
 
-    Route::post('forgot-password', [ForgotPasswordController::class, 'store']);
-
-    Route::get('password-reset/{token}', [ResetPasswordController::class, 'create'])
-        ->name('password-reset');
-
-    Route::post('password-reset', [ResetPasswordController::class, 'store']);
+    Route::post('reset-password', [ResetPasswordController::class, 'store'])->name('password.store');
 });
 
 Route::group([
@@ -34,6 +28,5 @@ Route::group([
         return view('admin.index');
     })->name('index');
 
-    Route::post('logout', [LoginController::class, 'destroy'])
-        ->name('logout');
+    Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });

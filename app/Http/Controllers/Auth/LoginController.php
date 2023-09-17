@@ -37,8 +37,8 @@ class LoginController extends Controller
                 'email' => 'نأسف, هذه البيانات لا تطابق البيانات المسجلة لدينا...!'
             ]);
         }
-
         $request->session()->regenerate();
+
         return redirect()->intended();
     }
 

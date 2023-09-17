@@ -27,7 +27,7 @@ class LoginRequest extends FormRequest
         ];
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
             'email.required' => 'يرجى إدخال البريد الالكتروني...!',

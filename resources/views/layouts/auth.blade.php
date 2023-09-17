@@ -55,7 +55,7 @@
                         <li><a class="nav-link scrollto" href="{{asset('site/')}}/user-dashboard.html">لوحة التحكم</a></li>
                         <li><a style="font-size: larger; color: orange" href="#">{{ Auth::user()->name }}</a></li>
                     @else
-                        <li><a id="loginBtn" class="getstarted scrollto" href="{{ route('auth.login') }}">تسجيل الدخول</a></li>
+                        <li><a id="loginBtn" class="getstarted scrollto" href="{{ route('login') }}">تسجيل الدخول</a></li>
                     @endauth
                 </ul>
                 <i class="bi bi-list mobile-nav-toggle"></i>
