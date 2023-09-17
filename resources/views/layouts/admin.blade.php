@@ -93,9 +93,29 @@
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-              <a href=""  class="dropdown-toggle nav-link">
+              <a href="{{route('admin_home')}}"  class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">الرئيسية</span><span class="sr-only">(current)</span>
+              </a>
+              
+            </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+              <a href="{{route('projects.index')}}"  class="dropdown-toggle nav-link">
+                <i class="fe fe-home fe-16"></i>
+                <span class="ml-3 item-text">صور المشاريع</span><span class="sr-only">(current)</span>
+              </a>
+              
+            </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+              <a href="{{route('contact.index')}}"  class="dropdown-toggle nav-link">
+                <i class="fe fe-home fe-16"></i>
+                <span class="ml-3 item-text">طلبات التواصل</span><span class="sr-only">(current)</span>
               </a>
               
             </li>
@@ -110,6 +130,15 @@
         </nav>
       </aside>
       <main role="main" class="main-content">
+        @if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
         @yield('content')
    
  

@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +17,22 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('site.index');
-});
+})->name('user_home');
 
 
-Route::get('/admin', function () {
-    return view('admin.index');
+Route::resource('contact',ContactController::class);
+
+#######################admin routes ###################
+
+
+
+Route::group(['prefix'=>'admin'],function(){
+
+    Route::get('/', function () {
+        return view('admin.index');
+    })->name('admin_home');
+
+    Route::resource('projects',ProjectController::class);
+    
+
 });
