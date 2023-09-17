@@ -19,13 +19,13 @@
         <link href="https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@100;200&display=swap" rel="stylesheet">
 
         <!-- Vendor CSS Files -->
-        <link href="{{asset('site/assets/vendor/aos/aos.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/boxicons/css/boxicons.min.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/remixicon/remixicon.css')}}" rel="stylesheet">
-        <link href="{{asset('site/assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/aos/aos.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/boxicons/css/boxicons.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/remixicon/remixicon.css') }}" rel="stylesheet">
+        <link href="{{ asset('site/assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
 
         <!-- Template Main CSS File -->
         <link href="{{asset('site/assets/css/auth-styles.css')}}" rel="stylesheet">
