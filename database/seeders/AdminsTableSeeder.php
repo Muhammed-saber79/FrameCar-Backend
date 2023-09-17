@@ -21,5 +21,13 @@ class AdminsTableSeeder extends Seeder
             'super_admin' => 1,
             'status' => 'active'
         ]);
+
+        Admin::create([
+            'name' => 'FrameCar Admin2',
+            'email' => 'mohaamed.sabeer20@gmail.com',
+            'password' => Hash::make('Password#123'),
+            'super_admin' => 1,
+            'status' => 'active'
+        ]);
     }
 }
