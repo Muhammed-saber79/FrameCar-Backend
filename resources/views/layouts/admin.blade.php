@@ -35,7 +35,7 @@
   font-weight: 700; /* استخدام النمط السميك */
   }
 
- 
+
   </style>
   <body class="vertical  light rtl ">
     <div class="wrapper">
@@ -43,7 +43,7 @@
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
           <i class="fe fe-menu navbar-toggler-icon"></i>
         </button>
-       
+
         <ul class="nav">
           <li class="nav-item">
             <a class="nav-link text-muted my-2" href="{{asset('')}}#" id="modeSwitcher" data-mode="light">
@@ -68,7 +68,9 @@
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
-              <a class="dropdown-item" href="">تسجيل الخروج</a>
+              <a  class="dropdown-item"
+                  onclick="event.preventDefault(); document.getElementById('logoutForm').submit();"
+              >تسجيل الخروج</a>
 
             </div>
           </li>
@@ -97,7 +99,7 @@
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">الرئيسية</span><span class="sr-only">(current)</span>
               </a>
-              
+
             </li>
           </ul>
 
@@ -140,10 +142,14 @@
     </div>
 @endif
         @yield('content')
-   
- 
+
+
       </main> <!-- main -->
     </div> <!-- .wrapper -->
+
+    <form id="logoutForm" action="{{ route('admin.logout') }}" method="post" style="display: none">
+        @csrf
+    </form>
     <script src="{{asset('js/jquery.min.js')}}"></script>
     <script src="{{asset('js/popper.min.js')}}"></script>
     <script src="{{asset('js/moment.min.js')}}"></script>

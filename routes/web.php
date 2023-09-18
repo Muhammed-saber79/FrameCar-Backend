@@ -17,8 +17,10 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('site.index');
-})->name('user_home');
 
+})->name('site');
+
+require __DIR__.'/dashboard.php';
 
 Route::resource('contact',ContactController::class);
 
@@ -36,3 +38,4 @@ Route::group(['prefix'=>'admin'],function(){
     
 
 });
+require __DIR__.'/auth.php';
