@@ -28,14 +28,14 @@ Route::resource('contact',ContactController::class);
 
 
 
-Route::group(['prefix'=>'admin'],function(){
+// Route::group(['prefix'=>'admin','middleware'],function(){
 
-    Route::get('/', function () {
-        return view('admin.index');
-    })->name('admin_home');
+//     Route::get('/', function () {
+//         return view('admin.index');
+//     })->name('admin_home');
 
-    Route::resource('projects',ProjectController::class);
+//     Route::resource('projects',ProjectController::class);
     
 
-});
+// });
 require __DIR__.'/auth.php';

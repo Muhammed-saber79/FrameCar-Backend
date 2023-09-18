@@ -658,7 +658,7 @@
 
   </main><!-- End #main -->
 
-@endsection
+
 
       <div class="col-lg-3 col-md-6 footer-links">
         <h4>Our Social Networks</h4>
