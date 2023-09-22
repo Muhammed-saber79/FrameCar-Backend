@@ -156,7 +156,7 @@ h6 {
   # Navigation Menu
   --------------------------------------------------------------*/
 /**
-  * Desktop Navigation 
+  * Desktop Navigation
   */
 .navbar {
   padding: 0;
@@ -291,7 +291,7 @@ h6 {
 }
 
 /**
-  * Mobile Navigation 
+  * Mobile Navigation
   */
 .mobile-nav-toggle {
   color: #fff;
@@ -543,6 +543,8 @@ button:hover {
 
   .content .right .order-container .bottom .data {
     width: 50%;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   /* Adjust any other responsive styles here */
@@ -573,6 +575,8 @@ button:hover {
 
   .content .right .order-container .bottom .data {
     width: 100%;
+    margin-top: 30px;
+    margin-bottom: 30px;
   }
 
   /* Adjust any other responsive styles here */

@@ -39,3 +39,5 @@ Route::resource('contact',ContactController::class);
 
 // });
 require __DIR__.'/auth.php';
+
+require __DIR__.'/userDashboard.php';
