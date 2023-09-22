@@ -1,0 +1,54 @@
+.order-details-card {
+    width: 80%;
+    margin: 15vh auto 0;
+    padding: 20px;
+    background-color: #ffffff;
+    box-shadow: 1px 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.2s ease-in-out;
+}
+
+.order-details-card:hover {
+    cursor: pointer;
+    transform: scale(1.05); /* Scale up by 5% on hover */
+}
+
+.sub-card {
+    background-color: #f0f0f0;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+}
+
+.sub-card:hover {
+    transform: scale(1.05); /* Scale up by 5% on hover */
+}
+
+.sub-card label {
+    font-weight: bold;
+}
+
+.sub-card img {
+    max-width: 100%;
+    max-height: 200px;
+    margin-top: 10px;
+}
+
+.sub-card a:hover {
+    color: green;
+    cursor: progress;
+}
+
+@media (min-width: 1024px) {
+    .order-details-card {
+        width: 55%;
+    }
+}

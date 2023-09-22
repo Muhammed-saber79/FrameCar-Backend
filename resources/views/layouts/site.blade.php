@@ -59,7 +59,7 @@
                                 </a>
 
                                 <ul style="text-align: center">
-                                    <li><a class="nav-link scrollto" href="{{asset('site/')}}/user-dashboard.html">لوحة التحكم</a></li>
+                                    <li><a class="nav-link scrollto" href="{{ route('user.dashboard') }}">لوحة التحكم</a></li>
                                     <li><a onclick="event.preventDefault(); document.getElementById('logoutForm').submit();">تسجيل الخروج</a></li>
                                 </ul>
                             </li>
