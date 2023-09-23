@@ -15,7 +15,7 @@
                 @csrf
                 <x-form.input label="اسم المستخدم" type="text" name="name" placeholder="أدخل اسم المستخدم" value=""/>
 
-                <x-form.input label="رقم الجوال" type="text" name="phone" placeholder="أدخل رقم الجوال" value=""/>
+                <x-form.input label="رقم الجوال" type="text" name="phoneNumber" placeholder="أدخل رقم الجوال" value=""/>
 
                 <x-form.input label="البريد الالكتروني" type="email" name="email" placeholder="أدخل بريدك الالكتروني" value=""/>
 
