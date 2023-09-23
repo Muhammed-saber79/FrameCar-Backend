@@ -29,6 +29,7 @@
         <div class="left">
             <div class="order-container" style="height: 100%">
                 <h1>لوحة الطلبات</h1>
+                
                 <a data-bs-toggle="modal" data-bs-target="#newOrderModal"
                    class="addBtn btn btn-icon btn-light text-primary rounded-pill shadow bg-body-tertiary rounded">
                     <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">

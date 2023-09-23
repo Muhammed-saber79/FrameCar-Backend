@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
+use App\Models\Order;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -11,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 class OrderController extends Controller
 {
+
     public function edit($id)
     {
         $order = Auth::user()->orders()->find($id);

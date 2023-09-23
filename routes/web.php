@@ -34,8 +34,8 @@ Route::resource('contact',ContactController::class);
 //         return view('admin.index');
 //     })->name('admin_home');
 
-//     Route::resource('projects',ProjectController::class);
-    
+     Route::resource('projects',ProjectController::class);
+
 
 // });
 require __DIR__.'/auth.php';

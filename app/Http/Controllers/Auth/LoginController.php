@@ -30,7 +30,7 @@ class LoginController extends Controller
             ]);
     }
 
-    public function store(LoginRequest $request): RedirectResponse
+    public function store(LoginRequest $request): RedirectResponse  
     {
         if(! Auth::guard($this->guard)->attempt($request->only('email', 'password'), $request->boolean('remember'))) {
             throw ValidationException::withMessages([

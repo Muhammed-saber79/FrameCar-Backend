@@ -95,13 +95,22 @@
           </div>
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-              <a href="{{route('admin_home')}}"  class="dropdown-toggle nav-link">
+              <a href="{{route('admin.index')}}"  class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">الرئيسية</span><span class="sr-only">(current)</span>
               </a>
 
             </li>
           </ul>
+            <ul class="navbar-nav flex-fill w-100 mb-2">
+                <li class="nav-item dropdown">
+                    <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
+                        <i class="fe fe-home fe-16"></i>
+                        <span class="ml-3 item-text">الطلبات </span><span class="sr-only">(current)</span>
+                    </a>
+
+                </li>
+            </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
@@ -109,7 +118,7 @@
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">صور المشاريع</span><span class="sr-only">(current)</span>
               </a>
-              
+
             </li>
           </ul>
 
@@ -119,16 +128,16 @@
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">طلبات التواصل</span><span class="sr-only">(current)</span>
               </a>
-              
+
             </li>
           </ul>
 
-          
-       
-          
-         
-       
-        
+
+
+
+
+
+
         </nav>
       </aside>
       <main role="main" class="main-content">

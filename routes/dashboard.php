@@ -28,5 +28,6 @@ Route::group([
         return view('admin.index');
     })->name('index');
 
+    Route::get('orders', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'index'])->name('orders');
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });
