@@ -31,6 +31,9 @@
     <link href="{{asset('site/assets/css/user-dash-style.css')}}" rel="stylesheet">
     <link href="{{ asset('site/assets/css/order-details-styles.css') }}" rel="stylesheet">
 
+    @livewireStyles
+    @vite(['resources/js/app.js'])
+
 </head>
 
 <body>
@@ -96,6 +99,7 @@
 
 <!-- Template Main JS File -->
 <script src="{{asset('site/assets/js/main.js')}}"></script>
+@livewireScripts
 </body>
 
 </html>

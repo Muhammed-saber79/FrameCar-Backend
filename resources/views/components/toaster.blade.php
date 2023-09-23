@@ -62,7 +62,7 @@
                 // Hide the toaster after 5 seconds (adjust as needed)
                 setTimeout(function() {
                     closeToaster(toaster, index);
-                }, 15000);
+                }, 7000);
             }, index * 100); // Add a delay between each toaster
         });
     }

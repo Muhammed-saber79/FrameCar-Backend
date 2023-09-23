@@ -424,6 +424,7 @@ h6 {
 
 .content .left {
   width: 75vw;
+  min-height: 80vh;
   padding: 2rem 0rem 2rem 2rem;
 }
 
@@ -512,6 +513,12 @@ button {
   border-radius: 5px;
   margin-top: 10px;
   cursor: pointer;
+}
+
+.btns {
+  display: flex;
+  flex-direction: row;
+  border: none;
 }
 
 button:hover {

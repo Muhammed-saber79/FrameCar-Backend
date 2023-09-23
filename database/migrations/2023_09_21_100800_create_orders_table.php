@@ -24,7 +24,7 @@ return new class extends Migration
             $table->string('locationLink');
             $table->timestamps();
 
-            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete();
+            $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->default(1);
         });
     }
 
