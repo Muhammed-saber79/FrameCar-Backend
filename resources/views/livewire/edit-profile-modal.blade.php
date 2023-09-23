@@ -5,6 +5,7 @@
         >تعديل البيانات الشخصية</a>
     </div>
 
+
     <!-- Modal -->
     <div dir="rtl" class="modal fade" id="editProfileModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="staticBackdropLabel" aria-hidden="true">
@@ -52,4 +53,5 @@
             </div>
         </div>
     </div>
+
 </div>

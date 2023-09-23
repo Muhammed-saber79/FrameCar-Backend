@@ -15,7 +15,10 @@ class EditProfileModal extends Component
 
     public function edit($id): void
     {
+       
         $user = User::findOrFail($id);
+       // dd($user);
+
         $this->name = $user->name;
         $this->email = $user->email;
         $this->phoneNumber = $user->phoneNumber;
