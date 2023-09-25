@@ -525,7 +525,7 @@ button:hover {
   background-color: #0056b3;
 }
 
-@media (max-width: 1571px) {
+@media (max-width: 1300px) {
   .content {
     flex-direction: column;
     align-items: center;
