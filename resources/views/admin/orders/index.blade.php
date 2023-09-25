@@ -19,14 +19,13 @@
                   <th>الرقم</th>
                   <th>اسم صاحب السيارة</th>
                   <th>نوع السيارة</th>
-                  <th>نوع الزجاج</th>
                   <th>مكان الزجاج</th>
                   <th>صورة الزجاج المكسور</th>
                   <th>تاريخ الطلب</th>
                   <th>حالة الطلب</th>
                   <th>رقم الهاتف</th>
                   <th>الموقع </th>
-                  <th>الإجراءات</th>
+                  {{-- <th>الإجراءات</th> --}}
               </tr>
             </thead>
             <tbody>
@@ -36,7 +35,6 @@
                     <td>{{ $loop->iteration }}</td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->carType }}</td>
-                    <td>{{ $order->glassType }}</td>
                     <td>{{ $order->glassPosition }}</td>
                     <td>
                         <img src="{{ asset('storage/' . $order->brokenGlassImage) }}" width="100" alt="">
@@ -58,7 +56,7 @@
                     </td>
 
 
-                <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                {{-- <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="text-muted sr-only">Action</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
@@ -66,7 +64,7 @@
 
                 </div>
 
-              </td>
+              </td> --}}
 
 
               <div class="modal fade" id="delete{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
