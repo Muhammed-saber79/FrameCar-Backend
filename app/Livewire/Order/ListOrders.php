@@ -12,13 +12,6 @@ class ListOrders extends Component
 {
     use WithPagination;
 
-    // protected $listeners = ['orderDeleted' => 'refreshListOrders'];
-    #[On('orderDeleted')]
-    public function refreshListOrders()
-    {
-        $this->dispatch('refreshListOrders');
-    }
-
     public function render()
     {
         $user = User::with('orders')->find(Auth::id());

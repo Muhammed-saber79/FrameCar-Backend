@@ -30,7 +30,7 @@
                     </a>
                     {{ $orders->links('pagination.simple') }}
                 </div>
-                <div  style="overflow-x: scroll;">
+                <div  style="overflow: auto;">
                     @livewire('order.list-orders')
                 </div>
             </div>
