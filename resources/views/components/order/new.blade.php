@@ -13,8 +13,10 @@
                 @csrf
                 <input type="hidden" name="name" value="{{ Auth::user()->id }}">
 
-                <x-form.input label="رقم الهاتف" labelStyle="margin-top: 15px" type="tel" name="phoneNumber" value="" placeholder="ادخل رقم الهاتف" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                <!-- <x-form.input label="رقم الهاتف" labelStyle="margin-top: 15px" type="tel" name="phoneNumber" value="" placeholder="ادخل رقم الهاتف" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" /> -->
                 <x-form.input label="نوع السيارة" labelStyle="margin-top: 15px" type="text" name="carType" value="" placeholder="ادخل نوع السيارة" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                <x-form.input label="موديل السيارة " labelStyle="margin-top: 15px" type="text" name="carCategory" value="" placeholder="ادخل مويل السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                <x-form.input label="تاريخ صنع السيارة " labelStyle="margin-top: 15px" type="text" name="carModel" value="" placeholder="ادخل تاريخ صنع السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
                 <x-form.input label="نوع الزجاج" labelStyle="margin-top: 15px" type="text" name="glassType" value="" placeholder="ادخل نوع الزجاج" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
 
                 <label style="display: block; margin-top: 15px;">مكان الزجاج</label>
@@ -31,7 +33,19 @@
                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                 @enderror
 
-                <x-form.input label="صورة الزجاج المكسور" labelStyle="margin-top: 15px" type="file" name="broken_glass_image" placeholder="" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                <label style="display: block; margin-top: 15px;">نوع الخدمة</label>
+                <select id="serviceType" name="serviceType"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" disabled>حدد نوع الخدمة</option>
+                    <option value="معالجة زجاج" {{ old('serviceType') == 'front' ? 'selected' : '' }}>معالجة زجاج</option>
+                    <option value="تغيير زجاج" {{ old('serviceType') == 'front' ? 'selected' : '' }}>تغيير زجاج</option>
+                    <option value="اصلاح فتحة سقف" {{ old('serviceType') == 'front' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
+                    <option value="اصلاح ماكينة زجاج" {{ old('serviceType') == 'front' ? 'selected' : '' }}>اصلاح ماكينة زجاج</option>
+                  
+                </select>
+                @error('serviceType')
+                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                @enderror
 
                 <label style="display: block; margin-top: 15px;">الموقع: <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label>
                 @error('latitude')

@@ -23,8 +23,10 @@ class OrderRequest extends FormRequest
     {
         $rules = [
             'name' => ['required', 'string'],
-            'phoneNumber' => ['required', 'string', 'size:11'],
+            //'phoneNumber' => ['required', 'string', 'size:11'],
             'carType' => ['required', 'string'],
+            'carCategory' => ['required', 'string'],
+            'carModel' => ['required', 'number'],
             'glassType' => ['required', 'string'],
             'glassPosition' => ['required', 'string', 'in:front,back,left-side,right-side,mirrors'],
             'latitude' => ['required', 'numeric'],

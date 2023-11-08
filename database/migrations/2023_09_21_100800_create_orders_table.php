@@ -13,14 +13,17 @@ return new class extends Migration
     {
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
-            $table->string('phoneNumber');
+            // $table->string('phoneNumber');
             $table->string('carType');
+            $table->string('carCategory');
+            $table->string('carModel');
             $table->string('glassType');
             $table->enum('glassPosition', ['front', 'back', 'left-side', 'right-side', 'mirrors']);
-            $table->string('brokenGlassImage');
-            $table->enum('status', ['pending', 'approved', 'rejected', 'canceled', 'completed'])->default('pending');
+            // $table->string('brokenGlassImage');
+            $table->enum('status', ['pending','replied' , 'approved', 'rejected', 'canceled', 'completed'])->default('pending');
             $table->string('longitude');
             $table->string('latitude');
+            $table->boolean('isPaid')->default(false);
             $table->string('locationLink');
             $table->timestamps();
 

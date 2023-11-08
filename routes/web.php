@@ -22,7 +22,7 @@ Route::get('/', function () {
 
 require __DIR__.'/dashboard.php';
 
-Route::resource('contact',ContactController::class);
+Route::resource('contact', ContactController::class);
 
 #######################admin routes ###################
 
