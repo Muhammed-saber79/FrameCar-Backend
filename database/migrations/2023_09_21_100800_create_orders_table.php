@@ -15,19 +15,20 @@ return new class extends Migration
             $table->id();
             // $table->string('phoneNumber');
             $table->string('carType');
-            $table->string('carCategory');
             $table->string('carModel');
+            $table->string('carMadeYear');
             $table->string('glassType');
             $table->enum('glassPosition', ['front', 'back', 'left-side', 'right-side', 'mirrors']);
-            // $table->string('brokenGlassImage');
-            $table->enum('status', ['pending','replied' , 'approved', 'rejected', 'canceled', 'completed'])->default('pending');
+            $table->enum('serviceType', ['process', 'change', 'upRepair', 'machine']);
             $table->string('longitude');
             $table->string('latitude');
-            $table->boolean('isPaid')->default(false);
-            $table->string('locationLink');
+            $table->string('locationLink')->nullable();
             $table->timestamps();
 
-            
+            // $table->string('brokenGlassImage');
+            $table->enum('status', ['pending','replied' , 'approved', 'rejected', 'canceled', 'completed'])->default('pending');
+            $table->boolean('isPaid')->default(false);
+
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->default(1);
         });
     }
