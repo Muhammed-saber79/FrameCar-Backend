@@ -17,6 +17,6 @@ class DatabaseSeeder extends Seeder
         \App\Models\User::factory(10)->create();
 
         $this->call([AdminsTableSeeder::class]);
-        Order::factory(30)->create();
+        //Order::factory(30)->create();
     }
 }

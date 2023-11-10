@@ -2,16 +2,29 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
 use App\Models\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
 {
     public function index(): View
     {
+        // $results = DB::table('orders')
+        //     ->orderByRaw('
+        //         CASE
+        //             WHEN status = "Approved" THEN 1
+        //             WHEN status = "Pending" THEN 2
+        //             WHEN status = "Processing" THEN 3
+        //             WHEN status = "Shipped" THEN 4
+        //             WHEN status = "Delivered" THEN 5
+        //             ELSE 6
+        //         END, 
+        //         created_at DESC')->get();
+
         $user = User::with('orders')->find(Auth::id());
         $orders = $user->orders()->paginate(10);
 

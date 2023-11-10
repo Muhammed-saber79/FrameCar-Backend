@@ -23,8 +23,12 @@ Route::get('/', function () {
 
 require __DIR__.'/dashboard.php';
 
+<<<<<<< HEAD
 Route::resource('contact',ContactController::class);
 Route::resource('users',UserController::class);
+=======
+Route::resource('contact', ContactController::class);
+>>>>>>> mohamed/test-livewire
 
 #######################admin routes ###################
 
