@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\ProjectController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
 use Illuminate\Support\Facades\Route;
 
@@ -23,6 +24,7 @@ Route::get('/', function () {
 require __DIR__.'/dashboard.php';
 
 Route::resource('contact',ContactController::class);
+Route::resource('users',UserController::class);
 
 #######################admin routes ###################
 

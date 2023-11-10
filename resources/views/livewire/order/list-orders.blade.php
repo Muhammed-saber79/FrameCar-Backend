@@ -2,7 +2,7 @@
     <table>
         <thead>
             <tr>
-                <th>الرقم</th>
+                <th>م</th>
                 <th>نوع السيارة</th>
                 <th>نوع الزجاج</th>
                 <th>مكان الزجاج</th>
@@ -16,7 +16,7 @@
         <tbody wire:pagination>
             @foreach($orders as $order)
                 <tr>
-                    <td>{{ $order->id }}</td>
+                    <td>{{ $loop->iteration }}</td>
                     <td>{{ $order->carType }}</td>
                     <td>{{ $order->glassType }}</td>
                     <td>{{ $order->glassPosition }}</td>

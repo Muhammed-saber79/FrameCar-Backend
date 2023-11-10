@@ -17,35 +17,33 @@
               <tr>
        
                 <th>م</th>
-                <th>اسم المرسل </th>
+                <th>اسم المستخدم </th>
                 <th>البريد الالكتروني </th>               
-                <th>الموضوع</th>
-                <th>محتوى الرسالة</th>
+                <th>رقم الهاتف</th>
                 <th>العمليات</th>
               </tr>
             </thead>
             <tbody>
-                @foreach ($contacts as $contact)
+                @foreach ($users as $user)
                 <tr class="accordion-toggle collapsed" id="c-2474" data-toggle="collapse" data-parent="#c-2474" href="#collap-2474">
 
                 <td>{{$loop->iteration}}</td>
-                <td>{{$contact->name}}</td>
-                <td>{{$contact->email}}</td>
-                <td>{{$contact->subject}}</td>
-                <td>{{$contact->message}}</td>
+                <td>{{$user->name}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->phoneNumber}}</td>
                
                 <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="text-muted sr-only">Action</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$contact->id}}">   حذف  </a>
+                  <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$user->id}}">   حذف  </a>
                  
                 </div>
                 
               </td>
 
 
-              <div class="modal fade" id="delete{{$contact->id}}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
+              <div class="modal fade" id="delete{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
                     <div class="modal-header">
@@ -54,7 +52,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('contact.destroy',$contact)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('users.destroy',$user)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
                      
@@ -79,8 +77,7 @@
              
             </tbody>
           </table>
-          {{$contacts->links('pagination::bootstrap-4')}}
-
+          {{$users->links('pagination::bootstrap-4')}}
         </div>
       </div>
     </div>
