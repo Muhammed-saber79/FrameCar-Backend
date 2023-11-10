@@ -11,8 +11,11 @@ class Order extends Model
     protected $fillable = [
         'phoneNumber',
         'carType',
+        'carModel',
+        'carMadeYear',
         'glassType',
         'glassPosition',
+        'serviceType',
         'brokenGlassImage',
         'status',
         'user_id',
