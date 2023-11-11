@@ -7,9 +7,11 @@
                 <tr>
                     <th>الرقم</th>
                     <th>نوع السيارة</th>
+                    <th>موديل السيارة</th>
+                    <th>تاريخ التصنيع</th>
                     <th>نوع الزجاج</th>
                     <th>مكان الزجاج</th>
-                    <th>صورة الزجاج المكسور</th>
+                    <th>نوع الخدمة  </th>
                     <th>تاريخ الطلب</th>
                     <th>حالة الطلب</th>
                     <th>رقم الهاتف</th>
@@ -21,11 +23,12 @@
                     <tr>
                         <td>{{ $order->id }}</td>
                         <td>{{ $order->carType }}</td>
+                        <td>{{ $order->carModel }}</td>
+                        <td>{{ $order->carMadeYear }}</td>
                         <td>{{ $order->glassType }}</td>
                         <td>{{ $order->glassPosition }}</td>
-                        <td>
-                            <img src="{{ asset('storage/' . $order->brokenGlassImage) }}" width="100" alt="">
-                        </td>
+                        <td>{{ $order->serviceType }}</td>
+                        
                         <td>{{ $order->created_at->diffForHumans() }}</td>
                         <td style="font-weight: bold;
                             @if($order->status == 'pending') color: rgb(13, 164, 184);
@@ -36,7 +39,7 @@
                             @endif" >
                             {{ $order->status }}
                         </td>
-                        <td>{{ $order->phoneNumber }}</td>
+                        <td>{{ auth('web')->user()->phoneNumber }}</td>
                         <td>
                             <div class="btns">
                                 <a href="{{ route('order.edit', $order->id) }}"

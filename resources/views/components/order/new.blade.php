@@ -31,16 +31,16 @@
                 </select>
                 @error('glassPosition')
                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                @enderror
+                @enderror 
 
                 <label style="display: block; margin-top: 15px;">نوع الخدمة</label>
                 <select id="serviceType" name="serviceType"
                         style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
                     <option value="" disabled selected>حدد نوع الخدمة</option>
-                    <option value="process" {{ old('serviceType') == 'front' ? 'selected' : '' }}>معالجة زجاج</option>
-                    <option value="change" {{ old('serviceType') == 'front' ? 'selected' : '' }}>تغيير زجاج</option>
-                    <option value="upRepair" {{ old('serviceType') == 'front' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
-                    <option value="machine" {{ old('serviceType') == 'front' ? 'selected' : '' }}>اصلاح ماكينة زجاج</option>
+                    <option value="process" {{ old('serviceType') == 'process' ? 'selected' : '' }}>معالجة زجاج</option>
+                    <option value="change" {{ old('serviceType') == 'change' ? 'selected' : '' }}>تغيير زجاج</option>
+                    <option value="upRepair" {{ old('serviceType') == 'upRepair' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
+                    <option value="machine" {{ old('serviceType') == 'front' ? 'machine' : '' }}>اصلاح ماكينة زجاج</option>
                   
                 </select>
                 @error('serviceType')

@@ -14,8 +14,11 @@
                     <input type="hidden" name="name" value="{{ Auth::user()->id }}">
 
                     <!-- Populate the input fields with order data -->
-                    <x-form.input label="رقم الهاتف" labelStyle="margin-top: 15px" type="tel" name="phoneNumber" value="{{ $order->phoneNumber }}" placeholder="ادخل رقم الهاتف" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                    
+                    {{-- <x-form.input label="رقم الهاتف" labelStyle="margin-top: 15px" type="tel" name="phoneNumber" value="{{ auth('web')->user()->phoneNumber }}" placeholder="ادخل رقم الهاتف" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" /> --}}
                     <x-form.input label="نوع السيارة" labelStyle="margin-top: 15px" type="text" name="carType" value="{{ $order->carType }}" placeholder="ادخل نوع السيارة" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                    <x-form.input label="موديل السيارة " labelStyle="margin-top: 15px" type="text" name="carModel" value="{{ $order->carModel }}" placeholder="ادخل موديل السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                    <x-form.input label="تاريخ صنع السيارة " labelStyle="margin-top: 15px" type="text" name="carMadeYear" value="{{ $order->carMadeYear }}" placeholder="ادخل سنة صنع السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
                     <x-form.input label="نوع الزجاج" labelStyle="margin-top: 15px" type="text" name="glassType" value="{{ $order->glassType }}" placeholder="ادخل نوع الزجاج" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
 
                     <label style="display: block; margin-top: 15px;">مكان الزجاج</label>
@@ -31,10 +34,20 @@
                     <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                     @enderror
 
-                    <x-form.input label="صورة الزجاج المكسور" labelStyle="margin-top: 15px" type="file" name="broken_glass_image" placeholder="" value="{{ asset('storage/' . $order->brokenGlassImage) }}" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
-                    @if(isset($order->brokenGlassImage))
-                        <img style="margin-top: 15px" width="70" src="{{ asset('./storage/' . $order->brokenGlassImage) }}" alt="صورة الزجاج المكسور"/>
-                    @endif
+                    <label style="display: block; margin-top: 15px;">نوع الخدمة</label>
+                <select id="serviceType" name="serviceType"
+                        style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                    <option value="" disabled selected>حدد نوع الخدمة</option>
+                    <option value="process" @selected($order->getAttribute('serviceType')=='معالجة زجاج')>معالجة زجاج</option>
+                    <option value="change" @selected($order->getAttribute('serviceType')=='تغيير زجاج')>تغيير زجاج</option>
+                    <option value="upRepair" @selected($order->getAttribute('serviceType')=='اصلاح فتحة سقف')>اصلاح فتحة سقف</option>
+                    <option value="machine" @selected($order->getAttribute('serviceType')=='اصلاح ماكينة زجاج')>اصلاح ماكينة زجاج</option>
+                  
+                </select>
+                @error('serviceType')
+                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                @enderror
+
 
                     <label style="display: block; margin-top: 15px;">الموقع: <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label>
                     @error('latitude')

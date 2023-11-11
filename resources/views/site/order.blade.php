@@ -16,6 +16,14 @@
             <label>نوع السيارة:</label>
             <span>{{ $order->carType }}</span>
         </div>
+        <div class="sub-card animate">
+            <label>موديل السيارة:</label>
+            <span>{{ $order->carModel }}</span>
+        </div>
+        <div class="sub-card animate">
+            <label>تاريخ صنع السيارة:</label>
+            <span>{{ $order->carMadeYear }}</span>
+        </div>
 
         <div class="sub-card animate">
             <label>نوع الزجاج:</label>
@@ -25,6 +33,10 @@
         <div class="sub-card animate">
             <label>مكان الزجاج:</label>
             <span>{{ $order->glassPosition }}</span>
+        </div>
+        <div class="sub-card animate">
+            <label>نوع الخدمة:</label>
+            <span>{{ $order->serviceType }}</span>
         </div>
 
         <div class="sub-card animate">
@@ -47,13 +59,13 @@
 
         <div class="sub-card animate">
             <label>رقم الهاتف:</label>
-            <span>{{ $order->phoneNumber }}</span>
+            <span>{{  auth('web')->user()->phoneNumber }}</span>
         </div>
 
-        <div class="sub-card animate">
+        {{-- <div class="sub-card animate">
             <label>صورة الزجاج المكسور:</label>
             <img width="100" src="{{ asset('storage/' . $order->brokenGlassImage) }}" alt="صورة الزجاج المكسور">
-        </div>
+        </div> --}}
 
         <div class="sub-card animate">
             <label>موقعك الجغرافي:</label>
