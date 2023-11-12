@@ -2,8 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Casts\Attribute;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Order extends Model
 {
@@ -23,6 +24,8 @@ class Order extends Model
         'latitude',
         'locationLink'
     ];
+
+
 
     public function setLocationLinkAttribute($value)
     {
@@ -48,4 +51,13 @@ class Order extends Model
 
         }
     }
+
+    // protected function locationLink(): Attribute
+    //     {
+        
+    //         return new Attribute(
+    //              get: fn ($value) =>  $value,
+    //             set: fn ($value) => 'https://maps.google.com/?q=' . $this->latitude . ',' . $this->longitude
+    //         );
+    //     }
 }

@@ -25,6 +25,7 @@ class OrderController extends Controller
 
     public function store (OrderRequest $request)
     {
+       
         // dd($request->except('broken_glass_image'));
         try {
             /*if ($request->hasFile('broken_glass_image')){
@@ -44,7 +45,7 @@ class OrderController extends Controller
 
             $user = Auth::user();
             
-            $user->orders()->create( $request->except('broken_glass_image') );
+            $user->orders()->create( $request->except('broken_glass_image','name','_token') );
 
             return redirect()->route('user.dashboard')->with('success', 'تم إرسال الطلب بنجاح');
         } catch (\Exception $e) {
