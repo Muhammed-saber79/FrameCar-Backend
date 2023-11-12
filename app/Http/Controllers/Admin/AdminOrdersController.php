@@ -4,64 +4,51 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Order;
+use App\Services\EmailService;
 use Illuminate\Http\Request;
 
 class AdminOrdersController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-      public function index(){
+    protected $emailService;
 
+    public function __construct(EmailService $emailService)
+    {
+        $this->emailService = $emailService;
+    }
+
+    public function index(){
         $orders = Order::paginate(10);
         return view('admin.orders.index',compact('orders'));
-      }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function reply(Request $request, Order $order)
     {
-        //
-    }
+        $request->validate([
+            'email' => ['required', 'email', 'exists:users,email'],
+            'cost' => ['required', 'numeric', 'min:0'],
+            'message' => ['nullable', 'string']
+        ], [
+            'email.required' => 'يجب وجود البريد الالكتروني لصاحب السيارة',
+            'email.email' => 'يجب ان يكون البريد الالكتروني صحيحا',
+            'email.exists' => 'بريد إلكتروني خاطئ',
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
+            'cost.required' => 'مطلوب إدخال التكلفة الكلية للصيانة',
+            'cost.numeric' => 'يجب ان تكون التكلفة مكونة من ارقام فقط',
+            'cost.min' => 'يجب ان لا تقل التكلفة عن صفر',
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
+            'message.string' => 'يجب ان تكون الرسالة مكونة من نص سليم'
+        ]);
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+        $data = [
+            'email' => $request->email,
+            'cost' => $request->cost,
+            'message' => $request->message,
+        ];
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+        if ( $this->emailService->sendReplyEmail($data) ) {
+            return redirect()->back()->with('success', 'تم إرسال الرد الى العميل بنجاح.');
+        } else {
+            return redirect()->back()->with('error', 'حدث خطأ اثناء ارسال الرد الى العميل. يمكنك المحاولة مجددا.');
+        }
     }
 }

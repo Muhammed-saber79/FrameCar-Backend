@@ -7,6 +7,8 @@
     id="{{ $name }}"
     placeholder="{{ $placeholder }}"
     value="{{ $value == '' ? old($name) : $value }}"
+
+    @if(isset($attr)) {{$attr}} @endif
 >
 
 @error($name)

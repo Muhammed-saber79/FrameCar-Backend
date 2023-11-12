@@ -6,7 +6,13 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>Tiny Dashboard - A Bootstrap Dashboard Template</title>
+    <!-- <title>Tiny Dashboard - A Bootstrap Dashboard Template</title> -->
+    <title>Frame Car | @yield('title')</title>
+
+    <!-- Favicons -->
+    <link href="{{asset('site/assets/img/logo.png')}}" rel="icon">
+    <link href="{{asset('site/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('css/simplebar.css')}}">
     <!-- Fonts CSS -->
@@ -131,7 +137,7 @@
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-              <a href="{{route('projects.index')}}"  class="dropdown-toggle nav-link">
+              <a href="{{route('admin.projects.index')}}"  class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">صور المشاريع</span><span class="sr-only">(current)</span>
               </a>
@@ -141,7 +147,7 @@
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
-              <a href="{{route('contact.index')}}"  class="dropdown-toggle nav-link">
+              <a href="{{route('admin.contact.index')}}"  class="dropdown-toggle nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">طلبات التواصل</span><span class="sr-only">(current)</span>
               </a>

@@ -29,5 +29,9 @@ Route::group([
     })->name('index');
 
     Route::get('orders', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'index'])->name('orders');
+    Route::post('orders/{order}', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'reply'])->name('orders.reply');
+    Route::resource('projects',ProjectController::class);
+    Route::resource('contact', ContactController::class);
+
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });

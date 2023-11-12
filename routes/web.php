@@ -18,16 +18,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('site.index');
-
 })->name('site');
 
+require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
-
-Route::resource('contact', ContactController::class);
-
-#######################admin routes ###################
+require __DIR__.'/userDashboard.php';
 
 
+##################### Test Payment Gateway #####################
 Route::get('testPay',function(){
 
     $client = new \GuzzleHttp\Client();
@@ -45,21 +43,7 @@ $data= json_decode($response->getBody());
 
 return redirect()->to($data->transaction->url)  ;
 });
-// Route::group(['prefix'=>'admin','middleware'],function(){
-
-//     Route::get('/', function () {
-//         return view('admin.index');
-//     })->name('admin_home');
-
-     Route::resource('projects',ProjectController::class);
-
-
-// });
-require __DIR__.'/auth.php';
-
-require __DIR__.'/userDashboard.php';
-
-
+##################### Test Payment Gateway #####################
 
 
 
