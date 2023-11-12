@@ -26,8 +26,8 @@ class Order extends Model
     ];
 
 
+    public function setLocationLinkAttribute()
 
-    public function setLocationLinkAttribute($value)
     {
         $this->attributes['locationLink'] = 'https://maps.google.com/?q=' . $this->latitude . ',' . $this->longitude;
     }
