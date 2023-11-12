@@ -39,6 +39,7 @@
   </style>
   <body class="vertical  light rtl ">
     <div class="wrapper">
+
       <nav class="topnav navbar navbar-light">
         <button type="button" class="navbar-toggler text-muted mt-2 p-0 mr-3 collapseSidebar">
           <i class="fe fe-menu navbar-toggler-icon"></i>
@@ -76,6 +77,8 @@
           </li>
         </ul>
       </nav>
+
+
       <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>
         <a href="{{asset('')}}#" class="btn collapseSidebar toggle-btn d-lg-none text-muted ml-2 mt-3" data-toggle="toggle">
           <i class="fe fe-x"><span class="sr-only"></span></i>
@@ -93,6 +96,7 @@
               </svg>
             </a>
           </div>
+
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
               <a href="{{route('admin.index')}}"  class="dropdown-toggle nav-link">
@@ -102,25 +106,28 @@
 
             </li>
           </ul>
-            <ul class="navbar-nav flex-fill w-100 mb-2">
-                <li class="nav-item dropdown">
-                    <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
-                        <i class="fe fe-home fe-16"></i>
-                        <span class="ml-3 item-text">الطلبات </span><span class="sr-only">(current)</span>
-                    </a>
 
-                </li>
-            </ul>
-
-            <ul class="navbar-nav flex-fill w-100 mb-2">
+          <ul class="navbar-nav flex-fill w-100 mb-2">
               <li class="nav-item dropdown">
-                  <a href="{{route('users.index')}}"  class="dropdown-toggle nav-link">
+                  <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
                       <i class="fe fe-home fe-16"></i>
-                      <span class="ml-3 item-text">المستخدمين  </span><span class="sr-only">(current)</span>
+                      <span class="ml-3 item-text">الطلبات </span><span class="sr-only">(current)</span>
                   </a>
 
               </li>
           </ul>
+
+          {{--
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{route('users.index')}}"  class="dropdown-toggle nav-link">
+                    <i class="fe fe-home fe-16"></i>
+                    <span class="ml-3 item-text">المستخدمين  </span><span class="sr-only">(current)</span>
+                </a>
+
+            </li>
+          </ul>
+          --}}
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">
@@ -141,12 +148,6 @@
 
             </li>
           </ul>
-
-
-
-
-
-
 
         </nav>
       </aside>

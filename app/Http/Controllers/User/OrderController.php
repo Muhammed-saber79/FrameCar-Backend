@@ -25,7 +25,6 @@ class OrderController extends Controller
 
     public function store (OrderRequest $request)
     {
-        // dd($request->all());
         try {
             /*if ($request->hasFile('broken_glass_image')){
                 $file = $request->file('broken_glass_image');
@@ -43,9 +42,11 @@ class OrderController extends Controller
             }*/
 
             $user = Auth::user();
+            $request->merge([
+                'locationLink' => 'https://maps.google.com/?q=' . $request->latitude . ',' . $request->longitude
+            ]);
             
-            $test = $user->orders()->create( $request->except('broken_glass_image') );
-            dd($test);
+            $user->orders()->create( $request->all() );
 
             return redirect()->route('user.dashboard')->with('success', 'تم إرسال الطلب بنجاح');
         } catch (\Exception $e) {
