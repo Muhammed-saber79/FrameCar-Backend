@@ -17,7 +17,7 @@ class AdminsTableSeeder extends Seeder
         Admin::create([
             'name' => 'FrameCar Admin',
             'email' => 'admin@admin.com',
-            'password' => Hash::make('Password#123'),
+            'password' => Hash::make('12345678'),
             'super_admin' => 1,
             'status' => 'active'
         ]);

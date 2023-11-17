@@ -89,7 +89,7 @@
             </ul>
 
             <p>
-                <a href="http://localhost:8000" class="button">المتابعة إلى عملية الدفع</a>
+                <a href="http://localhost:8000/pay" class="button">المتابعة إلى عملية الدفع</a>
             </p>
             <p>شكرًا لاستخدام خدماتنا!</p>
             <p>أطيب التحيات،<br>FrameCar</p>

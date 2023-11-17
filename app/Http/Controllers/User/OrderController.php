@@ -25,11 +25,6 @@ class OrderController extends Controller
 
     public function store (OrderRequest $request)
     {
-<<<<<<< HEAD
-       
-        // dd($request->except('broken_glass_image'));
-=======
->>>>>>> mohamed/test-livewire
         try {
             /*if ($request->hasFile('broken_glass_image')){
                 $file = $request->file('broken_glass_image');
