@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Auth\ForgotPasswordController;
 
 Route::group([
     'prefix' => 'admin',
@@ -29,6 +31,7 @@ Route::group([
     })->name('index');
 
     Route::get('orders', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'index'])->name('orders');
+    Route::delete('order_delete/{id}', [\App\Http\Controllers\User\OrderController::class, 'destroy'])->name('order_delete');
     Route::post('orders/{order}', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'reply'])->name('orders.reply');
     Route::resource('projects',ProjectController::class);
     Route::resource('contact', ContactController::class);

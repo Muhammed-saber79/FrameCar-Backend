@@ -99,7 +99,7 @@
                                       <span aria-hidden="true">&times;</span>
                                     </button>
                                   </div>
-                                  <form action="{{route('order.destroy',$order)}}" method='post' enctype="multipart/form-data">
+                                  <form action="{{route('admin.order_delete',$order)}}" method='post' enctype="multipart/form-data">
                                     @csrf
                                     @method("DELETE")
 

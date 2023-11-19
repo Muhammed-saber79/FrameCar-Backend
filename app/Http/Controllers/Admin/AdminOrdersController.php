@@ -43,7 +43,11 @@ class AdminOrdersController extends Controller
             'email' => $request->email,
             'cost' => $request->cost,
             'message' => $request->message,
+            'order_id'=>$order->id
         ];
+        $order->cost = $request->cost ;
+        $order->status = 'replied';
+        $order->save();
 
         if ( $this->emailService->sendReplyEmail($data) ) {
             return redirect()->back()->with('success', 'تم إرسال الرد الى العميل بنجاح.');

@@ -23,10 +23,11 @@ return new class extends Migration
             $table->string('longitude');
             $table->string('latitude');
             $table->string('locationLink')->nullable();
+            $table->integer('cost')->nullable();
             $table->timestamps();
 
             // $table->string('brokenGlassImage');
-            $table->enum('status', ['pending','replied' , 'approved', 'rejected', 'canceled', 'completed'])->default('pending');
+            $table->enum('status', ['pending','replied' , 'approved', 'rejected', 'canceled', 'completed','cheat'])->default('pending');
             $table->boolean('isPaid')->default(false);
 
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->default(1);

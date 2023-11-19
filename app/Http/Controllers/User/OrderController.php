@@ -100,8 +100,8 @@ class OrderController extends Controller
     public function destroy($id)
     {
         try {
-            $user = Auth::user();
-            $order = $user->orders()->find($id);
+           
+            $order = Order::findOrFail($id);
 
             if (!$order->exists()) {
                 return redirect()->back()->with('error', 'هذا الطلب غير موجود...!');
