@@ -14,7 +14,7 @@
         <div class="row">
 
           <div class="col-md-4 mb-4">
-            <a href="">
+            <a href="{{ route('admin.users.index') }}">
               <div class="card shadow">
                 <div class="card-body">
                   <div class="row align-items-center">
