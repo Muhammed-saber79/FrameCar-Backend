@@ -59,7 +59,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('contact.destroy',$contact)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('admin.contact.destroy',$contact)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
                      

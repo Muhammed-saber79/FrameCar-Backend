@@ -1,7 +1,11 @@
 <?php
 
+use App\Models\User;
+use App\Models\Order;
+use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Auth\ResetPasswordController;
@@ -27,7 +31,11 @@ Route::group([
     'middleware' => ['auth:admin'],
 ], function () {
     Route::get('/', function () {
-        return view('admin.index');
+        $usersCount = User::count();
+        $ordersCount = Order::count();
+        $projectsCount = Project::count();
+
+        return view('admin.index', compact('usersCount', 'ordersCount', 'projectsCount'));
     })->name('index');
 
     Route::get('orders', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'index'])->name('orders');
@@ -35,6 +43,7 @@ Route::group([
     Route::post('orders/{order}', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'reply'])->name('orders.reply');
     Route::resource('projects',ProjectController::class);
     Route::resource('contact', ContactController::class);
+    Route::resource('users', UserController::class);
 
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });

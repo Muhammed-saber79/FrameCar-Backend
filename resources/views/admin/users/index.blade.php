@@ -21,27 +21,31 @@
             <thead class="thead-dark">
               <tr>
        
-                <th>م</th>
-                <th>اسم المستخدم </th>
-                <th>البريد الالكتروني </th>               
-                <th>رقم الهاتف</th>
-                <th>العمليات</th>
+                <th class="text-center">م</th>
+                <th class="text-center">اسم المستخدم </th>
+                <th class="text-center">البريد الالكتروني </th>               
+                <th class="text-center">رقم الهاتف</th>
+                <th class="text-center">عدد الطلبات</th>
+                <th class="text-center">تاريخ التسجيل على المنصة</th>
+                <th class="text-center">العمليات</th>
               </tr>
             </thead>
             <tbody>
                 @foreach ($users as $user)
                 <tr class="accordion-toggle collapsed" id="c-2474" data-toggle="collapse" data-parent="#c-2474" href="#collap-2474">
 
-                <td>{{$loop->iteration}}</td>
-                <td>{{$user->name}}</td>
-                <td>{{$user->email}}</td>
-                <td>{{$user->phoneNumber}}</td>
+                <td class="text-center">{{$loop->iteration}}</td>
+                <td class="text-center">{{$user->name}}</td>
+                <td class="text-center text-info">{{$user->email}}</td>
+                <td class="text-center">{{$user->phoneNumber}}</td>
+                <td class="text-center text-warning">{{$user->orders->count()}}</td>
+                <td class="text-center text-success">{{ $user->created_at->format('F j, Y g:i a') }}</td>
                
-                <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <td class="text-center"><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="text-muted sr-only">Action</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
-                  <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$user->id}}">   حذف  </a>
+                  <a type="button" class="btn mb-2 dropdown-item text-danger" data-toggle="modal" data-target="#delete{{$user->id}}">   حذف  </a>
                  
                 </div>
                 
@@ -57,7 +61,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('users.destroy',$user)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('admin.users.destroy',$user)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
                      

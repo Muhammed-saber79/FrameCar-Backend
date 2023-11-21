@@ -61,7 +61,7 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('projects.destroy',$project->id)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('admin.projects.destroy',$project->id)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
                      
@@ -85,7 +85,7 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form action="{{route('projects.update',$project->id)}}" method='post' enctype="multipart/form-data">
+                          <form action="{{route('admin.projects.update',$project->id)}}" method='post' enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
                             <div class="modal-body"> 
@@ -121,7 +121,7 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <form action="{{route('projects.store')}}" method='post' enctype="multipart/form-data">
+                      <form action="{{route('admin.projects.store')}}" method='post' enctype="multipart/form-data">
                         @csrf
                       <div class="modal-body"> 
                         <label for="inputPassword4"> اسم المشروع  </label>

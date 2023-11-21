@@ -12,6 +12,7 @@
     <!-- Favicons -->
     <link href="{{asset('site/assets/img/logo.png')}}" rel="icon">
     <link href="{{asset('site/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-xxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous">
 
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('css/simplebar.css')}}">
@@ -114,6 +115,16 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
+            <li class="nav-item dropdown">
+                <a href="{{route('admin.users.index')}}"  class="dropdown-toggle nav-link">
+                    <i class="fe fe-home fe-16"></i>
+                    <span class="ml-3 item-text">العملاء</span><span class="sr-only">(current)</span>
+                </a>
+
+            </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
               <li class="nav-item dropdown">
                   <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
                       <i class="fe fe-home fe-16"></i>
@@ -122,18 +133,6 @@
 
               </li>
           </ul>
-
-          {{--
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{route('users.index')}}"  class="dropdown-toggle nav-link">
-                    <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">المستخدمين  </span><span class="sr-only">(current)</span>
-                </a>
-
-            </li>
-          </ul>
-          --}}
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
             <li class="nav-item dropdown">

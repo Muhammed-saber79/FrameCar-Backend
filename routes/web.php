@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\User\PaymentController;
+use App\Models\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -19,9 +20,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-
- 
-    return view('site.index');
+    $projects = Project::all();
+    return view('site.index', compact('projects'));
 })->name('site');
 
 require __DIR__.'/auth.php';
@@ -35,8 +35,6 @@ Route::get('pay/{order_id}',[PaymentController::class ,'pay']);
 
 
 Route::get('/pay_callback',[PaymentController::class , 'pay_callback'])->name('pay_callback');
-
-
 ##################### Test Payment Gateway #####################
 
 

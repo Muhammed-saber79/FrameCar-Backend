@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Exception;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -36,8 +37,13 @@ class ContactController extends Controller
             'message'=>'required',
         ]);
         $data = $request->only(['name','email','subject','message']);
-        Contact::create($data);
-        return back();
+
+        try {
+            Contact::create($data);
+            return back()->with('success', 'تم إرسال طلب التواصل بنجاح');
+        } catch (Exception $e) {
+            return back()->with('danger', 'حدث خطأ اثناء إرسال طلب التواصل, حاول مجددا!');
+        }
     }
 
     /**

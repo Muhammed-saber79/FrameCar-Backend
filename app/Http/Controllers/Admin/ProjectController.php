@@ -35,14 +35,13 @@ class ProjectController extends Controller
             'name'=>'required',
             'photo'=>'required',
         ]);
+        
         Project::create(array_merge($request->only(['name','photo']),
         [
-            'photo' => $request->file('photo')->store('projects'),
+            'photo' => $request->file('photo')->store('projects', ['disk' => 'public']),
         ]
         ));
         return back();
-
-        
     }
 
     /**
