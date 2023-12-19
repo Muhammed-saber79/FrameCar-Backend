@@ -94,46 +94,68 @@
 
 <!-- Script To Get Long & Lat From The Map -->
 <script>
-    function initMap(lat, long) {
+    // function initMap(lat, long) {
+    //     let defaultLatitude = 23.8859, defaultLongitude = 45.0792;
+    //     localLat = lat;
+    //     localLong = long;
+    //     // let lat = Number(document.getElementById('latitude').value);
+    //     // let long = Number(document.getElementById('longitude').value);
+
+    //     // if (isNaN(lat) || lat < -90 || lat > 90) {
+    //     //     lat = defaultLatitude;
+    //     // }
+
+    //     // if (isNaN(long) || long < -180 || long > 180) {
+    //     //     long = defaultLongitude;
+    //     // }
+
+    //     if (!lat) {
+    //         localLat = defaultLatitude;
+    //     }
+
+    //     if (!long) {
+    //         localLong = defaultLongitude;
+    //     }
+
+    //     var map = new Microsoft.Maps.Map(document.getElementById('map'), {
+    //         credentials: 'Akh1Nt_GkNKoWSJ7if290r_vwPLtebu-zJIJYbcs9CkmBshpy-sM6_BLSF2jxyG_',
+    //         center: new Microsoft.Maps.Location(localLat, localLong),
+    //         zoom: 6
+    //     });
+
+    //     var marker = new Microsoft.Maps.Pushpin(map.getCenter(), {
+    //         draggable: true
+    //     });
+    //     map.entities.push(marker);
+
+    //     Microsoft.Maps.Events.addHandler(marker, 'dragend', function (event) {
+    //         var location = marker.getLocation();
+    //         console.log('Location:', location.latitude, location.longitude);
+
+    //         document.getElementById('latitude').value = location.latitude;
+    //         document.getElementById('longitude').value = location.longitude;
+    //     });
+    // }
+
+    async function initMap(lat, long) {
         let defaultLatitude = 23.8859, defaultLongitude = 45.0792;
-        localLat = lat;
-        localLong = long;
-        // let lat = Number(document.getElementById('latitude').value);
-        // let long = Number(document.getElementById('longitude').value);
+        let localLat = lat || defaultLatitude;
+        let localLong = long || defaultLongitude;
 
-        // if (isNaN(lat) || lat < -90 || lat > 90) {
-        //     lat = defaultLatitude;
-        // }
-
-        // if (isNaN(long) || long < -180 || long > 180) {
-        //     long = defaultLongitude;
-        // }
-
-        if (!lat) {
-            localLat = defaultLatitude;
-        }
-
-        if (!long) {
-            localLong = defaultLongitude;
-        }
-
-        var map = new Microsoft.Maps.Map(document.getElementById('map'), {
-            credentials: 'Akh1Nt_GkNKoWSJ7if290r_vwPLtebu-zJIJYbcs9CkmBshpy-sM6_BLSF2jxyG_',
-            center: new Microsoft.Maps.Location(localLat, localLong),
-            zoom: 6
+        // Request needed libraries.
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+        const map = new Map(document.getElementById("map"), {
+            center: { lat: localLat, lng: localLong },
+            zoom: 14,
+            mapId: "4504f8b37365c3d0",
         });
-
-        var marker = new Microsoft.Maps.Pushpin(map.getCenter(), {
-            draggable: true
-        });
-        map.entities.push(marker);
-
-        Microsoft.Maps.Events.addHandler(marker, 'dragend', function (event) {
-            var location = marker.getLocation();
-            console.log('Location:', location.latitude, location.longitude);
-
-            document.getElementById('latitude').value = location.latitude;
-            document.getElementById('longitude').value = location.longitude;
+        // const infoWindow = new InfoWindow();
+        const draggableMarker = new AdvancedMarkerElement({
+            map,
+            position: { lat: localLat, lng: localLong },
+            gmpDraggable: true,
+            title: "This marker is draggable.",
         });
     }
 
@@ -160,9 +182,6 @@
         // Keep the modal open
         $('#newOrderModal').modal('handleUpdate');
     }
-
-    // let loactionBtn = document.getElementById('getLocation');
-    // loactionBtn.addEventListener('click', getLocation());
 
     function getLocation (event) {
         if (navigator.permissions) {
