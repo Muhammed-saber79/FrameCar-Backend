@@ -69,14 +69,26 @@ class ProjectController extends Controller
             'name'=>'required',
         ]);
         $project=Project::findorfail($id);
+        $old_image = $project->photo;
+       
+        $data = [];
         if ($request->hasFile("photo")){
-            Storage::delete($project->photo);
+            $file = $request->file('photo');
 
-            $project->update(array_merge($request->only(['name','photo']),
-        [
-        'photo' => $request->file('photo')->store('projects'),
-        ]
-         ));
+            if ($file->isValid()) {
+                $data = array_merge(
+                    $request->only(['name','photo']),
+                    ['photo' => $request->file('photo')->store('projects', 
+                        ['disk' => 'public']
+                    )]
+                );
+            }
+
+            if ($old_image) {
+                Storage::disk('public')->delete($old_image);
+            }
+            
+            $project->update($data);
         }
         else{
 
@@ -84,10 +96,8 @@ class ProjectController extends Controller
                 'name'=>$request->name
             ]);
         }
-        
-         
-        
-        return back();
+                
+        return back()->with('success', 'تم تحديث بيانات المشروع بنجاح');
     }
 
     /**

@@ -24,10 +24,11 @@ Route::get('/', function () {
     return view('site.index', compact('projects'));
 })->name('site');
 
+Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
+
 require __DIR__.'/auth.php';
 require __DIR__.'/dashboard.php';
 require __DIR__.'/userDashboard.php';
-
 
 
 ##################### Test Payment Gateway #####################

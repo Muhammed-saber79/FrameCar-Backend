@@ -37,7 +37,7 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$project->name}}</td>
                 <td>
-                  <img src="{{asset('storage/'.$project->photo)}}" width="200px" alt="">
+                  <img src="{{asset('storage/'.$project->photo)}}" width="100px" alt="project-img">
                 </td>
                
                 <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +96,7 @@
                             <div class="modal-body"> 
                               <label for="inputPassword4"> صورة المشروع  </label>
                               <input type="file" name="photo"  class="form-control" id="inputPassword4" >
-                          
+                              <img src="{{asset('storage/'.$project->photo)}}" alt="project-img" width="77" class="my-2 text-center">
                             </div>
                           <div class="modal-footer">
                             <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">اغلاق</button>

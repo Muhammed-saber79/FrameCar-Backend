@@ -431,7 +431,7 @@
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form action="{{route('admin.contact.store')}}" method="post" role="form" class="email-form">
+                        <form action="{{route('contact.store')}}" method="post" role="form" class="email-form">
                             @csrf
                             <div class="row">
                                 <div class="form-group col-md-6">
