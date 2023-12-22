@@ -32,17 +32,22 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <style>
-   body {
-    font-family: 'Tajawal', sans-serif;
-  font-weight: 700; /* استخدام النمط السميك */  }
-  aside{
-    font-family: 'Tajawal', sans-serif;
-  font-weight: 700; /* استخدام النمط السميك */
-  }
+      body {
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 700; /* استخدام النمط السميك */  }
+        aside{
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 700; /* استخدام النمط السميك */
+      }
 
-
+      .avticeHover {
+           background-color: #495057;
+           color: #1b68ff
+      }
   </style>
   <body class="vertical  light rtl ">
     <div class="wrapper">
@@ -93,20 +98,15 @@
         <nav class="vertnav navbar navbar-light">
           <!-- nav bar -->
           <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{asset('')}}./index.html">
-              <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-                <g>
-                  <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                  <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                  <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                </g>
-              </svg>
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{ route('site') }}">
+                <img src="{{ asset('site/assets/img/logo.png') }}" alt="logo" title="FrameCar Logo" width="55">
             </a>
           </div>
 
+            <hr class="text-muted dz-size"/>
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.index')}}"  class="dropdown-toggle nav-link">
+            <li class="nav-item border rounded {{ request()->is('admin') ? 'active' : '' }}">
+              <a href="{{route('admin.index')}}"  class="nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">الرئيسية</span><span class="sr-only">(current)</span>
               </a>
@@ -115,9 +115,9 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{route('admin.users.index')}}"  class="dropdown-toggle nav-link">
-                    <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/users') ? 'active' : '' }}">
+                <a href="{{route('admin.users.index')}}"  class="nav-link">
+                    <i class="fe fe-users fe-16"></i>
                     <span class="ml-3 item-text">العملاء</span><span class="sr-only">(current)</span>
                 </a>
 
@@ -125,9 +125,9 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-              <li class="nav-item dropdown">
-                  <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
-                      <i class="fe fe-home fe-16"></i>
+              <li class="nav-item border rounded {{ request()->is('admin/orders') ? 'active' : '' }}">
+                  <a href="{{route('admin.orders')}}"  class="nav-link">
+                      <i class="fe fe-shopping-cart fe-16"></i>
                       <span class="ml-3 item-text">الطلبات </span><span class="sr-only">(current)</span>
                   </a>
 
@@ -135,9 +135,9 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.projects.index')}}"  class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/projects') ? 'active' : '' }}">
+              <a href="{{route('admin.projects.index')}}"  class="nav-link">
+                <i class="fe fe-tool fe-16"></i>
                 <span class="ml-3 item-text">صور المشاريع</span><span class="sr-only">(current)</span>
               </a>
 
@@ -145,13 +145,23 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.contact.index')}}"  class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/contact') ? 'active' : '' }}">
+              <a href="{{route('admin.contact.index')}}"  class="nav-link">
+                <i class="fe fe-mail fe-16"></i>
                 <span class="ml-3 item-text">طلبات التواصل</span><span class="sr-only">(current)</span>
               </a>
 
             </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+              <li class="nav-item border rounded {{ request()->is('admin/profile') ? 'active' : '' }}">
+                    <a href="{{route('admin.profile.show')}}"  class="nav-link">
+                        <i class="fe fe-settings fe-16"></i>
+                        <span class="ml-3 item-text">إعدادت الملف الشخصي</span><span class="sr-only">(current)</span>
+                    </a>
+
+                </li>
           </ul>
 
         </nav>

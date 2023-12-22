@@ -1,8 +1,5 @@
 <?php
 
-use App\Models\User;
-use App\Models\Order;
-use App\Models\Project;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\UserController;
@@ -10,6 +7,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
+use \App\Http\Controllers\Admin\AdminDashboardController;
 
 Route::group([
     'prefix' => 'admin',
@@ -30,13 +28,12 @@ Route::group([
     'as' => 'admin.',
     'middleware' => ['auth:admin'],
 ], function () {
-    Route::get('/', function () {
-        $usersCount = User::count();
-        $ordersCount = Order::count();
-        $projectsCount = Project::count();
+    Route::controller(AdminDashboardController::class)->group(function () {
+        Route::get('/profile', 'showProfile')->name('profile.show');
+        Route::put('/profile', 'updateProfile')->name('profile.update');
 
-        return view('admin.index', compact('usersCount', 'ordersCount', 'projectsCount'));
-    })->name('index');
+        Route::get('/', 'index')->name('index');
+    });
 
     Route::get('orders', [\App\Http\Controllers\Admin\AdminOrdersController::class, 'index'])->name('orders');
     Route::delete('order_delete/{id}', [\App\Http\Controllers\User\OrderController::class, 'destroy'])->name('order_delete');
