@@ -12,6 +12,7 @@
     <!-- Favicons -->
     <link href="{{asset('site/assets/img/logo.png')}}" rel="icon">
     <link href="{{asset('site/assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha384-xxxxxxxxxxxxxxxxxxxxxxxxxxxx" crossorigin="anonymous">
 
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="{{asset('css/simplebar.css')}}">
@@ -31,17 +32,30 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
+      <style>
+          .gradient-text {
+              background-clip: text;
+              -webkit-background-clip: text;
+              color: transparent;
+              background-image: linear-gradient(90deg, #F58020, #FFC1A0);
+          }
+      </style>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
   <style>
-   body {
-    font-family: 'Tajawal', sans-serif;
-  font-weight: 700; /* استخدام النمط السميك */  }
-  aside{
-    font-family: 'Tajawal', sans-serif;
-  font-weight: 700; /* استخدام النمط السميك */
-  }
+      body {
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 700; /* استخدام النمط السميك */  }
+        aside{
+        font-family: 'Tajawal', sans-serif;
+        font-weight: 700; /* استخدام النمط السميك */
+      }
 
-
+      .avticeHover {
+           background-color: #495057;
+           color: #1b68ff
+      }
   </style>
   <body class="vertical  light rtl ">
     <div class="wrapper">
@@ -62,16 +76,16 @@
               <span class="fe fe-grid fe-16"></span>
             </a>
           </li>
-          <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="{{asset('')}}./#" data-toggle="modal" data-target=".modal-notif">
-              <span class="fe fe-bell fe-16"></span>
-              <span class="dot dot-md bg-success"></span>
-            </a>
-          </li>
+{{--          <li class="nav-item nav-notif">--}}
+{{--            <a class="nav-link text-muted my-2" href="{{asset('')}}./#" data-toggle="modal" data-target=".modal-notif">--}}
+{{--              <span class="fe fe-bell fe-16"></span>--}}
+{{--              <span class="dot dot-md bg-success"></span>--}}
+{{--            </a>--}}
+{{--          </li>--}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="{{asset('')}}#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="{{asset('')}}./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                <img src="{{ auth()->user()->image && file_exists(storage_path('app/public/' . auth()->user()->image)) ? asset('storage/' . auth()->user()->image) : asset('defaultImages/profile/avatar.png') }}" alt="صورة المستخدم" class="img-fluid rounded-circle mb-3 avatar-img" style="max-width: 100px;">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">
@@ -92,20 +106,15 @@
         <nav class="vertnav navbar navbar-light">
           <!-- nav bar -->
           <div class="w-100 mb-4 d-flex">
-            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{asset('')}}./index.html">
-              <svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
-                <g>
-                  <polygon class="st0" points="78,105 15,105 24,87 87,87 	" />
-                  <polygon class="st0" points="96,69 33,69 42,51 105,51 	" />
-                  <polygon class="st0" points="78,33 15,33 24,15 87,15 	" />
-                </g>
-              </svg>
+            <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{ route('site') }}">
+                <img src="{{ asset('site/assets/img/logo.png') }}" alt="logo" title="FrameCar Logo" width="55">
             </a>
           </div>
 
+            <hr class="text-muted dz-size"/>
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.index')}}"  class="dropdown-toggle nav-link">
+            <li class="nav-item border rounded {{ request()->is('admin') ? 'active' : '' }}">
+              <a href="{{route('admin.index')}}"  class="nav-link">
                 <i class="fe fe-home fe-16"></i>
                 <span class="ml-3 item-text">الرئيسية</span><span class="sr-only">(current)</span>
               </a>
@@ -114,31 +123,29 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-              <li class="nav-item dropdown">
-                  <a href="{{route('admin.orders')}}"  class="dropdown-toggle nav-link">
-                      <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/users') ? 'active' : '' }}">
+                <a href="{{route('admin.users.index')}}"  class="nav-link">
+                    <i class="fe fe-users fe-16"></i>
+                    <span class="ml-3 item-text">العملاء</span><span class="sr-only">(current)</span>
+                </a>
+
+            </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+              <li class="nav-item border rounded {{ request()->is('admin/orders') ? 'active' : '' }}">
+                  <a href="{{route('admin.orders')}}"  class="nav-link">
+                      <i class="fe fe-shopping-cart fe-16"></i>
                       <span class="ml-3 item-text">الطلبات </span><span class="sr-only">(current)</span>
                   </a>
 
               </li>
           </ul>
 
-          {{--
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-                <a href="{{route('users.index')}}"  class="dropdown-toggle nav-link">
-                    <i class="fe fe-home fe-16"></i>
-                    <span class="ml-3 item-text">المستخدمين  </span><span class="sr-only">(current)</span>
-                </a>
-
-            </li>
-          </ul>
-          --}}
-
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.projects.index')}}"  class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/projects') ? 'active' : '' }}">
+              <a href="{{route('admin.projects.index')}}"  class="nav-link">
+                <i class="fe fe-tool fe-16"></i>
                 <span class="ml-3 item-text">صور المشاريع</span><span class="sr-only">(current)</span>
               </a>
 
@@ -146,13 +153,23 @@
           </ul>
 
           <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item dropdown">
-              <a href="{{route('admin.contact.index')}}"  class="dropdown-toggle nav-link">
-                <i class="fe fe-home fe-16"></i>
+            <li class="nav-item border rounded {{ request()->is('admin/contact') ? 'active' : '' }}">
+              <a href="{{route('admin.contact.index')}}"  class="nav-link">
+                <i class="fe fe-mail fe-16"></i>
                 <span class="ml-3 item-text">طلبات التواصل</span><span class="sr-only">(current)</span>
               </a>
 
             </li>
+          </ul>
+
+          <ul class="navbar-nav flex-fill w-100 mb-2">
+              <li class="nav-item border rounded {{ request()->is('admin/profile') ? 'active' : '' }}">
+                    <a href="{{route('admin.profile.show')}}"  class="nav-link">
+                        <i class="fe fe-settings fe-16"></i>
+                        <span class="ml-3 item-text">إعدادت الملف الشخصي</span><span class="sr-only">(current)</span>
+                    </a>
+
+                </li>
           </ul>
 
         </nav>

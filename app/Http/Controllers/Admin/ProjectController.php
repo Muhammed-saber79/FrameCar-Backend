@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest()->paginate(10);
         return view('admin.projects.index',compact('projects'));
     }
 
@@ -35,14 +35,13 @@ class ProjectController extends Controller
             'name'=>'required',
             'photo'=>'required',
         ]);
+
         Project::create(array_merge($request->only(['name','photo']),
         [
-            'photo' => $request->file('photo')->store('projects'),
+            'photo' => $request->file('photo')->store('projects', ['disk' => 'public']),
         ]
         ));
         return back();
-
-        
     }
 
     /**
@@ -70,14 +69,26 @@ class ProjectController extends Controller
             'name'=>'required',
         ]);
         $project=Project::findorfail($id);
-        if ($request->hasFile("photo")){
-            Storage::delete($project->photo);
+        $old_image = $project->photo;
 
-            $project->update(array_merge($request->only(['name','photo']),
-        [
-        'photo' => $request->file('photo')->store('projects'),
-        ]
-         ));
+        $data = [];
+        if ($request->hasFile("photo")){
+            $file = $request->file('photo');
+
+            if ($file->isValid()) {
+                $data = array_merge(
+                    $request->only(['name','photo']),
+                    ['photo' => $request->file('photo')->store('projects',
+                        ['disk' => 'public']
+                    )]
+                );
+            }
+
+            if ($old_image) {
+                Storage::disk('public')->delete($old_image);
+            }
+
+            $project->update($data);
         }
         else{
 
@@ -85,10 +96,8 @@ class ProjectController extends Controller
                 'name'=>$request->name
             ]);
         }
-        
-         
-        
-        return back();
+
+        return back()->with('success', 'تم تحديث بيانات المشروع بنجاح');
     }
 
     /**

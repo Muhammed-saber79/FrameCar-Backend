@@ -1,13 +1,23 @@
 @extends('layouts.auth')
 
 @section('title')
-    تسجيل الدخول
+    @if($routePrefix == 'admin')
+        تسجيل الدخول إلى لوحة التحكم
+    @else
+        تسجيل الدخول
+    @endif
 @endsection
 
 @section('content')
     <div class="login-container">
         <div class="login-form">
-            <h1>تسجيل الدخول</h1>
+            <h1>
+                @if($routePrefix == 'admin')
+                    تسجيل الدخول إلى لوحة التحكم
+                @else
+                    تسجيل الدخول
+                @endif
+            </h1>
 
             <x-flash-messages />
 

@@ -14,18 +14,19 @@
       <br>
       {{-- <p class="mb-3">Child rows with additional detailed information</p> --}}
       <div class="card shadow">
-      
+
         <div class="card-body">
           <!-- table -->
           <table class="table table-hover table-borderless border-v">
             <thead class="thead-dark">
               <tr>
-       
+
                 <th>م</th>
                 <th>اسم المرسل </th>
-                <th>البريد الالكتروني </th>               
+                <th>البريد الالكتروني </th>
                 <th>الموضوع</th>
                 <th>محتوى الرسالة</th>
+                <th>تاريخ الإرسال</th>
                 <th>العمليات</th>
               </tr>
             </thead>
@@ -38,15 +39,16 @@
                 <td>{{$contact->email}}</td>
                 <td>{{$contact->subject}}</td>
                 <td>{{$contact->message}}</td>
-               
+                <td class="text-info">{{ $contact->created_at->diffForHumans() }}</td>
+
                 <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="text-muted sr-only">Action</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$contact->id}}">   حذف  </a>
-                 
+
                 </div>
-                
+
               </td>
 
 
@@ -59,10 +61,10 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('contact.destroy',$contact)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('admin.contact.destroy',$contact)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
-                     
+
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">اغلاق</button>
                       <button type="submit" class="btn mb-2 btn-primary"> تاكيد</button>
@@ -74,14 +76,14 @@
 
                     <!-- Button trigger modal -->
                     <!-- Modal -->
-             
+
                   </tr>
 
                 @endforeach
-                
-             
 
-             
+
+
+
             </tbody>
           </table>
           {{$contacts->links('pagination::bootstrap-4')}}

@@ -23,10 +23,10 @@
           <table class="table table-hover table-borderless border-v">
             <thead class="thead-dark">
               <tr>
-       
+
                 <th>م</th>
                 <th>اسم المشروع</th>
-                <th>الصورة </th>               
+                <th>الصورة </th>
                 <th>العمليات</th>
               </tr>
             </thead>
@@ -37,18 +37,18 @@
                 <td>{{$loop->iteration}}</td>
                 <td>{{$project->name}}</td>
                 <td>
-                  <img src="{{asset('storage/'.$project->photo)}}" width="200px" alt="">
+                  <img src="{{asset('storage/'.$project->photo)}}" width="100px" alt="project-img">
                 </td>
-               
+
                 <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                   <span class="text-muted sr-only">Action</span>
                 </button>
                 <div class="dropdown-menu dropdown-menu-right">
                   <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#defaultModal{{$project->id}}">   تعديل  </a>
                   <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$project->id}}">   حذف  </a>
-                 
+
                 </div>
-                
+
               </td>
 
 
@@ -61,10 +61,10 @@
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <form action="{{route('projects.destroy',$project->id)}}" method='post' enctype="multipart/form-data">
+                    <form action="{{route('admin.projects.destroy',$project->id)}}" method='post' enctype="multipart/form-data">
                       @csrf
                       @method("DELETE")
-                     
+
                     <div class="modal-footer">
                       <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">اغلاق</button>
                       <button type="submit" class="btn mb-2 btn-primary"> تاكيد</button>
@@ -85,18 +85,18 @@
                               <span aria-hidden="true">&times;</span>
                             </button>
                           </div>
-                          <form action="{{route('projects.update',$project->id)}}" method='post' enctype="multipart/form-data">
+                          <form action="{{route('admin.projects.update',$project->id)}}" method='post' enctype="multipart/form-data">
                             @csrf
                             @method("PUT")
-                            <div class="modal-body"> 
+                            <div class="modal-body">
                               <label for="inputPassword4"> اسم المشروع  </label>
                               <input type="text" name="name" value="{{$project->name}}"  class="form-control" id="inputPassword4" >
-                          
+
                             </div>
-                            <div class="modal-body"> 
+                            <div class="modal-body">
                               <label for="inputPassword4"> صورة المشروع  </label>
                               <input type="file" name="photo"  class="form-control" id="inputPassword4" >
-                          
+                              <img src="{{asset('storage/'.$project->photo)}}" alt="project-img" width="77" class="my-2 text-center">
                             </div>
                           <div class="modal-footer">
                             <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -109,8 +109,8 @@
                   </tr>
 
                 @endforeach
-                
-             
+
+
 
                 <div class="modal fade" id="defaultModal" tabindex="-1" role="dialog" aria-labelledby="defaultModalLabel" aria-hidden="true">
                   <div class="modal-dialog" role="document">
@@ -121,17 +121,17 @@
                           <span aria-hidden="true">&times;</span>
                         </button>
                       </div>
-                      <form action="{{route('projects.store')}}" method='post' enctype="multipart/form-data">
+                      <form action="{{route('admin.projects.store')}}" method='post' enctype="multipart/form-data">
                         @csrf
-                      <div class="modal-body"> 
+                      <div class="modal-body">
                         <label for="inputPassword4"> اسم المشروع  </label>
                         <input type="text" name="name"  class="form-control" id="inputPassword4" >
-                    
+
                       </div>
-                      <div class="modal-body"> 
+                      <div class="modal-body">
                         <label for="inputPassword4"> صورة المشروع  </label>
                         <input type="file" name="photo"  class="form-control" id="inputPassword4" >
-                    
+
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn mb-2 btn-secondary" data-dismiss="modal">اغلاق</button>
@@ -143,6 +143,7 @@
                 </div>
             </tbody>
           </table>
+            {{ $projects->links() }}
         </div>
       </div>
     </div>

@@ -221,57 +221,57 @@
         </section><!-- End Why Us Section -->
 
         <!-- ======= Skills Section ======= -->
-        <!-- <section id="skills" class="skills">
-  <div class="container" data-aos="fade-up">
+            <!-- <section id="skills" class="skills">
+                <div class="container" data-aos="fade-up">
 
-    <div class="row">
-      <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-        <img src="{{asset('site/')}}assets/img/skills.png" class="img-fluid" alt="">
-      </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-        <h3>Voluptatem dignissimos provident quasi corporis voluptates</h3>
-        <p class="fst-italic">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-          magna aliqua.
-        </p>
+                    <div class="row">
+                    <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
+                        <img src="{{asset('site/')}}assets/img/skills.png" class="img-fluid" alt="">
+                    </div>
+                    <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+                        <h3>Voluptatem dignissimos provident quasi corporis voluptates</h3>
+                        <p class="fst-italic">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                        magna aliqua.
+                        </p>
 
-        <div class="skills-content">
+                        <div class="skills-content">
 
-          <div class="progress">
-            <span class="skill">HTML <i class="val">100%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+                        <div class="progress">
+                            <span class="skill">HTML <i class="val">100%</i></span>
+                            <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
 
-          <div class="progress">
-            <span class="skill">CSS <i class="val">90%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+                        <div class="progress">
+                            <span class="skill">CSS <i class="val">90%</i></span>
+                            <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
 
-          <div class="progress">
-            <span class="skill">JavaScript <i class="val">75%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+                        <div class="progress">
+                            <span class="skill">JavaScript <i class="val">75%</i></span>
+                            <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
 
-          <div class="progress">
-            <span class="skill">Photoshop <i class="val">55%</i></span>
-            <div class="progress-bar-wrap">
-              <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-            </div>
-          </div>
+                        <div class="progress">
+                            <span class="skill">Photoshop <i class="val">55%</i></span>
+                            <div class="progress-bar-wrap">
+                            <div class="progress-bar" role="progressbar" aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
+                            </div>
+                        </div>
 
-        </div>
+                        </div>
 
-      </div>
-    </div>
+                    </div>
+                    </div>
 
-  </div>
-</section> -->
+                </div>
+            </section> -->
         <!-- End Skills Section -->
 
         <!-- ======= Cta Section ======= -->
@@ -285,7 +285,7 @@
                             ودقة. اتصل بنا الآن للحصول على خدمة فورية ومميزة.</p>
                     </div>
                     <div class="col-lg-3 cta-btn-container text-center">
-                        <a class="cta-btn align-middle" href="{{asset('site/')}}#">اتصل بنا الآن</a>
+                        <a class="cta-btn align-middle" href="{{ route('site') . '#contact' }}">اتصل بنا الآن</a>
                     </div>
                 </div>
 
@@ -361,113 +361,27 @@
                         المميزة هنا.</p>
                 </div>
 
-                <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
+                <!-- <ul id="portfolio-flters" class="d-flex justify-content-center" data-aos="fade-up" data-aos-delay="100">
                     <li data-filter="*" class="filter-active">الكل</li>
                     <li data-filter=".filter-app">تصليح</li>
                     <li data-filter=".filter-card">استبدال</li>
-                    <!-- <li data-filter=".filter-web">Web</li> -->
-                </ul>
+                    <li data-filter=".filter-web">Web</li>
+                </ul> -->
 
                 <div class="row portfolio-container" data-aos="fade-up" data-aos-delay="200">
 
+                    @foreach($projects as $project)
                     <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-1.jpg" class="img-fluid" alt=""></div>
+                        <div class="portfolio-img d-flex justify-content-center"><img src="{{ asset('storage/' . $project->photo) }}" class="img-fluid mx-auto" alt=""></div>
                         <div class="portfolio-info">
-                            <h4>تصليح</h4>
-                            <p>تصليح زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-1.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+                            <h4>{{ $project->name }}</h4>
+                            <!-- <p>تصليح زجاج السيارة</p> -->
+                            <a href="{{ asset('storage/' . $project->photo) }}" data-gallery="portfolioGallery"
+                               class="portfolio-lightbox preview-link" title="{{ $project->name }}"><i class="bx bx-plus"></i></a>
+                            <!-- <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a> -->
                         </div>
                     </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-2.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-2.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-3.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>تصليح</h4>
-                            <p>تصليح زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-3.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-4.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>استبدال</h4>
-                            <p>استبدال زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-4.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-5.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>Web 2</h4>
-                            <p>Web</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-5.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-app">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-6.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>تصليح</h4>
-                            <p>تصليح زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-6.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-7.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>استبدال</h4>
-                            <p>استبدال زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-7.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-card">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-8.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>استبدال</h4>
-                            <p>استبدال زجاج السيارة</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-8.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-                        <div class="portfolio-img"><img src="{{asset('site/')}}assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt=""></div>
-                        <div class="portfolio-info">
-                            <h4>Web 3</h4>
-                            <p>Web</p>
-                            <a href="{{asset('site/')}}assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery"
-                               class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-                            <a href="{{asset('site/')}}#" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-                        </div>
-                    </div>
+                    @endforeach
 
                 </div>
 
@@ -479,9 +393,9 @@
             <div class="container" data-aos="fade-up">
 
                 <div class="section-title">
-                    <h2>اتصل بنا</h2>
-                    <p>نحن دائمًا في خدمتكم. إذا كان لديكم أي استفسار أو تحتاجون إلى مساعدة، فلا تترددوا في التواصل معنا. سنكون
-                        سعداء بالإجابة على أسئلتكم وتقديم المساعدة في أي وقت.</p>
+                <h2>اتصل بنا</h2>
+                <p>نحن دائمًا في خدمتكم. إذا كان لديكم أي استفسار أو تحتاجون إلى مساعدة، فلا تترددوا في التواصل معنا. سنكون
+                    سعداء بالإجابة على أسئلتكم وتقديم المساعدة في أي وقت.</p>
                 </div>
 
                 <div class="row">
@@ -503,17 +417,22 @@
                             <div class="phone">
                                 <i class="bi bi-phone"></i>
                                 <h4>الاتصال:</h4>
-                                <p dir="ltr">+99-4565-5578-788</p>
+                                <p class="text-end" dir="ltr">+99-4565-5578-788</p>
                             </div>
 
                             <iframe
-                                src="{{asset('site/')}}https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
+                                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8840.069883474902!2d46.727938!3d24.7117463!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f034166022937%3A0x83f62611a417d6c6!2sRiyadh%2C%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1540451449279"
                                 frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+
+                            <!-- <iframe
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d8840.069883474902!2d46.727938!3d24.7117463!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f034166022937%3A0x83f62611a417d6c6!2sRiyadh%2C%20Saudi%20Arabia!5e0!3m2!1sen!2sus!4v1540451449279"
+                            frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe> -->
                         </div>
                     </div>
 
                     <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-                        <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+                        <form action="{{route('contact.store')}}" method="post" role="form" class="email-form">
+                            @csrf
                             <div class="row">
                                 <div class="form-group col-md-6">
                                     <label for="name">اسمك</label>
@@ -532,11 +451,7 @@
                                 <label for="name">الرسالة</label>
                                 <textarea class="form-control" name="message" rows="10" required></textarea>
                             </div>
-                            <div class="my-3">
-                                <div class="loading">Loading</div>
-                                <div class="error-message"></div>
-                                <div class="sent-message">Your message has been sent. Thank you!</div>
-                            </div>
+
                             <div class="text-center"><button type="submit">إرسال</button></div>
                         </form>
                     </div>
@@ -548,145 +463,138 @@
 
     </main><!-- End #main -->
 
+    <x-toaster />
+
     <!-- ======= Footer ======= -->
-    <footer id="footer">
+    <!-- <footer id="footer"> -->
         <!--
-<div class="footer-top">
-  <div class="container">
-    <div class="row">
+        <div class="footer-top">
+        <div class="container">
+            <div class="row">
 
-      <div class="col-lg-3 col-md-6 footer-contact">
-        <h3>Arsha</h3>
-        <p>
-          A108 Adam Street <br>
-          New York, NY 535022<br>
-          United States <br><br>
-          <strong>Phone:</strong> +1 5589 55488 55<br>
-          <strong>Email:</strong> info@example.com<br>
-        </p>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Useful Links</h4>
-        <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Home</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">About us</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Services</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Terms of service</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Privacy policy</a></li>
-        </ul>
-      </div>
-
-      <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Our Services</h4>
-        <ul>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Web Design</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Web Development</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Product Management</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Marketing</a></li>
-          <li><i class="bx bx-chevron-right"></i> <a href="{{asset('site/')}}#">Graphic Design</a></li>
-        </ul>
-      </div>
-    </section><!-- End Portfolio Section -->
-
-    <!-- ======= Contact Section ======= -->
-    <section id="contact" class="contact section-bg">
-      <div class="container" data-aos="fade-up">
-
-        <div class="section-title">
-          <h2>اتصل بنا</h2>
-          <p>نحن دائمًا في خدمتكم. إذا كان لديكم أي استفسار أو تحتاجون إلى مساعدة، فلا تترددوا في التواصل معنا. سنكون
-            سعداء بالإجابة على أسئلتكم وتقديم المساعدة في أي وقت.</p>
-        </div>
-
-        <div class="row">
-
-          <div class="col-lg-5 d-flex align-items-stretch">
-            <div class="info">
-              <div class="address">
-                <i class="bi bi-geo-alt"></i>
-                <h4>الموقع:</h4>
-                <p>شارع الملك فهد، الرياض، المملكة العربية السعودية</p>
-              </div>
-
-              <div class="email">
-                <i class="bi bi-envelope"></i>
-                <h4>البريد الإلكتروني:</h4>
-                <p>info@example.com</p>
-              </div>
-
-              <div class="phone">
-                <i class="bi bi-phone"></i>
-                <h4>الاتصال:</h4>
-                <p dir="ltr">+99-4565-5578-788</p>
-              </div>
-
-              <iframe
-                src="{{asset('site/')}}https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d12097.433213460943!2d-74.0062269!3d40.7101282!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xb89d1fe6bc499443!2sDowntown+Conference+Center!5e0!3m2!1smk!2sbg!4v1539943755621"
-                frameborder="0" style="border:0; width: 100%; height: 290px;" allowfullscreen></iframe>
+            <div class="col-lg-3 col-md-6 footer-contact">
+                <h3>Arsha</h3>
+                <p>
+                A108 Adam Street <br>
+                New York, NY 535022<br>
+                United States <br><br>
+                <strong>Phone:</strong> +1 5589 55488 55<br>
+                <strong>Email:</strong> info@example.com<br>
+                </p>
             </div>
-          </div>
 
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form action="{{route('admin.contact.store')}}" method="post" role="form" class="php-email-form">
-              @csrf
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">اسمك</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Useful Links</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Home</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">About us</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Services</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Terms of service</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Privacy policy</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Services</h4>
+                <ul>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
+                <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-md-6 footer-links">
+                <h4>Our Social Networks</h4>
+                <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
+                <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
                 </div>
-                <div class="form-group col-md-6">
-                  <label for="name">بريدك الالكتروني</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
+            </div>
+
+            </div>
+        </div>
+        </div> -->
+
+        
+    <!-- </footer> -->
+    <!-- End Footer -->
+
+
+    <!-- ======= Footer ======= -->
+    <footer id="footer" class="footer">
+        <div class="footer-content position-relative">
+        <div class="container">
+            <div class="row">
+
+            <div class="col-sm-4 footer-links">
+                <p class="text-md-end text-xs-center">
+                    <strong>الهاتف: </strong> 00966&nbsp;11&nbsp;238&nbsp;60&nbsp;90<br>
+                    <strong>البريد الإلكتروني: </strong> info@rawasi-sa.com<br><br>
+                    <strong>الموقع: </strong>شارع الملك فهد، الرياض، المملكة العربية السعودية<br>
+                </p>
+            </div><!-- End footer info column-->
+
+            <div class="col-sm-4 text-sm-center  footer-links">
+                <div class="social-links d-flex justify-content-center mt-3">
+                    <a href="https://twitter.com/rawasi_ksa?s=21&t=GjS4oYgOowed4nNjDk115A" class="d-flex align-items-center justify-content-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16">
+                        <path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865l8.875 11.633Z"/>
+                        </svg>
+                    </a>
+                    <a href="https://youtube.com/@Rawasi_ksa" class="d-flex align-items-center justify-content-center"><i class="bi bi-youtube"></i></a>
+                    <a href="https://instagram.com/rawasi_ksa?igshid=MzRlODBiNWFlZA==" class="d-flex align-items-center justify-content-center"><i class="bi bi-instagram"></i></a>
+                    <a href="https://www.linkedin.com/company/%D8%B4%D8%B1%D9%83%D8%A9-%D8%B1%D9%88%D8%A7%D8%B3%D9%8A-%D8%A7%D9%84%D9%85%D8%AA%D9%82%D8%AF%D9%85%D8%A9/" class="d-flex align-items-center justify-content-center"><i class="bi bi-linkedin"></i></a>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="name">الموضوع</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">الرسالة</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              
-              <div class="text-center"><button type="submit">إرسال</button></div>
-            </form>
-          </div>
+            </div><!-- End footer links column-->
 
-        </div>
+            <div class="col-sm-4">
+                <div class="footer-info text-sm-start text-xs-center">
+                    <a href="{{ route('site') }}" class="logo">
+                        <img src="{{asset('site/assets/img/logo.png')}}" alt="FrameCar-logo" width="100">
+                    </a>
+                </div>
+            </div><!-- End footer links column-->
 
-      </div>
-    </section><!-- End Contact Section -->
-
-  </main><!-- End #main -->
-
-
-
-      <div class="col-lg-3 col-md-6 footer-links">
-        <h4>Our Social Networks</h4>
-        <p>Cras fermentum odio eu feugiat lide par naso tierra videa magna derita valies</p>
-        <div class="social-links mt-3">
-          <a href="{{asset('site/')}}#" class="twitter"><i class="bx bxl-twitter"></i></a>
-          <a href="{{asset('site/')}}#" class="facebook"><i class="bx bxl-facebook"></i></a>
-          <a href="{{asset('site/')}}#" class="instagram"><i class="bx bxl-instagram"></i></a>
-          <a href="{{asset('site/')}}#" class="google-plus"><i class="bx bxl-skype"></i></a>
-          <a href="{{asset('site/')}}#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</div> -->
-
-        <div class="container footer-bottom clearfix">
-            <div class="copyright">
-                Copyright &copy; <strong><span style="font-weight: bold; color: cyan;">Frame Car</span></strong>. All Rights
-                Reserved
-            </div>
-            <div class="credits">
-                Designed by <span style="font-weight: bold; color: cyan;">Muhammed Saber</span>
             </div>
         </div>
-    </footer><!-- End Footer -->
+        </div>
 
+        <div class="footer-legal text-center position-relative">
+            <div class="container">
+                <div class="copyright text-center mx-auto">
+                    جميع الحقوق محفوظة &copy; <strong>
+                    <a href="{{ route('site') }}">
+                    <span class="gradient-text">Frame Car</span></strong>.
+                    </a>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <!-- <div class="container col-lg-12 col-md-6 footer-links text-center p-5">
+            <h4 class="text-warning">وسائل التواصل الخاصة بنا</h4>
+            <p class="text-info">لا تتردد في التواصل معنا</p>
+            <div class="social-links mt-3">
+                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+            </div>
+        </div> -->
+        <!-- <div class="container footer-bottom clearfix">
+            <div class="text-center mx-auto">
+                جميع الحقوق محفوظة &copy; <strong><span style="font-weight: bold; color: cyan;">Frame Car</span></strong>
+            </div>
+        </div> -->
+    </footer>
+    <!-- End Footer -->
 @endsection

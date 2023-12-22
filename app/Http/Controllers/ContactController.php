@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use Exception;
 use Illuminate\Http\Request;
 
 class ContactController extends Controller
@@ -12,7 +13,7 @@ class ContactController extends Controller
      */
     public function index()
     {
-        $contacts = Contact::paginate(15);
+        $contacts = Contact::latest()->paginate(10);
         return view('admin.contacts.index',compact('contacts'));
     }
 
@@ -36,8 +37,13 @@ class ContactController extends Controller
             'message'=>'required',
         ]);
         $data = $request->only(['name','email','subject','message']);
-        Contact::create($data);
-        return back();
+
+        try {
+            Contact::create($data);
+            return back()->with('success', 'تم إرسال طلب التواصل بنجاح');
+        } catch (Exception $e) {
+            return back()->with('danger', 'حدث خطأ اثناء إرسال طلب التواصل, حاول مجددا!');
+        }
     }
 
     /**
@@ -71,6 +77,6 @@ class ContactController extends Controller
     {
         $contact->delete();
         return back();
-        
+
     }
 }

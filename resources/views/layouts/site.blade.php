@@ -47,7 +47,7 @@
                         <li><a class="nav-link scrollto active" href="{{ route('site') . '#hero' }}">الرئيسية</a></li>
                         <li><a class="nav-link scrollto" href="{{ route('site') . '#about' }}">من نحن</a></li>
                         <li><a class="nav-link scrollto" href="{{ route('site') . '#services' }}">خدماتنا</a></li>
-                        <li><a class="nav-link scrollto" href="{{ route('site') . '#test' }}">لماذا تختارنا؟</a></li>
+                        <li><a class="nav-link scrollto" href="{{ route('site') . '#why-us' }}">لماذا تختارنا؟</a></li>
                         <li><a class="nav-link scrollto" href="{{ route('site') . '#team' }}">مراحل الصيانة</a></li>
                         <li><a class="nav-link scrollto" href="{{ route('site') . '#portfolio' }}">آخر أعمالنا</a></li>
                         <li><a class="nav-link scrollto" href="{{ route('site') . '#contact' }}">اتصل بنا</a></li>

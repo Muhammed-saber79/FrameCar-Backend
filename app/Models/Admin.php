@@ -13,6 +13,7 @@ class Admin extends User
         'name',
         'email',
         'password',
+        'image',
         'super_admin',
         'status',
         'remember_token',
