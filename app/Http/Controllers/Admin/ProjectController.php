@@ -14,7 +14,7 @@ class ProjectController extends Controller
      */
     public function index()
     {
-        $projects = Project::all();
+        $projects = Project::latest()->paginate(10);
         return view('admin.projects.index',compact('projects'));
     }
 
@@ -35,7 +35,7 @@ class ProjectController extends Controller
             'name'=>'required',
             'photo'=>'required',
         ]);
-        
+
         Project::create(array_merge($request->only(['name','photo']),
         [
             'photo' => $request->file('photo')->store('projects', ['disk' => 'public']),
@@ -70,7 +70,7 @@ class ProjectController extends Controller
         ]);
         $project=Project::findorfail($id);
         $old_image = $project->photo;
-       
+
         $data = [];
         if ($request->hasFile("photo")){
             $file = $request->file('photo');
@@ -78,7 +78,7 @@ class ProjectController extends Controller
             if ($file->isValid()) {
                 $data = array_merge(
                     $request->only(['name','photo']),
-                    ['photo' => $request->file('photo')->store('projects', 
+                    ['photo' => $request->file('photo')->store('projects',
                         ['disk' => 'public']
                     )]
                 );
@@ -87,7 +87,7 @@ class ProjectController extends Controller
             if ($old_image) {
                 Storage::disk('public')->delete($old_image);
             }
-            
+
             $project->update($data);
         }
         else{
@@ -96,7 +96,7 @@ class ProjectController extends Controller
                 'name'=>$request->name
             ]);
         }
-                
+
         return back()->with('success', 'تم تحديث بيانات المشروع بنجاح');
     }
 

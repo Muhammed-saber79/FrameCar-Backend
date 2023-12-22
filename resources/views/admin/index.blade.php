@@ -79,9 +79,9 @@
             <div class="my-3 p-3 card shadow">
                 <h3 class="my-3">أحدث الاحصائيات</h3>
                 <div>
-                    <div class="chart-container d-flex justify-content-between row mx-auto">
-                        <canvas id="ordersChart" class="col-xl-6 h-75 my-3"></canvas>
-                        <canvas id="usersChart" class="col-xl-6 h-75 my-3"></canvas>
+                    <div class="chart-container d-flex justify-content-between row mx-auto" style="max-height: 45vh;">
+                        <canvas id="ordersChart" class="col-xl-6 my-3"></canvas>
+                        <canvas id="usersChart" class="col-xl-6 my-3"></canvas>
                     </div>
 
                     <script>

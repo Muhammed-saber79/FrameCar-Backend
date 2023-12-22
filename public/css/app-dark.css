@@ -3226,7 +3226,8 @@ input[type="button"].btn-block {
   .navbar-light .navbar-nav .nav-link:focus,
   .navbar-light .navbar-nav .nav-link:active {
       background: #f8f9fa;
-      color: #1b68ff;
+      /*color: #1b68ff;*/
+      color: #F58020;
   }
 
   .navbar-light .navbar-nav .nav-link.disabled {
@@ -3239,7 +3240,8 @@ input[type="button"].btn-block {
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
   /*color: #dee2e6;*/
-    color: #1b68ff;
+  /*  color: #1b68ff;*/
+    color: #F58020;
 }
 
 .navbar-light .navbar-toggler {
@@ -8799,7 +8801,8 @@ button:focus {
         top: 0;
         bottom: 0;
         width: 2px;
-        background-color: #1b68ff; }
+        background-color: #1b68ff;
+      }
 
 .vertical .topnav,
 .vertical.hover .topnav,
@@ -9324,7 +9327,8 @@ svg.navbar-brand-img {
   color: #dee2e6; }
   .navbar-light .navbar-nav .nav-link:hover {
     background: #495057;
-    color: #1b68ff;
+    /*color: #1b68ff;*/
+      color: #F58020;
     border-radius: 0.2rem; }
 
 .navbar-dark .navbar-nav .nav-link {

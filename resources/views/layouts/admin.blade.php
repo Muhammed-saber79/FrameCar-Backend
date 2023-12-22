@@ -32,6 +32,14 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('css/app-dark.css')}}" id="darkTheme" disabled>
+      <style>
+          .gradient-text {
+              background-clip: text;
+              -webkit-background-clip: text;
+              color: transparent;
+              background-image: linear-gradient(90deg, #F58020, #FFC1A0);
+          }
+      </style>
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
@@ -68,16 +76,16 @@
               <span class="fe fe-grid fe-16"></span>
             </a>
           </li>
-          <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="{{asset('')}}./#" data-toggle="modal" data-target=".modal-notif">
-              <span class="fe fe-bell fe-16"></span>
-              <span class="dot dot-md bg-success"></span>
-            </a>
-          </li>
+{{--          <li class="nav-item nav-notif">--}}
+{{--            <a class="nav-link text-muted my-2" href="{{asset('')}}./#" data-toggle="modal" data-target=".modal-notif">--}}
+{{--              <span class="fe fe-bell fe-16"></span>--}}
+{{--              <span class="dot dot-md bg-success"></span>--}}
+{{--            </a>--}}
+{{--          </li>--}}
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle text-muted pr-0" href="{{asset('')}}#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="avatar avatar-sm mt-2">
-                <img src="{{asset('')}}./assets/avatars/face-1.jpg" alt="..." class="avatar-img rounded-circle">
+                <img src="{{ auth()->user()->image && file_exists(storage_path('app/public/' . auth()->user()->image)) ? asset('storage/' . auth()->user()->image) : asset('defaultImages/profile/avatar.png') }}" alt="صورة المستخدم" class="img-fluid rounded-circle mb-3 avatar-img" style="max-width: 100px;">
               </span>
             </a>
             <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownMenuLink">

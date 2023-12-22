@@ -23,7 +23,7 @@
                                         <div class="col-md-3 text-center">
                                             <img src="{{ $user->image && file_exists(storage_path('app/public/' . $user->image)) ? asset('storage/' . $user->image) : asset('defaultImages/profile/avatar.png') }}" alt="صورة المستخدم" class="img-fluid rounded-circle mb-3" style="max-width: 100px;">
                                             <label for="image" class="form-label">صورة الملف الشخصي</label>
-                                            <input type="file" id="image" name="image" class="form-control-file text-info">
+                                            <input type="file" id="image" name="image" class="form-control-file text-info text-center">
                                         </div>
                                         <div class="col-md-9">
 

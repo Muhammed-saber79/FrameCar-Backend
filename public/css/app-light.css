@@ -9313,7 +9313,8 @@ svg.navbar-brand-img {
   .navbar-light .navbar-nav .nav-link:active
   {
       background: #f8f9fa;
-      color: #1b68ff;
+      /*color: #1b68ff;*/
+      color: #F58020;
   }
 
 .navbar-light .navbar-nav .show > .nav-link,
@@ -9321,7 +9322,8 @@ svg.navbar-brand-img {
 .navbar-light .navbar-nav .nav-link.show,
 .navbar-light .navbar-nav .nav-link.active {
     /*color: #dee2e6;*/
-    color: #1b68ff;
+    /*color: #1b68ff;*/
+    color: #F58020;
 }
 
 .navbar-dark .navbar-nav .nav-link {
