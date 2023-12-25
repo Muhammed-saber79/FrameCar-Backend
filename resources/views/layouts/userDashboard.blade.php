@@ -30,6 +30,11 @@
     <!-- Template Main CSS File -->
     <link href="{{asset('site/assets/css/user-dash-style.css')}}" rel="stylesheet">
     <link href="{{ asset('site/assets/css/order-details-styles.css') }}" rel="stylesheet">
+    <style>
+        .xxGHyP-dialog-view {
+            display: none !important;
+        }
+    </style>
 
     @livewireStyles
     @vite(['resources/js/app.js'])
