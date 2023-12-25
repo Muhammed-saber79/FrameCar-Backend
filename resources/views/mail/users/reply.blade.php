@@ -95,7 +95,7 @@
             </form> --}}
 
             <p>
-                <a href="http://localhost:8000/pay/{{ $data['order_id'] }}" class="button">المتابعة إلى عملية الدفع</a>
+                <a href="https://localhost:8000/pay/{{ $data['order_id'] }}" class="button">المتابعة إلى عملية الدفع</a>
             </p>
             <p>شكرًا لاستخدام خدماتنا!</p>
             <p>أطيب التحيات،<br>FrameCar</p>

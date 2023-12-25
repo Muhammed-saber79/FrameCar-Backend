@@ -42,6 +42,12 @@
     <!-- Google Maps -->
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
 
+
+    <style>
+        .xxGHyP-dialog-view {
+            display: none !important;
+        }
+    </style>
 </head>
 
 <body>

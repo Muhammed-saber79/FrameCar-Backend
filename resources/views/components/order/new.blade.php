@@ -22,8 +22,20 @@
                         <x-form.input label="نوع السيارة" labelStyle="margin-top: 15px" type="text" name="carType" value="" placeholder="ادخل نوع السيارة" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
                         <x-form.input label="موديل السيارة " labelStyle="margin-top: 15px" type="text" name="carModel" value="" placeholder="ادخل موديل السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
                         <x-form.input label="تاريخ صنع السيارة " labelStyle="margin-top: 15px" type="text" name="carMadeYear" value="" placeholder="ادخل سنة صنع السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
-                        <x-form.input label="نوع الزجاج" labelStyle="margin-top: 15px" type="text" name="glassType" value="" placeholder="ادخل نوع الزجاج" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                        {{-- <x-form.input label="نوع الزجاج" labelStyle="margin-top: 15px" type="text" name="glassType" value="" placeholder="ادخل نوع الزجاج" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" /> --}}
 
+                        <label style="display: block; margin-top: 15px;"> نوع الزجاج</label>
+                        <select id="serviceType" name="glassType"
+                                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <option value="" disabled selected>حدد نوع الزجاج</option>
+                            <option value="XYG" {{ old('serviceType') == 'XYG' ? 'selected' : '' }}>XYG </option>
+                            <option value="VELTRIO" {{ old('serviceType') == 'VELTRIO' ? 'selected' : '' }}>VELTRIO </option>
+                           
+                        
+                        </select>
+                        @error('glassType')
+                        <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                        @enderror
                         <label style="display: block; margin-top: 15px;">مكان الزجاج</label>
                         <select id="glassPosition" name="glassPosition"
                                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">

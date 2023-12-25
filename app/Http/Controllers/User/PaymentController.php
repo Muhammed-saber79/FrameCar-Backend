@@ -35,7 +35,7 @@ class PaymentController extends Controller
               'redirect' => ['url' => route('pay_callback')],
           ]),
           'headers' => [
-              'Authorization' => 'Bearer sk_test_ePhj1rK6ptA2GgQITMwmc30L',
+              'Authorization' => 'Bearer sk_live_ON351hpWE2eJ8mFwgtSH60Kz',
               'accept' => 'application/json',
               'content-type' => 'application/json',
           ],
@@ -52,18 +52,27 @@ class PaymentController extends Controller
 
         $response = $client->request('GET', 'https://api.tap.company/v2/charges/'.request()->tap_id , [
           'headers' => [
-            'Authorization' => 'Bearer sk_test_ePhj1rK6ptA2GgQITMwmc30L',
+            'Authorization' => 'Bearer sk_live_ON351hpWE2eJ8mFwgtSH60Kz',
             'accept' => 'application/json',
           ],
         ]);
+        // return json_decode($response->getBody())->response ;
         if(!$response){
-            return redirect()->route('user.dashboard')->with('error', 'لم تتم عملية الدفع بنجاح  ');
+            return redirect()->route('site')->with('error', 'لم تتم عملية الدفع بنجاح  ');
 
         }
             $data = json_decode($response->getBody()) ;
             $order_id = $data->reference->order ;
             $cost = $data->amount ;
             $order = Order::findOrFail($order_id);
+            $code = $data->response->code ;
+            if($code !=200){
+                $order->status = 'rejected'; 
+                $order->save();
+                return redirect()->route('site')->with('error', 'لم تتم عملية الدفع بنجاح  ');
+
+            }
+            
 
             if($order->cost != $cost){
                 $order->status = 'rejected'; 
@@ -72,6 +81,7 @@ class PaymentController extends Controller
 
             }
             $order->status = 'approved'; 
+            $order->isPaid = 1 ;
             $order->save();
 
             return redirect()->route('user.dashboard')->with('success', 'تمت عملية الدفع بنجاح   ');
