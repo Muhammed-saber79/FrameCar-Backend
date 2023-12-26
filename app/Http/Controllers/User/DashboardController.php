@@ -22,12 +22,16 @@ class DashboardController extends Controller
         //             WHEN status = "Shipped" THEN 4
         //             WHEN status = "Delivered" THEN 5
         //             ELSE 6
-        //         END, 
+        //         END,
         //         created_at DESC')->get();
 
         $user = User::with('orders')->find(Auth::id());
+        $ordersCount = Auth::user()->orders()->count();
+        $approvedOrdersCount = Auth::user()->orders()->where('status', 'approved')->count();
+        $rejectedOrdersCount = Auth::user()->orders()->where('status', 'rejected')->count();
+
         $orders = $user->orders()->paginate(10);
 
-        return view('site.user', compact('orders'));
+        return view('site.user', compact('orders', 'ordersCount', 'approvedOrdersCount', 'rejectedOrdersCount'));
     }
 }

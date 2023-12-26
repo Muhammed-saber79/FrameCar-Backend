@@ -25,17 +25,15 @@
                         {{-- <x-form.input label="نوع الزجاج" labelStyle="margin-top: 15px" type="text" name="glassType" value="" placeholder="ادخل نوع الزجاج" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" /> --}}
 
                         <label style="display: block; margin-top: 15px;"> نوع الزجاج</label>
-                        <select id="serviceType" name="glassType"
-                                style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                        <select id="serviceType" name="glassType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
                             <option value="" disabled selected>حدد نوع الزجاج</option>
                             <option value="XYG" {{ old('serviceType') == 'XYG' ? 'selected' : '' }}>XYG </option>
                             <option value="VELTRIO" {{ old('serviceType') == 'VELTRIO' ? 'selected' : '' }}>VELTRIO </option>
-                           
-                        
                         </select>
                         @error('glassType')
                         <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                         @enderror
+
                         <label style="display: block; margin-top: 15px;">مكان الزجاج</label>
                         <select id="glassPosition" name="glassPosition"
                                 style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
@@ -48,7 +46,7 @@
                         </select>
                         @error('glassPosition')
                         <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                        @enderror 
+                        @enderror
 
                         <label style="display: block; margin-top: 15px;">نوع الخدمة</label>
                         <select id="serviceType" name="serviceType"
@@ -58,14 +56,14 @@
                             <option value="change" {{ old('serviceType') == 'change' ? 'selected' : '' }}>تغيير زجاج</option>
                             <option value="upRepair" {{ old('serviceType') == 'upRepair' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
                             <option value="machine" {{ old('serviceType') == 'front' ? 'machine' : '' }}>اصلاح ماكينة زجاج</option>
-                        
+
                         </select>
                         @error('serviceType')
                         <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                         @enderror
 
                     </div>
-                
+
                     <div class="col-xl-6">
                         <label style="display: block; margin-top: 15px;">الموقع:<br>
                         <!-- <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label> -->
