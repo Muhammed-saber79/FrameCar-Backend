@@ -62,6 +62,28 @@
                         <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                         @enderror
 
+                        <!-- New Modifications -->
+                        <label style="display: block; margin-top: 15px;">طريقة الدفع</label>
+                        <select id="paymentMethod" name="paymentMethod" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <option value="" disabled selected>حدد طريقة الدفع</option>
+                            <option value="online" {{ old('paymentMethod') == 'XYG' ? 'selected' : '' }}>اونلاين</option>
+                            <option value="offline" {{ old('paymentMethod') == 'VELTRIO' ? 'selected' : '' }}>عند الاستلام</option>
+                        </select>
+                        @error('paymentMethod')
+                        <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                        @enderror
+
+
+                        <label style="display: block; margin-top: 15px;">مكان الصيانة</label>
+                        <select id="servicePlace" name="servicePlace" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <option value="" disabled selected>حدد مكان الصيانة</option>
+                            <option value="workshop" {{ old('servicePlace') == 'XYG' ? 'selected' : '' }}>في مقر الصيانة الخاص بنا</option>
+                            <option value="clientLocation" {{ old('servicePlace') == 'VELTRIO' ? 'selected' : '' }}>الموقع الخاص بك (الخدمة المتنقلة)</option>
+                        </select>
+                        @error('servicePlace')
+                        <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                        @enderror
+
                     </div>
 
                     <div class="col-xl-6">
@@ -93,6 +115,10 @@
                             </script>
                         </a>
                         <div id="map" style="width: 100%; height: 400px;"></div>
+
+                        <x-form.input label="تاريخ الصيانة" labelStyle="margin-top: 15px" type="date" name="date" placeholder="" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+
+                        <x-form.input label="صورة الزجاج المكسور" labelStyle="margin-top: 15px" type="file" name="broken_glass_image" placeholder="" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
                     </div>
                 </div>
 

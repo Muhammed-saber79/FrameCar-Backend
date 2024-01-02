@@ -26,7 +26,7 @@ class OrderController extends Controller
     public function store (OrderRequest $request)
     {
         try {
-            /*if ($request->hasFile('broken_glass_image')){
+            if ($request->hasFile('broken_glass_image')){
                 $file = $request->file('broken_glass_image');
 
                 if ($file->isValid()) {
@@ -36,10 +36,9 @@ class OrderController extends Controller
 
                     $request->merge([
                         'brokenGlassImage' => $path,
-                        'locationLink' => 'https://maps.google.com/?q=' . $request->latitude . ',' . $request->longitude
                     ]);
                 }
-            }*/
+            }
 
             $user = Auth::user();
             $request->merge([
@@ -77,10 +76,8 @@ class OrderController extends Controller
                         Storage::disk('public')->delete($order->brokenGlassImage);
                     }
 
-                    $locationLink = 'https://maps.google.com/?q=' . $request->latitude . ',' . $request->longitude;
                     $request->merge([
                         'brokenGlassImage' => $path,
-                        'locationLink' => $locationLink,
                     ]);
                 }
             }
