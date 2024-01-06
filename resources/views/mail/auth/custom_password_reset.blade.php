@@ -52,16 +52,16 @@
     <body>
         <div class="container">
             <div class="header">
-                <h1>Password Reset Link</h1>
+                <h1>رابط إعادة تعيين كلمة المرور</h1>
             </div>
             <div class="content">
-                <p>Hello!</p>
-                <p>You have requested to reset your password for our website. To proceed, please click the button below:</p>
+                <p>مرحبًا!</p>
+                <p>لقد قمت بطلب إعادة تعيين كلمة المرور الخاصة بك على موقعنا. للمتابعة، يرجى النقر على الزر أدناه:</p>
                 <p>
-                    <a href="{{ $resetUrl }}" class="button">Reset Password</a>
+                    <a href="{{ $resetUrl }}" class="button">إعادة تعيين كلمة المرور</a>
                 </p>
-                <p>If you did not request a password reset, please ignore this email.</p>
-                <p>Thank you!</p>
+                <p>إذا لم تكن قد قمت بطلب إعادة تعيين كلمة المرور، يرجى تجاهل هذا البريد الإلكتروني.</p>
+                <p>شكرًا لك!</p>
             </div>
             <div class="footer">
                 &copy; {{ date('Y') }} FrameCar

@@ -5,7 +5,7 @@ use App\Http\Controllers\User\DashboardController;
 use App\Http\Controllers\User\OrderController;
 
 Route::group([
-    'middleware' => 'auth',
+    'middleware' => ['auth', 'verified'],
 ], function () {
    Route::get('user-dashboard', [DashboardController::class, 'index'])->name('user.dashboard');
 

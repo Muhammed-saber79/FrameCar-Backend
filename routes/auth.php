@@ -1,10 +1,14 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use Illuminate\Auth\Events\Verified;
+
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Providers\RouteServiceProvider;
 
 Route::group([
     'middleware' => ['guest']
@@ -27,3 +31,14 @@ Route::group([
 ], function () {
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });
+
+// New Modifications...
+Route::get('/email/verify', function () {
+    return view('site.auth.verify-email');
+})->middleware('auth')->name('verification.notice');
+
+Route::get('/email/verify/{id}/{hash}', function (EmailVerificationRequest $request) {
+    $request->fulfill();
+
+    return redirect()->intended(RouteServiceProvider::HOME.'?verified=1')->with('success', 'تم تفعيل الحساب بنجاح');
+})->middleware(['auth', 'signed'])->name('verification.verify');
