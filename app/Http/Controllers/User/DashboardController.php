@@ -7,6 +7,7 @@ use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Time;
 use Illuminate\Support\Facades\Auth;
 
 class DashboardController extends Controller
@@ -24,6 +25,7 @@ class DashboardController extends Controller
         //             ELSE 6
         //         END,
         //         created_at DESC')->get();
+        $times = Time::all();
 
         $user = User::with('orders')->find(Auth::id());
         $ordersCount = Auth::user()->orders()->count();
@@ -32,6 +34,6 @@ class DashboardController extends Controller
 
         $orders = $user->orders()->paginate(10);
 
-        return view('site.user', compact('orders', 'ordersCount', 'approvedOrdersCount', 'rejectedOrdersCount'));
+        return view('site.user', compact('orders', 'ordersCount', 'approvedOrdersCount', 'rejectedOrdersCount','times'));
     }
 }

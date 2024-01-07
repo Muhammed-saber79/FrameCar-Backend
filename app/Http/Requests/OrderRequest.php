@@ -27,11 +27,15 @@ class OrderRequest extends FormRequest
             'carType' => ['required', 'string'],
             'carModel' => ['required', 'string'],
             'carMadeYear' => ['required', 'numeric'],
-            'glassType' => ['required', 'string'],
-            'glassPosition' => ['required', 'string', 'in:front,back,left-side,right-side,mirrors'],
+            'glassType' => ['required_if:serviceType,process,change', 'string'],
+            'glassPosition' => ['required_if:serviceType,process,change', 'string', 'in:front,back,left-side,right-side,mirrors'],
             'serviceType' => ['required', 'string', 'in:process,change,upRepair,machine'],
-            'latitude' => ['required', 'numeric'],
-            'longitude' => ['required', 'numeric'],
+            'servicePlace' => ['required', 'string', 'in:clientLocation,workshop'],
+            'latitude' => ['required_if:servicePlace,clientLocation'],
+            'longitude' => ['required_if:servicePlace,clientLocation' ],
+            'date' => ['required', 'date'],
+            'time' => ['required', 'numeric'],
+            'paymentMethod'=>['required']
         ];
 
         // if ($this->isMethod('put')) {

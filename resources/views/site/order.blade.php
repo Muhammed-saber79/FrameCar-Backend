@@ -24,24 +24,49 @@
             <label>تاريخ صنع السيارة:</label>
             <span>{{ $order->carMadeYear }}</span>
         </div>
-
+        <div class="sub-card animate">
+            <label>نوع الخدمة:</label>
+            <span>{{ $order->serviceType }}</span>
+        </div>
+        <div class="sub-card animate">
+            <label>مكان الخدمة:</label>
+            <span>
+                @if($order->servicePlace)
+                 في مقر الشركة
+                 @else
+                 في موقع العميل
+                @endif
+                </span>
+        </div>
+       @if($order->glassType !=null)
         <div class="sub-card animate">
             <label>نوع الزجاج:</label>
             <span>{{ $order->glassType }}</span>
         </div>
+        @endif
+        @if($order->glassPosition !=null)
 
         <div class="sub-card animate">
             <label>مكان الزجاج:</label>
             <span>{{ $order->glassPosition }}</span>
         </div>
-        <div class="sub-card animate">
-            <label>نوع الخدمة:</label>
-            <span>{{ $order->serviceType }}</span>
-        </div>
+        @endif
+
+        
 
         <div class="sub-card animate">
             <label>تاريخ الطلب:</label>
             <span>{{ $order->created_at->format('Y-m-d') }}</span>
+        </div>
+
+        <div class="sub-card animate">
+            <label>موعد اتمام الخدمة :</label>
+            <span>{{ $order->date.'    ' .$order->time . ':00' }}</span>
+        </div>
+
+        <div class="sub-card animate">
+            <label>طريقة الدفع :</label>
+            <span>{{ $order->paymentMethod }}</span>
         </div>
 
         <div class="sub-card animate">
@@ -66,11 +91,13 @@
             <label>صورة الزجاج المكسور:</label>
             <img width="100" src="{{ asset('storage/' . $order->brokenGlassImage) }}" alt="صورة الزجاج المكسور">
         </div> --}}
-
+ 
+        @if($order->longitude !=null)
         <div class="sub-card animate">
             <label>موقعك الجغرافي:</label>
             <a style="color: #84cce4;" href="{{ $order->locationLink }}"> {{ $order->user->name . '/ location'}} </a>
         </div>
+        @endif
 
         <!-- Button to open the edit modal -->
         <a data-bs-toggle="modal" data-bs-target="#editOrderModal"
@@ -83,5 +110,5 @@
 
     <x-toaster />
 
-    <x-order.edit :order="$order" />
+    <x-order.edit :order="$order" :hours="$hours" />
 @endsection

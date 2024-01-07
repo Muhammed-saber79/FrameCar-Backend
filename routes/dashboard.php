@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\ProjectController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use \App\Http\Controllers\Admin\AdminDashboardController;
+use App\Http\Controllers\Admin\AdminOrdersController;
 
 Route::group([
     'prefix' => 'admin',
@@ -44,3 +45,6 @@ Route::group([
 
     Route::post('logout', [LoginController::class, 'destroy'])->name('logout');
 });
+
+Route::get('updateStatus/{order_id}/{status}',[AdminOrdersController::class,'updateStatus'])->middleware('auth:admin')->name('updateStatus');
+

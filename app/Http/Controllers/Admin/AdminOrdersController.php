@@ -55,4 +55,12 @@ class AdminOrdersController extends Controller
             return redirect()->back()->with('error', 'حدث خطأ اثناء ارسال الرد الى العميل. يمكنك المحاولة مجددا.');
         }
     }
+
+    public function updateStatus($order_id,$status){
+        $order = Order::findOrFail($order_id);
+        $order->status = $status ;
+        $order->save();
+        return redirect()->back()->with('success','تم تعديل حالة الطلب بنجاح');
+
+    }
 }

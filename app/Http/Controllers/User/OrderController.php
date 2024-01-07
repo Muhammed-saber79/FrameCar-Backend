@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\OrderRequest;
 use App\Models\Order;
+use App\Models\Time;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -15,16 +16,20 @@ class OrderController extends Controller
 
     public function edit($id)
     {
+        $times = Time::all();
+
         $order = Auth::user()->orders()->find($id);
+        $hours = Time::where('day',$order->date)->pluck('time')->toArray();
         if (!$order) {
             return redirect()->back()->with('danger', 'هذا الطلب غير موجود...!');
         }
 
-        return view('site.order', compact('order'));
+        return view('site.order', compact('order','times','hours'));
     }
 
     public function store (OrderRequest $request)
     {
+   
         try {
             if ($request->hasFile('broken_glass_image')){
                 $file = $request->file('broken_glass_image');
@@ -45,8 +50,17 @@ class OrderController extends Controller
                 'locationLink' => 'https://maps.google.com/?q=' . $request->latitude . ',' . $request->longitude
             ]);
             
-            $user->orders()->create( $request->all() );
+            $order = $user->orders()->create( $request->all() );
 
+            $count = Order::where('date',$order->date)->where('time',$order->time)->count();
+            if($count>=2){
+                Time::create([
+                    'day'=>$order->date , 
+                    'time'=>$order->time 
+                ]);
+            }
+
+         
             return redirect()->route('user.dashboard')->with('success', 'تم إرسال الطلب بنجاح');
         } catch (\Exception $e) {
             return redirect()->back()->with('error', $e->getMessage());//'Error while trying to send an order...!');
@@ -55,6 +69,7 @@ class OrderController extends Controller
 
     public function update(OrderRequest $request, $id)
     {
+       
         try {
             $user = Auth::user();
             $order = $user->orders()->find($id);

@@ -22,7 +22,11 @@ class Order extends Model
         'user_id',
         'longitude',
         'latitude',
-        'locationLink'
+        'locationLink',
+        'servicePlace',
+        'date',
+        'time',
+        'paymentMethod'
     ];
 
 
@@ -37,20 +41,20 @@ class Order extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-    public function getServiceTypeAttribute($value)
-    {
-        if($value == 'process'){
-            return 'معالجة زجاج' ;
-        }elseif($value == 'change'){
-            return 'تغيير زجاج';
-        }elseif($value == 'upRepair'){
-            return 'اصلاح فتحة السقف';
+    // public function getServiceTypeAttribute($value)
+    // {
+    //     if($value == 'process'){
+    //         return 'معالجة زجاج' ;
+    //     }elseif($value == 'change'){
+    //         return 'تغيير زجاج';
+    //     }elseif($value == 'upRepair'){
+    //         return 'اصلاح فتحة السقف';
 
-        }elseif($value == 'machine'){
-            return 'اصلاح ماكينة زجاج';
+    //     }elseif($value == 'machine'){
+    //         return 'اصلاح ماكينة زجاج';
 
-        }
-    }
+    //     }
+    // }
 
     // protected function locationLink(): Attribute
     //     {

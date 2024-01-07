@@ -87,6 +87,8 @@
                               <div class="dropdown-menu dropdown-menu-right">
                                 <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#delete{{$order->id}}">   حذف  </a>
                                 <a type="button" class="btn mb-2 dropdown-item" data-toggle="modal" data-target="#reply-{{$order->id}}">   رد  </a>
+                                <a href="{{route('updateStatus',['status'=>'completed','order_id'=>$order->id])}}" type="button" class="btn mb-2 dropdown-item" >   تاكيد  </a>
+                                <a href="{{route('updateStatus',['status'=>'canceled','order_id'=>$order->id])}}" type="button" class="btn mb-2 dropdown-item" >   الغاء  </a>
                               </div>
                             </td>
 
