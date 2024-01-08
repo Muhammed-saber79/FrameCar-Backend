@@ -76,9 +76,17 @@
             @elseif( $order->status == 'approved') color: rgb(56, 184, 13);
             @elseif( $order->status == 'rejected' ) color: rgb(184, 13, 13); text-decoration: line-through;
             @elseif( $order->status == 'canceled' ) color: rgb(220, 172, 14); text-decoration: line-through;
-            @elseif( $order->status == 'completed' ) color: rgb(91, 94, 91);
+            @elseif( $order->status == 'completed' ) color: rgb(56, 184, 13);
             @endif"
-            >{{ $order->status }}</span>
+            >
+                                                @if($order->status == 'pending') قيد الانتظار
+                                                @elseif( $order->status == 'approved') مدفوع
+                                                @elseif( $order->status == 'rejected' ) مرفوض
+                                                @elseif( $order->status == 'canceled' ) تم الالغاء
+                                                @elseif( $order->status == 'completed' ) مكتمل
+                                                @elseif( $order->status == 'replied' ) تم الرد
+                                                @endif   
+        </span>
         </div>
 
 

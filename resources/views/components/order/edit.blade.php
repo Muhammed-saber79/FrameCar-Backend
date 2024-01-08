@@ -143,6 +143,10 @@
                             </div>
 
                             <x-form.input label="صورة الزجاج المكسور" labelStyle="margin-top: 15px" type="file" name="broken_glass_image" placeholder="" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
+                            <div class="row" style="margin: 40px;">
+                            <img src="{{asset($order->brokenGlassImage)}}" width="50%" alt="Your Image" class="img-fluid">
+
+                            </div>
 
                         </div>
 

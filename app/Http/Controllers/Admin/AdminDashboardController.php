@@ -22,7 +22,7 @@ class AdminDashboardController extends Controller
         $usersCount = User::count();
         $ordersCount = Order::count();
         $projectsCount = Project::count();
-        $orders = Order::latest()->paginate(3);
+        $orders = Order::latest()->where('date',Carbon::now()->format('Y-m-d'))->whereIn('status',['approved','replied'])->get();
 
         $usersData = [];
         $ordersData = [];

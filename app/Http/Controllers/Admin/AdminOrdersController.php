@@ -38,12 +38,13 @@ class AdminOrdersController extends Controller
 
             'message.string' => 'يجب ان تكون الرسالة مكونة من نص سليم'
         ]);
-
+        
         $data = [
             'email' => $request->email,
             'cost' => $request->cost,
             'message' => $request->message,
-            'order_id'=>$order->id
+            'order_id'=>$order->id,
+            'paymentMethod'=>$order->paymentMethod 
         ];
         $order->cost = $request->cost ;
         $order->status = 'replied';

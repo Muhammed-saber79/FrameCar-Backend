@@ -94,9 +94,11 @@
                 <button type="submit" class="button">المتابعة إلى عملية الدفع</button>
             </form> --}}
 
+            @if($data['paymentMethod'] == 'online')
             <p>
                 <a href="https://localhost:8000/pay/{{ $data['order_id'] }}" class="button">المتابعة إلى عملية الدفع</a>
             </p>
+            @endif
             <p>شكرًا لاستخدام خدماتنا!</p>
             <p>أطيب التحيات،<br>FrameCar</p>
         </div>
