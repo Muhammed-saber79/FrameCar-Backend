@@ -50,31 +50,58 @@
                     <!-- <td class="text-center">{{ $loop->iteration }}</td> -->
                     <td class="text-center">{{ $order->id }}</td>
                     <td class="text-center">
-                      <img src="{{asset($order->brokenGlassImage)}}" alt="Your Image" class="img-fluid clickable-image" data-toggle="modal" data-target="#myModal{{$order->id}}">
+                      <img src="{{asset($order->brokenGlassImage)}}" width="75" alt="Your Image" class="img-fluid clickable-image" data-toggle="modal" data-target="#myModal{{$order->id}}">
                     </td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->carType }} - {{ $order->carModel }} - {{ $order->carMadeYear }}</td>
 
-                    <td>{{ $order->glassPosition }}</td>
-                    <td>{{ $order->serviceType }}</td>
-                    <!-- <td>{{ $order->created_at->diffForHumans() }}</td> -->
-                    <td>{{ $order->paymentMethod }}</td>
+                    <td>
+                      @if( $order->glassPosition == 'front')
+                        زجاج امامي
+                      @elseif( $order->glassPosition == 'back' )
+                        زجاج خلفي
+                      @elseif( $order->glassPosition == 'left-side' )
+                        زجاج الجانب الايسر
+                      @elseif( $order->glassPosition == 'right-side' )
+                        زجاج الجانب الايمن
+                      @elseif( $order->glassPosition == 'mirrors' )
+                        المرايا
+                      @endif 
+                    </td>
+                    <td>
+                      @if( $order->serviceType == 'process')
+                        معالجة زجاج 
+                      @elseif( $order->serviceType == 'change' )
+                        تغيير زجاج
+                      @elseif( $order->serviceType == 'upRepair' )
+                        اصلاح فتحة سقف
+                      @elseif( $order->serviceType == 'machine' )
+                        اصلاح ماكينة زجاج
+                      @endif   
+                    </td>
+                    <td>
+                      @if( $order->paymentMethod == 'online')
+                        اونلاين (عبر بوابة الدفع الالكتروني) 
+                      @elseif( $order->paymentMethod == 'offline' )
+                        عند الاستلام
+                      @endif 
+                    </td>
                     <td>{{ $order->date }} <br> {{$order->time.':00' }}</td>
                     <td style="font-weight: bold;
-                                                @if($order->status == 'pending') color: rgb(13, 164, 184);
-                                                @elseif( $order->status == 'approved') color: rgb(56, 184, 13);
-                                                @elseif( $order->status == 'replied') color: rgb(56, 184, 13);
-                                                @elseif( $order->status == 'rejected' ) color: rgb(184, 13, 13); text-decoration: line-through;
-                                                @elseif( $order->status == 'canceled' ) color: rgb(220, 172, 14); text-decoration: line-through;
-                                                @elseif( $order->status == 'completed' ) rgb(56, 184, 13);
-                                                @endif">
-                                                @if($order->status == 'pending') قيد الانتظار
-                                                @elseif( $order->status == 'approved') مدفوع
-                                                @elseif( $order->status == 'rejected' ) مرفوض
-                                                @elseif( $order->status == 'canceled' ) تم الالغاء
-                                                @elseif( $order->status == 'completed' ) مكتمل
-                                                @elseif( $order->status == 'replied' ) تم الرد
-                                                @endif   
+                      @if($order->status == 'pending') color: rgb(13, 164, 184);
+                      @elseif( $order->status == 'approved') color: rgb(56, 184, 13);
+                      @elseif( $order->status == 'replied') color: rgb(56, 184, 13);
+                      @elseif( $order->status == 'rejected' ) color: rgb(184, 13, 13); text-decoration: line-through;
+                      @elseif( $order->status == 'canceled' ) color: rgb(220, 172, 14); text-decoration: line-through;
+                      @elseif( $order->status == 'completed' ) rgb(56, 184, 13);
+                      @endif">
+                      @if($order->status == 'pending') قيد الانتظار
+                      @elseif( $order->status == 'approved') مدفوع
+                      @elseif( $order->status == 'rejected' ) مرفوض
+                      @elseif( $order->status == 'canceled' ) تم الالغاء
+                      @elseif( $order->status == 'completed' ) مكتمل
+                      @elseif( $order->status == 'replied' ) تم الرد
+                      @endif   
                     </td>
                     <td>
                       @if ($order->isPaid == 1)
@@ -168,21 +195,55 @@
                   </tr>
 
 
-                                  <!-- The Modal -->
+                  {{--
+                  <!-- The Modal -->
                   <div class="modal fade" id="myModal{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content" style="background: none; border:none">
+
                         <div class="modal-header" style="border: none;">
                           <!-- <h5 class="modal-title" id="exampleModalLabel"> معاينة الصورة</h5> -->
                           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                           </button>
                         </div>
+
                         <div class="modal-body">
-                          <img src="{{asset($order->brokenGlassImage)}}" alt="Your Image" class="img-fluid">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <img src="{{ asset($order->brokenGlassImage) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
                       </div>
                     </div>
+                  </div>
+                  --}}
+
+                  <!-- The Modal -->
+                  <div class="modal fade" id="myModal{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog modal-fullscreen" role="document">
+                          <div class="modal-content" style="background: none; border:none; padding: 0;">
+                              <div class="modal-header" style="border: none;">
+                                  <!-- <h5 class="modal-title" id="exampleModalLabel"> معاينة الصورة</h5> -->
+                                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                      <span aria-hidden="true">&times;</span>
+                                  </button>
+                              </div>
+                              <div class="modal-body">
+                                  <div class="container-fluid">
+                                      <div class="row">
+                                          <div class="col-12">
+                                              <img src="{{ asset($order->brokenGlassImage) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
+                                          </div>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
                   </div>
 
                   @endforeach

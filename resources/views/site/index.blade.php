@@ -110,7 +110,7 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch" data-aos="zoom-in" data-aos-delay="100">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bi-tools"></i></div>
                             <h4><a href="{{asset('site/')}}">إصلاح زجاج السيارات</a></h4>
@@ -118,7 +118,7 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                          data-aos-delay="200">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-car"></i></div>
@@ -127,16 +127,16 @@
                         </div>
                     </div>
 
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+                    <!-- <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
                          data-aos-delay="300">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-shield"></i></div>
                             <h4><a href="{{asset('site/')}}">زجاج مقاوم للتكسير</a></h4>
                             <p>نقدم زجاج مقاوم للتكسير لزيادة الأمان والحماية، مصمم خصيصًا لتحمل الظروف القاسية على الطريق.</p>
                         </div>
-                    </div>
+                    </div> -->
 
-                    <div class="col-xl-3 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
                          data-aos-delay="400">
                         <div class="icon-box">
                             <div class="icon"><i class="bx bx-headphone"></i></div>
@@ -180,7 +180,7 @@
                                     </div>
                                 </li>
 
-                                <li>
+                                <!-- <li>
                                     <a data-bs-toggle="collapse" data-bs-target="#accordion-list-2" class="collapsed"><span>02</span> ما
                                         هي مزايا الزجاج المقاوم للتكسير؟ <i class="bx bx-chevron-down icon-show"></i><i
                                             class="bx bx-chevron-up icon-close"></i></a>
@@ -191,15 +191,15 @@
                                             سيارتك.
                                         </p>
                                     </div>
-                                </li>
+                                </li> -->
 
                                 <li>
-                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>03</span> كيف
+                                    <a data-bs-toggle="collapse" data-bs-target="#accordion-list-3" class="collapsed"><span>02</span> كيف
                                         يمكنني الاستفادة من خدماتكم؟ <i class="bx bx-chevron-down icon-show"></i><i
                                             class="bx bx-chevron-up icon-close"></i></a>
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                                         <p>
-                                            إن الاستفادة من خدماتنا سهلة وبسيطة. كل ما عليك فعله هو الاتصال بنا وسنقوم بتقديم الخدمة التي
+                                            إن الاستفادة من خدماتنا سهلة وبسيطة. كل ما عليك فعله هو التسجيل على المنصة وتقوم بارسال طلب وسنقوم بتقديم الخدمة التي
                                             تحتاجها. نحن هنا لإصلاح زجاج سيارتك بسرعة وجودة عالية، ونوفر لك زجاجًا مقاومًا للتكسير إذا كنت
                                             بحاجة إلى تغييره.
                                         </p>
