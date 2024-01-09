@@ -15,30 +15,84 @@
                     @method('PUT')
 
                     <div class="row">
-                        <div class="col-xl-6">
+
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-1">
                             <input type="hidden" name="name" value="{{ Auth::user()->id }}">
+                        
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">نوع السيارة</label>
+                                <input
+                                    type="text"
+                                    name="carType"
+                                    id="carType"
+                                    placeholder="ادخل نوع السيارة"
+                                    class="form-control col-xl-5"
 
-                            <!-- <x-form.input label="رقم الهاتف" labelStyle="margin-top: 15px" type="tel" name="phoneNumber" value="" placeholder="ادخل رقم الهاتف" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" /> -->
-                            <x-form.input label="نوع السيارة" labelStyle="margin-top: 15px" type="text" name="carType" value="{{ $order->carType }}" placeholder="ادخل نوع السيارة" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
-                            <x-form.input label="موديل السيارة " labelStyle="margin-top: 15px" type="text" name="carModel" value="{{ $order->carModel }}" placeholder="ادخل موديل السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
-                            <x-form.input label="تاريخ صنع السيارة " labelStyle="margin-top: 15px" type="text" name="carMadeYear" value="{{ $order->carMadeYear }}" placeholder="ادخل سنة صنع السيارة " style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; outline:none;" />
+                                    value="{{ old('carType', $order->carType) }}"
+                                    @error('carType') style="border-color: red" @enderror
+                                >
+                                @error('carType')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+                            
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">موديل السيارة</label>
+                                <input
+                                    type="text"
+                                    name="carModel"
+                                    id="carModel"
+                                    placeholder="ادخل موديل السيارة"
+                                    class="form-control col-xl-5"
 
-                            <label style="display: block; margin-top: 15px;">نوع الخدمة</label>
-                            <select id="serviceType" name="serviceType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                                <option value="process" {{ $order->serviceType == 'process' ? 'selected' : '' }}>معالجة زجاج</option>
-                                <option value="change" {{ $order->serviceType == 'change' ? 'selected' : '' }}>تغيير زجاج</option>
-                                <option value="upRepair" {{ $order->serviceType == 'upRepair' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
-                                <option value="machine" {{ $order->serviceType == 'machine' ? 'selected' : '' }}>اصلاح ماكينة زجاج</option>
+                                    value="{{ old('carModel', $order->carModel) }}"
+                                    @error('carModel') style="border-color: red" @enderror
+                                >
+                                @error('carModel')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
 
-                           
-                            </select>
-                            @error('serviceType')
-                            <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                            @enderror
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">تاريخ صنع السيارة</label>
+                                <input
+                                    type="text"
+                                    name="carMadeYear"
+                                    id="carMadeYear"
+                                    placeholder="ادخل سنة صنع السيارة"
+                                    class="form-control col-xl-5"
 
-                            <div id="glassType" @if($order->glassType != null )style="display:block" @endif>
-                                <label style="display: block; margin-top: 15px;"> نوع الزجاج</label>
-                                <select id="serviceType" name="glassType" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                                    value="{{ old('carMadeYear', $order->carMadeYear) }}"
+                                    @error('carMadeYear') style="border-color: red" @enderror
+                                >
+                                @error('carMadeYear')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                        </div>
+                        
+                        <div class="col-xl-12 mx-auto">
+                            <div class="mb-3 col-xl-12 mx-1">
+                                <label class="form-label">نوع الخدمة</label>
+                                <select id="serviceType" name="serviceType" class="form-select col-xl-5">
+                                    <option value="" disabled selected>حدد نوع الخدمة</option>
+                                    <option value="process" {{ $order->serviceType == 'process' ? 'selected' : '' }}>معالجة زجاج</option>
+                                    <option value="change" {{ $order->serviceType == 'change' ? 'selected' : '' }}>تغيير زجاج</option>
+                                    <option value="upRepair" {{ $order->serviceType == 'upRepair' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
+                                    <option value="machine" {{ $order->serviceType == 'machine' ? 'selected' : '' }}>اصلاح ماكينة زجاج</option>
+                                </select>                                
+
+                                @error('serviceType')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-2">
+                            <div id="glassType" class="mb-3 col-xl-6">
+                                <label class="form-label"> نوع الزجاج</label>
+                                <select id="serviceType" name="glassType" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد نوع الزجاج</option>
                                     <option value="XYG" {{ $order->glassType == 'XYG' ? 'selected' : '' }}>XYG </option>
                                     <option value="VELTRIO" {{ $order->glassType == 'VELTRIO' ? 'selected' : '' }}>VELTRIO </option>
@@ -46,13 +100,11 @@
                                 @error('glassType')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
-                            </div>
+                            </div>  
 
-
-
-                            <div id="glassPosition" @if($order->glassPosition != null )style="display:block" @endif>
-                                <label style="display: block; margin-top: 15px;">مكان الزجاج</label>
-                                <select id="glassPosition" name="glassPosition" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
+                            <div id="glassPosition" class="mb-3 col-xl-6">
+                                <label class="form-label">مكان الزجاج</label>
+                                <select id="glassPosition" name="glassPosition" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد مكان الزجاج المكسور</option>
                                     <option value="front" {{ $order->glassPosition == 'front' ? 'selected' : '' }}>أمامي</option>
                                     <option value="back" {{ $order->glassPosition == 'back' ? 'selected' : '' }}>خلفي</option>
@@ -64,38 +116,90 @@
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
-
-
-
-
-
-
-                            <!-- New Modifications -->
-                            <label style="display: block; margin-top: 15px;">طريقة الدفع</label>
-                            <select id="paymentMethod" name="paymentMethod" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                                <option value="" disabled selected>حدد طريقة الدفع</option>
-                                <option value="online" {{ $order->paymentMethod == 'online' ? 'selected' : '' }}>اونلاين</option>
-                                <option value="offline" {{$order->paymentMethod  == 'offline' ? 'selected' : '' }}>عند الاستلام</option>
-                            </select>
-                            @error('paymentMethod')
-                            <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                            @enderror
-
-
-                            <label style="display: block; margin-top: 15px;">مكان الصيانة</label>
-                            <select id="servicePlace" name="servicePlace" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                                <option value="" disabled selected>حدد مكان الصيانة</option>
-                                <option value="workshop" {{ $order->servicePlace == 'workshop' ? 'selected' : '' }}>في مقر الصيانة الخاص بنا</option>
-                                <option value="clientLocation" {{ $order->servicePlace == 'clientLocation' ? 'selected' : '' }}>الموقع الخاص بك (الخدمة المتنقلة)</option>
-                            </select>
-                            @error('servicePlace')
-                            <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                            @enderror
-
                         </div>
 
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-2">
+                            <div class="mb-3 col-xl-6">
+                                <label class="form-label">طريقة الدفع</label>
+                                <select id="paymentMethod" name="paymentMethod" class="form-select col-xl-5">
+                                    <option value="" disabled selected>حدد طريقة الدفع</option>
+                                    <option value="online" {{ $order->paymentMethod == 'online' ? 'selected' : '' }}>اونلاين</option>
+                                    <option value="offline" {{$order->paymentMethod  == 'offline' ? 'selected' : '' }}>عند الاستلام</option>
+                                </select>
+                                @error('paymentMethod')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>    
 
-                        <div class="col-xl-6" @if($order->longitude == null )style="display:none" @endif id="location">
+                            <div class="mb-3 col-xl-6">
+                                <label class="form-label">مكان الصيانة</label>
+                                <select id="servicePlace" name="servicePlace" class="form-select col-xl-5">
+                                    <option value="" disabled selected>حدد مكان الصيانة</option>
+                                    <option value="workshop" {{ $order->servicePlace == 'workshop' ? 'selected' : '' }}>في مقر الصيانة الخاص بنا</option>
+                                    <option value="clientLocation" {{ $order->servicePlace == 'clientLocation' ? 'selected' : '' }}>الموقع الخاص بك (الخدمة المتنقلة)</option>
+                                </select>
+                                @error('servicePlace')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-2">
+                            <div class="mb-3 col-xl-6">
+                                <label for="" class="form-label">تاريخ الصيانة</label>
+                                <input
+                                    type="date"
+                                    name="date"
+                                    id="date"
+                                    placeholder="ادخل نوع السيارة"
+                                    class="form-control col-xl-5"
+
+                                    value="{{ old('date', $order->date) }}"
+                                    @error('date') style="border-color: red" @enderror
+                                >
+                                @error('date')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div id="time" class="mb-3 col-xl-6">
+                                <label class="form-label"> وقت الخدمة </label>
+                                <select id="timeSelect" name="time" class="form-select col-xl-5">
+                                    <option value="" disabled selected>حدد الوقت المناسب لاجراء الخدمة </option>
+                                    @for($i = 8 ; $i < 17; $i++) 
+                                        <option value="{{$i}}" @if(in_array($i,$hours)) disabled @endif @if($i == $order->time) selected @endif>{{$i.':00'}}</option>
+                                    @endfor
+                                </select>
+                                @error('time')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto">
+                            <div class="mb-3 col-12">
+                                <label for="" class="form-label">صورة الزجاج المكسور</label>
+                                <input
+                                    type="file"
+                                    name="broken_glass_image"
+                                    id="broken_glass_image"
+                                    placeholder="قم برفع صورة الزجاج المكسور"
+                                    class="form-control"
+
+                                    value="{{ old('broken_glass_image') }}"
+                                    @error('broken_glass_image') style="border-color: red" @enderror
+                                >
+                                @error('broken_glass_image')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+
+                                <div class="my-3 text-center">
+                                    <img src="{{asset($order->brokenGlassImage)}}" class="img-fluid rounded w-50" alt="image desc"/>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-xl-12" id="location">
                             <label style="display: block; margin-top: 15px;">الموقع:<br>
                                 <!-- <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label> -->
                                 @error('latitude')
@@ -104,8 +208,7 @@
 
                                 <input type="hidden" id="latitude" name="latitude" value="{{ $order->latitude }}">
                                 <input type="hidden" id="longitude" name="longitude" value="{{ $order->longitude }}">
-                                
-                                <!-- value="{{ old('longitude') }}"> -->
+
                                 <a href="#" onclick="getLocation()" id="getLocation" class="btn btn-outline-success mb-3">
                                     <script>
                                         document.addEventListener('DOMContentLoaded', function() {
@@ -125,28 +228,6 @@
                                 </a>
                                 <div id="map" style="width: 100%; height: 400px;"></div>
 
-
-                        </div>
-
-                        <div class="col-xl-6">
-                            <x-form.input label="تاريخ الصيانة" id="date" labelStyle="margin-top: 15px" type="date" name="date" placeholder="" value="{{$order->date}}" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
-
-                            <div id="time">
-                                <label style="display: block; margin-top: 15px;"> وقت الخدمة </label>
-                                <select id="timeSelect" name="time" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;">
-                                    @for($i = 8 ; $i <17; $i++) <option value="{{$i}}" @if(in_array($i,$hours)) disabled @endif @if($i==$order->time) selected @endif>{{$i.':00'}}</option>
-                                        @endfor
-                                </select>
-                                @error('time')
-                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                                @enderror
-                            </div>
-
-                            <x-form.input label="صورة الزجاج المكسور" labelStyle="margin-top: 15px" type="file" name="broken_glass_image" placeholder="" value="" style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px;" />
-                            <div class="row" style="margin: 40px;">
-                            <img src="{{asset($order->brokenGlassImage)}}" width="50%" alt="Your Image" class="img-fluid">
-
-                            </div>
 
                         </div>
 
