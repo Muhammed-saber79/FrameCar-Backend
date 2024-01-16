@@ -3,7 +3,7 @@
 
         <div class="toaster" style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 8px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); opacity: 0; transition: opacity 0.5s ease-in-out, margin 0.5s ease-in-out; margin-bottom: 10px;">
             <div style="display: flex; justify-content: space-between; align-items: center;">
-                <span>حدث خطأ اثناء إرسال الطلب, حاول مجددا...!</span>
+                <span>حدث خطأ اثناء إرسال الطلب, حاول مجددا ...!</span>
                 <button style="background: none; border: none; color: inherit; cursor: pointer; font-size: larger;" onclick="closeToaster(this.parentElement)">×</button>
             </div>
         </div>

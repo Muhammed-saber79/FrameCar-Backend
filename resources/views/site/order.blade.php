@@ -5,7 +5,7 @@
 @endsection
 
 @section('content')
-    <div class="order-details-card animate">
+    <div class="order-details-card animate mb-5">
         <h1>تفاصيل الطلب</h1>
         <div class="sub-card animate">
             <label>الرقم:</label>
@@ -26,7 +26,19 @@
         </div>
         <div class="sub-card animate">
             <label>نوع الخدمة:</label>
-            <span>{{ $order->serviceType }}</span>
+            <span>
+                @if( $order->serviceType == 'process')
+                    معالجة زجاج
+                @elseif( $order->serviceType == 'change' )
+                    تغيير زجاج
+                @elseif( $order->serviceType == 'upRepair' )
+                    اصلاح فتحة سقف
+                @elseif( $order->serviceType == 'machine' )
+                    اصلاح ماكينة زجاج
+                @else
+                    غير محدد
+                @endif
+            </span>
         </div>
         <div class="sub-card animate">
             <label>مكان الخدمة:</label>
@@ -41,18 +53,55 @@
        @if($order->glassType !=null)
         <div class="sub-card animate">
             <label>نوع الزجاج:</label>
-            <span>{{ $order->glassType }}</span>
+            <span>
+                @if($order->glassType == 'XYG')
+                    صيني مستورد
+                @else
+                    أخرى
+                @endif
+            </span>
         </div>
         @endif
-        @if($order->glassPosition !=null)
-
         <div class="sub-card animate">
             <label>مكان الزجاج:</label>
-            <span>{{ $order->glassPosition }}</span>
+            <span>
+                @if($order->glassPosition == 'front')
+                    زجاج أمامي
+                @elseif($order->glassPosition == 'back')
+                    زجاج خلفي
+                @elseif($order->glassPosition == 'front-left-door')
+                    باب أمامي يسار
+                @elseif($order->glassPosition == 'front-right-door')
+                    باب أمامي يمين
+                @elseif($order->glassPosition == 'back-left-door')
+                    باب خلفي يسار
+                @elseif($order->glassPosition == 'back-right-door')
+                    باب خلفي يمين
+                @elseif($order->glassPosition == 'left-side')
+                    جانب أيسر
+                @elseif($order->glassPosition == 'right-side')
+                    جانب أيمن
+                @elseif($order->glassPosition == 'front-left-air')
+                    هواية أمامي يسار
+                @elseif($order->glassPosition == 'front-right-air')
+                    هواية أمامي يمين
+                @elseif($order->glassPosition == 'back-left-air')
+                    هواية خلفي يسار
+                @elseif($order->glassPosition == 'back-right-air')
+                    هواية خلفي يمين
+                @elseif($order->glassPosition == 'upper')
+                    زجاج فتحة السقف
+                @elseif($order->glassPosition == 'mirrors-left')
+                    مرايا يسار
+                @elseif($order->glassPosition == 'mirrors-right')
+                    مرايا يمين
+                @else
+                    غير محدد
+                @endif
+            </span>
         </div>
-        @endif
 
-        
+
 
         <div class="sub-card animate">
             <label>تاريخ الطلب:</label>
@@ -79,13 +128,13 @@
             @elseif( $order->status == 'completed' ) color: rgb(56, 184, 13);
             @endif"
             >
-                                                @if($order->status == 'pending') قيد الانتظار
-                                                @elseif( $order->status == 'approved') مدفوع
-                                                @elseif( $order->status == 'rejected' ) مرفوض
-                                                @elseif( $order->status == 'canceled' ) تم الالغاء
-                                                @elseif( $order->status == 'completed' ) مكتمل
-                                                @elseif( $order->status == 'replied' ) تم الرد
-                                                @endif   
+            @if($order->status == 'pending') قيد الانتظار
+            @elseif( $order->status == 'approved') مدفوع
+            @elseif( $order->status == 'rejected' ) مرفوض
+            @elseif( $order->status == 'canceled' ) تم الالغاء
+            @elseif( $order->status == 'completed' ) مكتمل
+            @elseif( $order->status == 'replied' ) تم الرد
+            @endif
         </span>
         </div>
 
@@ -95,11 +144,13 @@
             <span>{{  auth('web')->user()->phoneNumber }}</span>
         </div>
 
-        {{-- <div class="sub-card animate">
-            <label>صورة الزجاج المكسور:</label>
-            <img width="100" src="{{ asset('storage/' . $order->brokenGlassImage) }}" alt="صورة الزجاج المكسور">
-        </div> --}}
- 
+        <div class="sub-card animate">
+            <label>صور السيارة المختلفة:</label>
+            <img width="100" src="{{ asset($order->car_front_image) }}" alt="صورة السيارة من الامام">
+            <img width="100" src="{{ asset($order->car_back_image) }}" alt="صورة السيارة من الخلف ">
+            <img width="100" src="{{ asset($order->camera_image) }}" alt="صورة الكاميرا او الحساس">
+        </div>
+
         @if($order->longitude !=null)
         <div class="sub-card animate">
             <label>موقعك الجغرافي:</label>

@@ -11,7 +11,7 @@ class EmailService
         try {
             Mail::send('mail.users.reply', ['data' => $data], function ($mail) use ($data) {
                 $mail->to($data['email'])
-                    ->subject('Reply From FrameCar Admin');
+                    ->subject('إدارة الخدمات في فريم كار');
             });
 
             return true;

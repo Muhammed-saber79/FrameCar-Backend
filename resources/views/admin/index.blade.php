@@ -220,7 +220,7 @@
                     <th class="text-center">حالة الطلب</th>
                     <th class="text-center">تم الدفع</th>
                     <th class="text-center">رقم الهاتف</th>
-                    <th class="text-center">الموقع </th>
+                    <th class="text-center">مكان الصيانة </th>
                     <th class="text-center">الإجراءات</th>
                   </tr>
                 </thead>
@@ -230,41 +230,62 @@
                     <!-- <td class="text-center">{{ $loop->iteration }}</td> -->
                     <td class="text-center">{{ $order->id }}</td>
                     <td class="text-center">
-                      <img src="{{asset($order->brokenGlassImage)}}" width="75" alt="Your Image" class="img-fluid clickable-image" data-toggle="modal" data-target="#myModal{{$order->id}}">
+                      <img src="{{asset($order->car_front_image)}}" width="75" alt="Your Image" class="img-fluid clickable-image" data-toggle="modal" data-target="#myModal{{$order->id}}">
                     </td>
                     <td>{{ $order->user->name }}</td>
                     <td>{{ $order->carType }} - {{ $order->carModel }} - {{ $order->carMadeYear }}</td>
-
                     <td>
-                      @if( $order->glassPosition == 'front')
-                        زجاج امامي
-                      @elseif( $order->glassPosition == 'back' )
-                        زجاج خلفي
-                      @elseif( $order->glassPosition == 'left-side' )
-                        زجاج الجانب الايسر
-                      @elseif( $order->glassPosition == 'right-side' )
-                        زجاج الجانب الايمن
-                      @elseif( $order->glassPosition == 'mirrors' )
-                        المرايا
-                      @endif 
-                    </td>
+                          @if($order->glassPosition == 'front')
+                              زجاج أمامي
+                          @elseif($order->glassPosition == 'back')
+                              زجاج خلفي
+                          @elseif($order->glassPosition == 'front-left-door')
+                              باب أمامي يسار
+                          @elseif($order->glassPosition == 'front-right-door')
+                              باب أمامي يمين
+                          @elseif($order->glassPosition == 'back-left-door')
+                              باب خلفي يسار
+                          @elseif($order->glassPosition == 'back-right-door')
+                              باب خلفي يمين
+                          @elseif($order->glassPosition == 'left-side')
+                              جانب أيسر
+                          @elseif($order->glassPosition == 'right-side')
+                              جانب أيمن
+                          @elseif($order->glassPosition == 'front-left-air')
+                              هواية أمامي يسار
+                          @elseif($order->glassPosition == 'front-right-air')
+                              هواية أمامي يمين
+                          @elseif($order->glassPosition == 'back-left-air')
+                              هواية خلفي يسار
+                          @elseif($order->glassPosition == 'back-right-air')
+                              هواية خلفي يمين
+                          @elseif($order->glassPosition == 'upper')
+                              زجاج فتحة السقف
+                          @elseif($order->glassPosition == 'mirrors-left')
+                              مرايا يسار
+                          @elseif($order->glassPosition == 'mirrors-right')
+                              مرايا يمين
+                          @else
+                              غير محدد
+                          @endif
+                      </td>
                     <td>
                       @if( $order->serviceType == 'process')
-                        معالجة زجاج 
+                        معالجة زجاج
                       @elseif( $order->serviceType == 'change' )
                         تغيير زجاج
                       @elseif( $order->serviceType == 'upRepair' )
                         اصلاح فتحة سقف
                       @elseif( $order->serviceType == 'machine' )
                         اصلاح ماكينة زجاج
-                      @endif   
+                      @endif
                     </td>
                     <td>
                       @if( $order->paymentMethod == 'online')
-                        اونلاين (عبر بوابة الدفع الالكتروني) 
+                        اونلاين (عبر بوابة الدفع الالكتروني)
                       @elseif( $order->paymentMethod == 'offline' )
                         عند الاستلام
-                      @endif 
+                      @endif
                     </td>
                     <td>{{ $order->date }} <br> {{$order->time.':00' }}</td>
                     <td style="font-weight: bold;
@@ -281,7 +302,7 @@
                       @elseif( $order->status == 'canceled' ) تم الالغاء
                       @elseif( $order->status == 'completed' ) مكتمل
                       @elseif( $order->status == 'replied' ) تم الرد
-                      @endif   
+                      @endif
                     </td>
                     <td>
                       @if ($order->isPaid == 1)
@@ -297,7 +318,11 @@
 
                     <td>{{ $order->user->phoneNumber }}</td>
                     <td>
-                      <a style="color: #84cce4;" href="{{ $order->locationLink }}"> {{ $order->user->name . '/ location'}} </a>
+                        @if($order->servicePlace == 'workshop')
+                            في مقر الصيانة الخاص بالشركة
+                        @else
+                            <a style="color: #84cce4;" href="{{ $order->locationLink }}"> {{ $order->user->name . '/ location'}} </a>
+                        @endif
                     </td>
 
                     <td>
@@ -375,19 +400,27 @@
                   </tr>
 
 
-                                  <!-- The Modal -->
-                                  <div class="modal fade" id="myModal{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog" role="document">
+                  <!-- The Modal -->
+                  <div class="modal fade" id="myModal{{$order->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
                       <div class="modal-content" style="background: none; border:none">
                         <div class="modal-header" style="border: none;">
                           <!-- <h5 class="modal-title" id="exampleModalLabel"> معاينة الصورة</h5> -->
-                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                          </button>
-                        </div>
-                        <div class="modal-body">
-                          <img src="{{asset($order->brokenGlassImage)}}" alt="Your Image" class="img-fluid">
-                        </div>
+                              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                              </button>
+                            </div>
+                              <div class="col-12 my-3">
+                                  <img src="{{ asset($order->car_front_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
+                              </div>
+
+                              <div class="col-12 my-3">
+                                  <img src="{{ asset($order->car_back_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
+                              </div>
+
+                              <div class="col-12 my-3">
+                                  <img src="{{ asset($order->camera_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
+                              </div>
                       </div>
                     </div>
                   </div>

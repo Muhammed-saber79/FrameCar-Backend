@@ -14,7 +14,7 @@
                 <div class="col-lg-6 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1"
                      data-aos="fade-up" data-aos-delay="200">
                     <h1><span>Frame Car</span> - إصلاح زجاج السيارات</h1>
-                    <h2>شركة <span>Frame Car</span> - الحل النهائي لإصلاح زجاج سيارتك بكفاءة ووضوح.</h2>
+                    <h2>شركة <span>Frame Car</span> - الحل النهائي لإصلاح زجاج سيارتك بكفاءة.</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
                         <a href="{{asset('site/')}}#about" class="btn-get-started scrollto">ابدأ الان</a>
                     </div>
@@ -89,10 +89,9 @@
                     </div>
                     <div class="col-lg-5 pt-4 pt-lg-0" data-aos="zoom-in" data-aos-delay="200">
                         <p>
-                            نحن نلتزم بتقديم أفضل الخدمات لعملائنا. نعمل بجد لضمان استعادة شفافية زجاج سيارتك بأعلى مستوى من الجودة.
-                            باستخدام تكنولوجيا متقدمة وخبراء محترفين، نضمن لك سيارة آمنة وجاهزة للطريق.
+                             نحن شركة سعودية ذات خبرة في مجال زجاج السيارات من متخصصين في صيانة وتغيير الزجاج والان اطلقنا منصتنا لستهيل الوصول لخدماتنا
                         </p>
-                        <a href="{{asset('site/')}}#" class="btn-learn-more">تعرف أكثر</a>
+                        <a href="#services" class="btn-learn-more">تعرف أكثر</a>
                     </div>
                 </div>
 
@@ -121,7 +120,7 @@
                     <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="zoom-in"
                          data-aos-delay="200">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-car"></i></div>
+                            <div class="icon"><i class="bx bx-refresh"></i></div>
                             <h4><a href="{{asset('site/')}}">تغيير زجاج السيارة</a></h4>
                             <p>نقوم بتوفير خدمة تغيير زجاج السيارة بسرعة ودقة، مع توفير أحدث أنواع الزجاج لتلبية احتياجات سيارتك.</p>
                         </div>
@@ -136,14 +135,14 @@
                         </div>
                     </div> -->
 
-                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in"
-                         data-aos-delay="400">
+                    <div class="col-xl-4 col-md-6 d-flex align-items-stretch mt-4 mt-xl-0" data-aos="zoom-in" data-aos-delay="400">
                         <div class="icon-box">
-                            <div class="icon"><i class="bx bx-headphone"></i></div>
-                            <h4><a href="{{asset('site/')}}">خدمة العملاء الممتازة</a></h4>
-                            <p>نهتم بخدمة العملاء وضمان رضاهم بكل تفاصيل خدماتنا، ونقدم دعمًا ممتازًا لجميع استفساراتك واحتياجاتك.</p>
+                            <div class="icon"><i class="bx bxs-truck"></i></div>
+                            <h4><a href="{{asset('site/')}}">خدمة الصيانة والتغيير في المنزل</a></h4>
+                            <p>نحرص على تقديم خدمة عملاء ممتازة وضمان رضاهم من خلال تقديم خدمات الصيانة والتغيير مباشرة في منازلكم. نقدم دعمًا استثنائيًا لجميع استفساراتكم واحتياجاتكم.</p>
                         </div>
                     </div>
+
                 </div>
 
             </div>
@@ -160,9 +159,7 @@
                         <div class="content">
                             <h3>لماذا تختارنا؟</h3>
                             <p>
-                                نحن خيارك الأفضل لأننا نقدم خدمات إصلاح وتغيير زجاج السيارات بأعلى مستوى من الجودة والدقة. فريقنا ذو
-                                الخبرة الواسعة يعمل بجد لضمان سلامتك وسرعة عودتك إلى الطريق. اخترنا من قبل العديد من العملاء بسبب
-                                اعتمادنا على التقنيات المتقدمة والزجاج المقاوم للتكسير لضمان راحتك وأمانك.
+                                بكل بساطة اختيارك لفريم كار يسهل عليك عملية تغيير وصيانة زجاج السيارة من جوالك ترفع الطلب ويجيك فريقنا لخدمتك بأعلى المعايير المعتمدة دوليا
                             </p>
                         </div>
 
@@ -200,7 +197,7 @@
                                     <div id="accordion-list-3" class="collapse" data-bs-parent=".accordion-list">
                                         <p>
                                             إن الاستفادة من خدماتنا سهلة وبسيطة. كل ما عليك فعله هو التسجيل على المنصة وتقوم بارسال طلب وسنقوم بتقديم الخدمة التي
-                                            تحتاجها. نحن هنا لإصلاح زجاج سيارتك بسرعة وجودة عالية، ونوفر لك زجاجًا مقاومًا للتكسير إذا كنت
+                                            تحتاجها. نحن هنا لإصلاح زجاج سيارتك بسرعة وجودة عالية، ونوفر لك زجاجًا عالى الجودة إذا كنت
                                             بحاجة إلى تغييره.
                                         </p>
                                     </div>
@@ -274,6 +271,72 @@
             </section> -->
         <!-- End Skills Section -->
 
+        <section id="order-steps" class="team">
+            <div class="container" data-aos="fade-up">
+
+                <div class="section-title">
+                    <h2>مراحل الطلب</h2>
+                    <p>اتبع الخطوات لاستكمال طلبك بنجاح.</p>
+                </div>
+
+                <div class="row">
+
+                    <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="100">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><i class="bx bx-log-in"></i></div>
+                            <div class="member-info">
+                                <h4>تسجيل الدخول</h4>
+                                <p>قم بتسجيل الدخول إلى حسابك للبدء في طلب الخدمة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mt-lg-0" data-aos="zoom-in" data-aos-delay="200">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><i class="bx bx-upload"></i></div>
+                            <div class="member-info">
+                                <h4>رفع الطلب</h4>
+                                <p>قم برفع تفاصيل طلبك بدقة لضمان تقديم الخدمة المناسبة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="300">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><i class="bx bx-hourglass"></i></div>
+                            <div class="member-info">
+                                <h4>انتظار الموافقة</h4>
+                                <p>قم بانتظار الموافقة على طلبك من قبل فريق الخدمة.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4" data-aos="zoom-in" data-aos-delay="400">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><i class="bx bx-send"></i></div>
+                            <div class="member-info">
+                                <h4>إرسال الموقع</h4>
+                                <p>قم بإرسال الموقع الخاص بك لتسهيل عملية التوصيل.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-lg-6 mt-4 mx-auto" data-aos="zoom-in" data-aos-delay="500">
+                        <div class="member d-flex align-items-start">
+                            <div class="pic"><i class="bx bx-check"></i></div>
+                            <div class="member-info">
+                                <h4>وصول فريقنا لإتمام الطلب</h4>
+                                <p>انتظر وصول فريقنا المختص لإتمام طلبك بكفاءة وجودة عالية.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </section>
+
+
         <!-- ======= Cta Section ======= -->
         <section id="cta" class="cta">
             <div class="container" data-aos="zoom-in">
@@ -330,7 +393,7 @@
                             <div class="pic"><i class="bx bx-refresh"></i></div>
                             <div class="member-info">
                                 <h4>استبدال الزجاج</h4>
-                                <p>إذا كان الزجاج تالفًا بشكل لا يمكن إصلاحه، نقوم بتوفير خدمة استبدال الزجاج بزجاج جديد ومقاوم للتكسير.
+                                <p>إذا كان الزجاج تالفًا بشكل لا يمكن إصلاحه، نقوم بتوفير خدمة استبدال الزجاج بزجاج جديد عالي الجودة.
                                 </p>
                             </div>
                         </div>
@@ -521,7 +584,7 @@
         </div>
         </div> -->
 
-        
+
     <!-- </footer> -->
     <!-- End Footer -->
 

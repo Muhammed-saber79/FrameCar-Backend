@@ -16,7 +16,7 @@
                     <div class="row">
                         <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-1">
                             <input type="hidden" name="name" value="{{ Auth::user()->id }}">
-                        
+
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">نوع السيارة</label>
                                 <input
@@ -33,7 +33,7 @@
                                     <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
-                            
+
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">موديل السيارة</label>
                                 <input
@@ -69,7 +69,7 @@
                             </div>
 
                         </div>
-                        
+
                         <div class="col-xl-12 mx-auto">
                             <div class="mb-3 col-xl-12 mx-1">
                                 <label class="form-label">نوع الخدمة</label>
@@ -92,23 +92,40 @@
                                 <label class="form-label"> نوع الزجاج</label>
                                 <select id="serviceType" name="glassType" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد نوع الزجاج</option>
-                                    <option value="XYG" {{ old('serviceType') == 'XYG' ? 'selected' : '' }}>XYG </option>
-                                    <option value="VELTRIO" {{ old('serviceType') == 'VELTRIO' ? 'selected' : '' }}>VELTRIO </option>
+                                    <option value="XYG" {{ old('serviceType') == 'XYG' ? 'selected' : '' }}>مستورد صيني</option>
+                                    <option value="VELTRIO" {{ old('serviceType') == 'VELTRIO' ? 'selected' : '' }}>أخرى</option>
                                 </select>
                                 @error('glassType')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
-                            </div>  
+                            </div>
 
                             <div id="glassPosition" class="mb-3 col-xl-6">
                                 <label class="form-label">مكان الزجاج</label>
                                 <select id="glassPosition" name="glassPosition" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد مكان الزجاج المكسور</option>
-                                    <option value="front" {{ old('glassPosition') == 'front' ? 'selected' : '' }}>أمامي</option>
-                                    <option value="back" {{ old('glassPosition') == 'back' ? 'selected' : '' }}>خلفي</option>
+                                    <option value="front" {{ old('glassPosition') == 'front' ? 'selected' : '' }}>زجاج أمامي</option>
+                                    <option value="back" {{ old('glassPosition') == 'back' ? 'selected' : '' }}>زجاج خلفي</option>
+
+                                    <option value="front-left-door" {{ old('glassPosition') == 'front-left-door' ? 'selected' : '' }}>باب أمامي يسار</option>
+                                    <option value="front-right-door" {{ old('glassPosition') == 'front-right-door' ? 'selected' : '' }}>باب أمامي يمين</option>
+
+                                    <option value="back-left-door" {{ old('glassPosition') == 'back-left-door' ? 'selected' : '' }}>باب خلفي يسار</option>
+                                    <option value="back-right-door" {{ old('glassPosition') == 'back-right-door' ? 'selected' : '' }}>باب خلفي يمين</option>
+
                                     <option value="left-side" {{ old('glassPosition') == 'left-side' ? 'selected' : '' }}>جانب أيسر</option>
                                     <option value="right-side" {{ old('glassPosition') == 'right-side' ? 'selected' : '' }}>جانب أيمن</option>
-                                    <option value="mirrors" {{ old('glassPosition') == 'mirrors' ? 'selected' : '' }}>مرايا</option>
+
+                                    <option value="front-left-air" {{ old('glassPosition') == 'front-left-air' ? 'selected' : '' }}>هواية أمامي يسار</option>
+                                    <option value="front-right-air" {{ old('glassPosition') == 'front-right-air' ? 'selected' : '' }}>هواية أمامي يمين</option>
+
+                                    <option value="back-left-air" {{ old('glassPosition') == 'back-left-air' ? 'selected' : '' }}>هواية خلفي يسار</option>
+                                    <option value="back-right-air" {{ old('glassPosition') == 'back-right-air' ? 'selected' : '' }}>هواية خلفي يمين</option>
+
+                                    <option value="upper" {{ old('glassPosition') == 'upper' ? 'selected' : '' }}>زجاج فتحة السقف</option>
+
+                                    <option value="mirrors-left" {{ old('glassPosition') == 'mirrors-left' ? 'selected' : '' }}>مرايا يسار</option>
+                                    <option value="mirrors-right" {{ old('glassPosition') == 'mirrors-right' ? 'selected' : '' }}>مرايا يمين</option>
                                 </select>
                                 @error('glassPosition')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
@@ -127,7 +144,7 @@
                                 @error('paymentMethod')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
-                            </div>    
+                            </div>
 
                             <div class="mb-3 col-xl-6">
                                 <label class="form-label">مكان الصيانة</label>
@@ -151,10 +168,11 @@
                                     id="date"
                                     placeholder="ادخل نوع السيارة"
                                     class="form-control col-xl-5"
-
                                     value="{{ old('date') }}"
                                     @error('date') style="border-color: red" @enderror
+                                    min="{{ now()->format('Y-m-d') }}"
                                 >
+
                                 @error('date')
                                     <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
@@ -172,27 +190,63 @@
                             </div>
                         </div>
 
-                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto">
-                            <div class="mb-3 col-12">
-                                <label for="" class="form-label">صورة الزجاج المكسور</label>
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-1">
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة السيارة بالكامل من الأمام</label>
                                 <input
                                     type="file"
-                                    name="broken_glass_image"
-                                    id="broken_glass_image"
-                                    placeholder="قم برفع صورة الزجاج المكسور"
-                                    class="form-control"
+                                    name="car_front_image_1"
+                                    id="car_front_image_1"
+                                    placeholder="قم برفع صورة السيارة بالكامل من الأمام"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
 
-                                    value="{{ old('broken_glass_image') }}"
-                                    @error('broken_glass_image') style="border-color: red" @enderror
+                                    @error('car_front_image_1') style="border-color: red" @enderror
                                 >
-                                @error('broken_glass_image')
+                                @error('car_front_image_1')
                                     <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة السيارة واضحة من الخلف</label>
+                                <input
+                                    type="file"
+                                    name="car_back_image_1"
+                                    id="car_back_image_1"
+                                    placeholder="قم برفع صورة السيارة واضحة من الخلف"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
+
+                                    @error('car_back_image_1') style="border-color: red" @enderror
+                                >
+                                @error('car_back_image_1')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة حساس أو كاميرا ان وجد</label>
+                                <input
+                                    type="file"
+                                    name="camera_image_1"
+                                    id="camera_image_1"
+                                    placeholder="قم برفع صورة حساس أو كاميرا ان وجد"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
+
+                                    @error('camera_image_1') style="border-color: red" @enderror
+                                >
+                                @error('camera_image_1')
+                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+                            </div>
+
                         </div>
 
                         <div class="col-xl-12" id="location">
-                            <label style="display: block; margin-top: 15px;">الموقع:<br>
+                            <label style="display: block; margin-top: 15px;">الموقع:<br></label>
                                 <!-- <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label> -->
                                 @error('latitude')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
@@ -284,7 +338,7 @@
     // }
 
     async function initMap(lat, long) {
-        let defaultLatitude = 23.8859,
+        let defaultLatitude = 23.8859;
             defaultLongitude = 45.0792;
         let localLat = lat || defaultLatitude;
         let localLong = long || defaultLongitude;
@@ -318,8 +372,8 @@
         draggableMarker.addListener("dragend", (event) => {
             const position = draggableMarker.position;
 
-            document.getElementById('latitude').value = position.h;
-            document.getElementById('longitude').value = position.i;
+            document.getElementById('latitude').value = position.lat;
+            document.getElementById('longitude').value = position.lng;
         });
 
     }

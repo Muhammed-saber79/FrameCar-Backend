@@ -22,8 +22,10 @@ return new class extends Migration
             $table->integer('time');
             $table->string('glassType')->nullable();
             $table->string('paymentMethod');
-            $table->string('brokenGlassImage')->nullable();
-            $table->enum('glassPosition', ['front', 'back', 'left-side', 'right-side', 'mirrors'])->nullable();
+            $table->text('car_front_image')->nullable();
+            $table->text('car_back_image')->nullable();
+            $table->text('camera_image')->nullable();
+            $table->enum('glassPosition', ['front', 'back', 'front-left-door', 'front-right-door', 'back-left-door', 'back-right-door', 'left-side', 'right-side', 'front-left-air', 'front-right-air', 'back-left-air', 'back-right-air', 'upper', 'mirrors-left', 'mirrors-right'])->nullable();
             $table->enum('serviceType', ['process', 'change', 'upRepair', 'machine']);
             $table->string('longitude')->nullable();
             $table->string('latitude')->nullable();
@@ -38,7 +40,7 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users', 'id')->cascadeOnDelete()->default(1);
         });
     }
-    
+
     /**
      * Reverse the migrations.
      */

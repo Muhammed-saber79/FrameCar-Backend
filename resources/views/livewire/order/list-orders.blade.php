@@ -25,19 +25,84 @@
                         <td>{{ $order->carType }}</td>
                         <td>{{ $order->carModel }}</td>
                         <td>{{ $order->carMadeYear }}</td>
-                        <td>{{ $order->glassType }}</td>
-                        <td>{{ $order->glassPosition }}</td>
-                        <td>{{ $order->serviceType }}</td>
-                        
+                        <td>
+                            @if($order->glassType == 'XYG')
+                                صيني مستورد
+                            @else
+                                أخرى
+                            @endif
+                        </td>
+                        <td>
+                            @if($order->glassPosition == 'front')
+                                زجاج أمامي
+                            @elseif($order->glassPosition == 'back')
+                                زجاج خلفي
+                            @elseif($order->glassPosition == 'front-left-door')
+                                باب أمامي يسار
+                            @elseif($order->glassPosition == 'front-right-door')
+                                باب أمامي يمين
+                            @elseif($order->glassPosition == 'back-left-door')
+                                باب خلفي يسار
+                            @elseif($order->glassPosition == 'back-right-door')
+                                باب خلفي يمين
+                            @elseif($order->glassPosition == 'left-side')
+                                جانب أيسر
+                            @elseif($order->glassPosition == 'right-side')
+                                جانب أيمن
+                            @elseif($order->glassPosition == 'front-left-air')
+                                هواية أمامي يسار
+                            @elseif($order->glassPosition == 'front-right-air')
+                                هواية أمامي يمين
+                            @elseif($order->glassPosition == 'back-left-air')
+                                هواية خلفي يسار
+                            @elseif($order->glassPosition == 'back-right-air')
+                                هواية خلفي يمين
+                            @elseif($order->glassPosition == 'upper')
+                                زجاج فتحة السقف
+                            @elseif($order->glassPosition == 'mirrors-left')
+                                مرايا يسار
+                            @elseif($order->glassPosition == 'mirrors-right')
+                                مرايا يمين
+                            @else
+                                غير محدد
+                            @endif
+                        </td>
+                        <td>
+                            @if( $order->serviceType == 'process')
+                                معالجة زجاج
+                            @elseif( $order->serviceType == 'change' )
+                                تغيير زجاج
+                            @elseif( $order->serviceType == 'upRepair' )
+                                اصلاح فتحة سقف
+                            @elseif( $order->serviceType == 'machine' )
+                                اصلاح ماكينة زجاج
+                            @else
+                                غير محدد
+                            @endif
+                        </td>
+
                         <td>{{ $order->created_at->diffForHumans() }}</td>
                         <td style="font-weight: bold;
-                            @if($order->status == 'pending') color: rgb(13, 164, 184);
-                            @elseif( $order->status == 'approved') color: rgb(56, 184, 13);
-                            @elseif( $order->status == 'rejected' ) color: rgb(184, 13, 13); text-decoration: line-through;
-                            @elseif( $order->status == 'canceled' ) color: rgb(220, 172, 14); text-decoration: line-through;
-                            @elseif( $order->status == 'completed' ) color: rgb(91, 94, 91);
-                            @endif" >
-                            {{ $order->status }}
+                              @if($order->status == 'pending') color: rgb(13, 164, 184);
+                              @elseif( $order->status == 'approved') color: rgb(56, 184, 13);
+                              @elseif( $order->status == 'replied') color: rgb(56, 184, 13);
+                              @elseif( $order->status == 'rejected' ) color: rgb(184, 13, 13); text-decoration: line-through;
+                              @elseif( $order->status == 'canceled' ) color: rgb(220, 172, 14); text-decoration: line-through;
+                              @elseif( $order->status == 'completed' ) rgb(56, 184, 13);
+                              @endif">
+                            @if($order->status == 'pending')
+                                قيد الانتظار
+                            @elseif( $order->status == 'approved')
+                                مدفوع
+                            @elseif( $order->status == 'rejected' )
+                                مرفوض
+                            @elseif( $order->status == 'canceled' )
+                                تم الالغاء
+                            @elseif( $order->status == 'completed' )
+                                مكتمل
+                            @elseif( $order->status == 'replied' )
+                                تم الرد
+                            @endif
                         </td>
                         <td>{{ auth('web')->user()->phoneNumber }}</td>
                         <td>

@@ -17,7 +17,9 @@ class Order extends Model
         'glassType',
         'glassPosition',
         'serviceType',
-        'brokenGlassImage',
+        'car_front_image',
+        'car_back_image',
+        'camera_image',
         'status',
         'user_id',
         'longitude',
@@ -58,7 +60,7 @@ class Order extends Model
 
     // protected function locationLink(): Attribute
     //     {
-        
+
     //         return new Attribute(
     //              get: fn ($value) =>  $value,
     //             set: fn ($value) => 'https://maps.google.com/?q=' . $this->latitude . ',' . $this->longitude

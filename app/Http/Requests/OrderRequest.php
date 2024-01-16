@@ -28,24 +28,30 @@ class OrderRequest extends FormRequest
             'carModel' => ['required', 'string'],
             'carMadeYear' => ['required', 'numeric'],
             'glassType' => ['required_if:serviceType,process,change', 'string'],
-            'glassPosition' => ['required_if:serviceType,process,change', 'string', 'in:front,back,left-side,right-side,mirrors'],
+            'glassPosition' =>
+                [
+                    'required_if:serviceType,process,change',
+                    'string',
+                    'in:front,back,front-left-door,front-right-door,back-left-door,back-right-door,front-left-air,front-right-air,back-left-air,back-right-air,upper,mirrors-left,mirrors-right,left-side,right-side,'
+                ],
             'serviceType' => ['required', 'string', 'in:process,change,upRepair,machine'],
             'servicePlace' => ['required', 'string', 'in:clientLocation,workshop'],
             'latitude' => ['required_if:servicePlace,clientLocation'],
             'longitude' => ['required_if:servicePlace,clientLocation' ],
             'date' => ['required', 'date'],
             'time' => ['required', 'numeric'],
-            'paymentMethod'=>['required']
+            'paymentMethod' => ['required'],
         ];
 
-        // if ($this->isMethod('put')) {
-        //     $rules['broken_glass_image'] = [
-        //         'sometimes',
-        //         'mimes:png,jpg,jpeg',
-        //     ];
-        // } else {
-        //     $rules['broken_glass_image'] = ['required', 'mimes:png,jpg,jpeg'];
-        // }
+         if ($this->isMethod('put')) {
+             $rules['car_front_image_1'] = ['sometimes', 'mimes:png,jpg,jpeg'];
+             $rules['car_back_image_1'] = ['sometimes', 'mimes:png,jpg,jpeg'];
+             $rules['camera_image_1'] = ['nullable', 'mimes:png,jpg,jpeg'];
+         } else {
+             $rules['car_front_image_1'] = ['required', 'mimes:png,jpg,jpeg'];
+             $rules['car_back_image_1'] = ['required', 'mimes:png,jpg,jpeg'];
+             $rules['camera_image_1'] = ['nullable', 'mimes:png,jpg,jpeg'];
+         }
 
         return $rules;
     }
@@ -59,24 +65,30 @@ class OrderRequest extends FormRequest
             // 'phoneNumber.size' => 'يجب أن يتكون رقم الجوال من 11 خانة.',
             'carType.required' => 'حقل نوع السيارة مطلوب.',
             'carType.string' => 'حقل نوع السيارة يجب أن يكون نصيًا صحيحًا.',
-            
+
             'carModel.required' => 'يجب كتابة موديل السيارة.',
-            
+
             'carMadeYear.required' => 'يجب كتابة سنة تصنيع السيارة.',
             'carMadeYear.numeric' => 'يجب ان تكون السنة صحيحة.',
-            
+
             'glassType.required' => 'حقل نوع الزجاج مطلوب.',
             'glassType.string' => 'حقل نوع الزجاج يجب أن يكون نصيًا صحيحًا.',
 
             'glassPosition.required' => 'حقل مكان الزجاج مطلوب.',
             'glassPosition.string' => 'حقل مكان الزجاج يجب أن يكون نصيًا صحيحًا.',
             'glassPosition.in' => 'يجب اختيار مكان الزجاج من بين الخيارات المتاحة.',
-            
+
             'serviceType.required' => 'مطلوب تحديد نوع الخدمة',
             'serviceType.in' => 'متلعبش في الانسبكت ي عرص',
-            // 'broken_glass_image.required' => 'رجاءً قم برفع صورة الزجاج المكسور.',
-            // 'broken_glass_image.mimes' => 'صيغة الصورة غير مدعومة. يجب أن تكون الصورة من نوع PNG أو JPG أو JPEG.',
-            
+
+            'car_front_image_1.required' => 'رجاءً قم برفع صورة السيارة من الامام.',
+            'car_front_image_1.mimes' => 'صيغة الصورة غير مدعومة. يجب أن تكون الصورة من نوع PNG أو JPG أو JPEG.',
+
+            'car_back_image_1.required' => 'رجاءً قم برفع صورة السيارة من الخلف.',
+            'car_back_image_1.mimes' => 'صيغة الصورة غير مدعومة. يجب أن تكون الصورة من نوع PNG أو JPG أو JPEG.',
+
+            'camera_image_1.mimes' => 'صيغة الصورة غير مدعومة. يجب أن تكون الصورة من نوع PNG أو JPG أو JPEG.',
+
             'latitude.required' => 'موقعك الجغرافي مطلوب.',
             'latitude.numeric' => 'موقعك الجغرافي غير صحيح.',
             'longitude.required' => 'موقعك الجغرافي مطلوب.',

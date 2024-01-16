@@ -74,14 +74,17 @@
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container"  dir="rtl">
         <div class="header">
-            <h1>إدارة الخدمات في <p style="font-size: xx-large; display: inline-block">FrameCar</p></h1>
+            <h1>
+                إدارة الخدمات في<p style="font-size: xx-large; display: inline-block">FrameCar</p>
+            </h1>
         </div>
         <div class="content">
             <p>مرحباً!</p>
-            <p>  يسعدنا استخدامك لخدمات شركة <span>FrameCar</span>
-                لقد تلقينا طلبك. وفيما يلي التفاصيل:</p>
+            <p>يسعدنا استخدامك لخدمات شركة<span>FrameCar</span>
+                لقد تلقينا طلبك. وفيما يلي التفاصيل:
+            </p>
 
             <ul>
                 <li><strong>التكلفة:</strong> {{ $data['cost'] }} ريال سعودي</li>
@@ -96,9 +99,16 @@
 
             @if($data['paymentMethod'] == 'online')
             <p>
-                <a href="https://localhost:8000/pay/{{ $data['order_id'] }}" class="button">المتابعة إلى عملية الدفع</a>
+                <a href="{{ config('app.url') }}/pay/{{ $data['order_id'] }}" class="button">المتابعة إلى عملية الدفع</a>
             </p>
             @endif
+
+            @if($data['servicePlace'] == 'workshop')
+                <p>
+                    <a href="https://www.google.com/maps?q=24.7117463,46.727938" class="button">موقع مركز الصيانة الخاص بنا</a>
+                </p>
+            @endif
+
             <p>شكرًا لاستخدام خدماتنا!</p>
             <p>أطيب التحيات،<br>FrameCar</p>
         </div>

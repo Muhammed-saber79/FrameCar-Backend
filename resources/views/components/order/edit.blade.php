@@ -5,7 +5,7 @@
 
             <div class="modal-header">
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                <h5 class="modal-title text-center" id="staticBackdropLabel">إرسال طلب</h5>
+                <h5 class="modal-title text-center" id="staticBackdropLabel">تحديث تفاصيل طلب</h5>
             </div>
 
             <div class="modal-body">
@@ -18,7 +18,7 @@
 
                         <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-1">
                             <input type="hidden" name="name" value="{{ Auth::user()->id }}">
-                        
+
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">نوع السيارة</label>
                                 <input
@@ -35,7 +35,7 @@
                                     <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
-                            
+
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">موديل السيارة</label>
                                 <input
@@ -71,7 +71,7 @@
                             </div>
 
                         </div>
-                        
+
                         <div class="col-xl-12 mx-auto">
                             <div class="mb-3 col-xl-12 mx-1">
                                 <label class="form-label">نوع الخدمة</label>
@@ -81,7 +81,7 @@
                                     <option value="change" {{ $order->serviceType == 'change' ? 'selected' : '' }}>تغيير زجاج</option>
                                     <option value="upRepair" {{ $order->serviceType == 'upRepair' ? 'selected' : '' }}>اصلاح فتحة سقف</option>
                                     <option value="machine" {{ $order->serviceType == 'machine' ? 'selected' : '' }}>اصلاح ماكينة زجاج</option>
-                                </select>                                
+                                </select>
 
                                 @error('serviceType')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
@@ -94,23 +94,40 @@
                                 <label class="form-label"> نوع الزجاج</label>
                                 <select id="serviceType" name="glassType" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد نوع الزجاج</option>
-                                    <option value="XYG" {{ $order->glassType == 'XYG' ? 'selected' : '' }}>XYG </option>
-                                    <option value="VELTRIO" {{ $order->glassType == 'VELTRIO' ? 'selected' : '' }}>VELTRIO </option>
+                                    <option value="XYG" {{ $order->glassType == 'XYG' ? 'selected' : '' }}>مستورد صيني </option>
+                                    <option value="VELTRIO" {{ $order->glassType == 'VELTRIO' ? 'selected' : '' }}>أخرى </option>
                                 </select>
                                 @error('glassType')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
-                            </div>  
+                            </div>
 
                             <div id="glassPosition" class="mb-3 col-xl-6">
                                 <label class="form-label">مكان الزجاج</label>
                                 <select id="glassPosition" name="glassPosition" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد مكان الزجاج المكسور</option>
-                                    <option value="front" {{ $order->glassPosition == 'front' ? 'selected' : '' }}>أمامي</option>
-                                    <option value="back" {{ $order->glassPosition == 'back' ? 'selected' : '' }}>خلفي</option>
-                                    <option value="left-side" {{ $order->glassPosition == 'left-side' ? 'selected' : '' }}>جانب أيسر</option>
-                                    <option value="right-side" {{ $order->glassPosition == 'right-side' ? 'selected' : '' }}>جانب أيمن</option>
-                                    <option value="mirrors" {{ $order->glassPosition == 'mirrors' ? 'selected' : '' }}>مرايا</option>
+                                    <option value="front" {{ old('glassPosition', $order->glassPosition) == 'front' ? 'selected' : '' }}>زجاج أمامي</option>
+                                    <option value="back" {{ old('glassPosition', $order->glassPosition) == 'back' ? 'selected' : '' }}>زجاج خلفي</option>
+
+                                    <option value="front-left-door" {{ old('glassPosition', $order->glassPosition) == 'front-left-door' ? 'selected' : '' }}>باب أمامي يسار</option>
+                                    <option value="front-right-door" {{ old('glassPosition', $order->glassPosition) == 'front-right-door' ? 'selected' : '' }}>باب أمامي يمين</option>
+
+                                    <option value="back-left-door" {{ old('glassPosition', $order->glassPosition) == 'back-left-door' ? 'selected' : '' }}>باب خلفي يسار</option>
+                                    <option value="back-right-door" {{ old('glassPosition', $order->glassPosition) == 'back-right-door' ? 'selected' : '' }}>باب خلفي يمين</option>
+
+                                    <option value="left-side" {{ old('glassPosition', $order->glassPosition) == 'left-side' ? 'selected' : '' }}>جانب أيسر</option>
+                                    <option value="right-side" {{ old('glassPosition', $order->glassPosition) == 'right-side' ? 'selected' : '' }}>جانب أيمن</option>
+
+                                    <option value="front-left-air" {{ old('glassPosition', $order->glassPosition) == 'front-left-air' ? 'selected' : '' }}>هواية أمامي يسار</option>
+                                    <option value="front-right-air" {{ old('glassPosition', $order->glassPosition) == 'front-right-air' ? 'selected' : '' }}>هواية أمامي يمين</option>
+
+                                    <option value="back-left-air" {{ old('glassPosition', $order->glassPosition) == 'back-left-air' ? 'selected' : '' }}>هواية خلفي يسار</option>
+                                    <option value="back-right-air" {{ old('glassPosition', $order->glassPosition) == 'back-right-air' ? 'selected' : '' }}>هواية خلفي يمين</option>
+
+                                    <option value="upper" {{ old('glassPosition', $order->glassPosition) == 'upper' ? 'selected' : '' }}>زجاج فتحة السقف</option>
+
+                                    <option value="mirrors-left" {{ old('glassPosition', $order->glassPosition) == 'mirrors-left' ? 'selected' : '' }}>مرايا يسار</option>
+                                    <option value="mirrors-right" {{ old('glassPosition', $order->glassPosition) == 'mirrors-right' ? 'selected' : '' }}>مرايا يمين</option>
                                 </select>
                                 @error('glassPosition')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
@@ -129,7 +146,7 @@
                                 @error('paymentMethod')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
-                            </div>    
+                            </div>
 
                             <div class="mb-3 col-xl-6">
                                 <label class="form-label">مكان الصيانة</label>
@@ -153,6 +170,7 @@
                                     id="date"
                                     placeholder="ادخل نوع السيارة"
                                     class="form-control col-xl-5"
+                                    min="{{ now()->format('Y-m-d') }}"
 
                                     value="{{ old('date', $order->date) }}"
                                     @error('date') style="border-color: red" @enderror
@@ -166,7 +184,7 @@
                                 <label class="form-label"> وقت الخدمة </label>
                                 <select id="timeSelect" name="time" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد الوقت المناسب لاجراء الخدمة </option>
-                                    @for($i = 8 ; $i < 17; $i++) 
+                                    @for($i = 8 ; $i < 17; $i++)
                                         <option value="{{$i}}" @if(in_array($i,$hours)) disabled @endif @if($i == $order->time) selected @endif>{{$i.':00'}}</option>
                                     @endfor
                                 </select>
@@ -176,6 +194,7 @@
                             </div>
                         </div>
 
+                        {{--
                         <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto">
                             <div class="mb-3 col-12">
                                 <label for="" class="form-label">صورة الزجاج المكسور</label>
@@ -198,6 +217,76 @@
                                 </div>
                             </div>
                         </div>
+--}}
+                        <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-1">
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة السيارة بالكامل من الأمام</label>
+                                <input
+                                    type="file"
+                                    name="car_front_image_1"
+                                    id="car_front_image_1"
+                                    placeholder="قم برفع صورة السيارة بالكامل من الأمام"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
+
+                                    value="{{ old('car_front_image_1, $order->car_front_image') }}"
+                                    @error('car_front_image_1') style="border-color: red" @enderror
+                                >
+                                @error('car_front_image_1')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+
+                                <div class="my-3 text-center">
+                                    <img src="{{asset($order->car_front_image)}}" class="img-fluid rounded w-50" alt="image desc"/>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة السيارة واضحة من الخلف</label>
+                                <input
+                                    type="file"
+                                    name="car_back_image_1"
+                                    id="car_back_image_1"
+                                    placeholder="قم برفع صورة السيارة واضحة من الخلف"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
+
+                                    value="{{ old('car_back_image_1, $order->car_back_image') }}"
+                                    @error('car_back_image_1') style="border-color: red" @enderror
+                                >
+                                @error('car_back_image_1')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+
+                                <div class="my-3 text-center">
+                                    <img src="{{asset($order->car_back_image)}}" class="img-fluid rounded w-50" alt="image desc"/>
+                                </div>
+                            </div>
+
+                            <div class="mb-3 col-md-12 col-xl-4">
+                                <label for="" class="form-label">صورة حساس أو كاميرا ان وجد</label>
+                                <input
+                                    type="file"
+                                    name="camera_image_1"
+                                    id="camera_image_1"
+                                    placeholder="قم برفع صورة حساس أو كاميرا ان وجد"
+                                    class="form-control  col-xl-5"
+                                    accept="image/*"
+
+                                    value="{{ old('camera_image_1, $order->camera_image') }}"
+                                    @error('camera_image_1') style="border-color: red" @enderror
+                                >
+                                @error('camera_image_1')
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                @enderror
+
+                                <div class="my-3 text-center">
+                                    <img src="{{asset($order->camera_image)}}" class="img-fluid rounded w-50" alt="image desc"/>
+                                </div>
+                            </div>
+
+                        </div>
 
                         <div class="col-xl-12" id="location">
                             <label style="display: block; margin-top: 15px;">الموقع:<br>
@@ -219,9 +308,9 @@
                                             if (!lat.value) {
                                                 btn.innerText = 'اضغط هنا لتحديد موقعك الحالي';
                                             } else {
-                                                btn.innerText = 'تم تحديد موقعك بالفعل';
-                                                btn.style.pointerEvents = 'none'; // Disable click events
-                                                btn.style.opacity = '0.5'; // Optionally reduce opacity for a disabled look
+                                                btn.innerText = 'تم تحديد موقعك بالفعل, يمكنك الضغط لتحديثه';
+                                                // btn.style.pointerEvents = 'none'; // Disable click events
+                                                // btn.style.opacity = '0.5'; // Optionally reduce opacity for a disabled look
                                             }
                                         });
                                     </script>
@@ -299,12 +388,9 @@
         let localLong = long || defaultLongitude;
 
         // Request needed libraries.
-        const {
-            Map
-        } = await google.maps.importLibrary("maps");
-        const {
-            AdvancedMarkerElement
-        } = await google.maps.importLibrary("marker");
+        const { Map } = await google.maps.importLibrary("maps");
+        const { AdvancedMarkerElement } = await google.maps.importLibrary("marker");
+
         const map = new Map(document.getElementById("map"), {
             center: {
                 lat: localLat,
@@ -313,7 +399,7 @@
             zoom: 14,
             mapId: "4504f8b37365c3d0",
         });
-        // const infoWindow = new InfoWindow();
+
         const draggableMarker = new AdvancedMarkerElement({
             map,
             position: {
@@ -321,17 +407,57 @@
                 lng: localLong
             },
             gmpDraggable: true,
-            title: "This marker is draggable.",
+            title: "قم بتحريك الماركر لمكانك الحالي",
         });
 
         draggableMarker.addListener("dragend", (event) => {
             const position = draggableMarker.position;
 
-            document.getElementById('latitude').value = position.h;
-            document.getElementById('longitude').value = position.i;
+            document.getElementById('latitude').value = position.lat;
+            document.getElementById('longitude').value = position.lng;
         });
-
     }
+
+    // async function initMap(lat, long) {
+    //     let defaultLatitude = 23.8859;
+    //     defaultLongitude = 45.0792;
+    //     let localLat = lat || defaultLatitude;
+    //     let localLong = long || defaultLongitude;
+    //
+    //     // Request needed libraries.
+    //     const {
+    //         Map
+    //     } = await google.maps.importLibrary("maps");
+    //     const {
+    //         AdvancedMarkerElement
+    //     } = await google.maps.importLibrary("marker");
+    //     const map = new Map(document.getElementById("map"), {
+    //         center: {
+    //             lat: localLat,
+    //             lng: localLong
+    //         },
+    //         zoom: 14,
+    //         mapId: "4504f8b37365c3d0",
+    //     });
+    //     // const infoWindow = new InfoWindow();
+    //     const draggableMarker = new AdvancedMarkerElement({
+    //         map,
+    //         position: {
+    //             lat: localLat,
+    //             lng: localLong
+    //         },
+    //         gmpDraggable: true,
+    //         title: "This marker is draggable.",
+    //     });
+    //
+    //     draggableMarker.addListener("dragend", (event) => {
+    //         const position = draggableMarker.position;
+    //         console.log(position);
+    //         document.getElementById('latitude').value = position.lat;
+    //         document.getElementById('longitude').value = position.lng;
+    //     });
+    //
+    // }
 
     function displayToasterErrors(errors) {
         // Create a toaster notification to display validation errors
@@ -376,7 +502,7 @@
             alert('Geolocation is not supported by this browser.');
         }
     }
-    
+
 
     function showPosition(position) {
         document.getElementById('latitude').value = position.coords.latitude;
