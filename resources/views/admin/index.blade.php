@@ -413,14 +413,16 @@
                               <div class="col-12 my-3">
                                   <img src="{{ asset($order->car_front_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
                               </div>
-
+                              @if($order->car_back_image != null)
                               <div class="col-12 my-3">
                                   <img src="{{ asset($order->car_back_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
                               </div>
-
+                              @endif
+                              @if($order->camera_image != null)
                               <div class="col-12 my-3">
                                   <img src="{{ asset($order->camera_image) }}" alt="Your Image" class="img-fluid" style="width: 100%;">
                               </div>
+                              @endif
                       </div>
                     </div>
                   </div>

@@ -2,16 +2,17 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Http\Controllers\Controller;
-use App\Http\Requests\OrderRequest;
-use App\Models\Order;
 use App\Models\Time;
 use App\Models\User;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
+use App\Models\Order;
+use Twilio\Rest\Client;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Http\Requests\OrderRequest;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrderController extends Controller
 {
@@ -21,17 +22,43 @@ class OrderController extends Controller
         $times = Time::all();
 
         $order = Auth::user()->orders()->find($id);
-        $hours = Time::where('day',$order->date)->pluck('time')->toArray();
+        $hours = Time::where('day', $order->date)->pluck('time')->toArray();
         if (!$order) {
             return redirect()->back()->with('danger', 'هذا الطلب غير موجود...!');
         }
 
-        return view('site.order', compact('order','times','hours'));
+        return view('site.order', compact('order', 'times', 'hours'));
     }
 
-    public function store (OrderRequest $request)
+    public function store(OrderRequest $request)
     {
+        // $receiverNumber = "+966509049316";
+        // $message = "This is testing from ItSolutionStuff.com";
+  
+        // try {
+  
+        //     $account_sid = getenv("TWILIO_SID");
+        //     $auth_token = getenv("TWILIO_TOKEN");
+        //     $twilio_number = getenv("TWILIO_FROM");
+  
+        //     $client = new Client($account_sid, $auth_token);
+        //     $client->messages->create($receiverNumber, [
+        //         'from' => $twilio_number, 
+        //         'body' => $message]);
+  
+        //     dd('SMS Sent Successfully.');
+  
+        // } catch (\Exception $e) {
+        //     dd("Error: ". $e->getMessage());
+        // }
         try {
+           
+
+
+
+
+
+
             $car_front_image_path = $this->storeImage('car_front_image_1', $request, 'public');
             $car_back_image_path = $this->storeImage('car_back_image_1', $request, 'public');
             $camera_image_path = $this->storeImage('camera_image_1', $request, 'public');
@@ -44,20 +71,20 @@ class OrderController extends Controller
                 'camera_image' => $camera_image_path,
             ]);
 
-            $order = $user->orders()->create( $request->all() );
+            $order = $user->orders()->create($request->all());
 
-            $count = Order::where('date',$order->date)->where('time',$order->time)->count();
-            if($count>=2){
+            $count = Order::where('date', $order->date)->where('time', $order->time)->count();
+            if ($count >= 2) {
                 Time::create([
-                    'day'=>$order->date ,
-                    'time'=>$order->time
+                    'day' => $order->date,
+                    'time' => $order->time
                 ]);
             }
 
 
             return redirect()->route('user.dashboard')->with('success', 'تم إرسال الطلب بنجاح');
         } catch (\Exception $e) {
-            return redirect()->back()->with('error', $e->getMessage());//'Error while trying to send an order...!');
+            return redirect()->back()->with('error', $e->getMessage()); //'Error while trying to send an order...!');
         }
     }
 

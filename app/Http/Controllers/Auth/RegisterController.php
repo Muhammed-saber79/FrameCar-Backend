@@ -21,9 +21,9 @@ class RegisterController extends Controller
     public function store(RegisterRequest $request): RedirectResponse
     {
         $user = User::create($request->only('name', 'phoneNumber', 'email', 'password'));
-        event(new Registered($user));
+        // event(new Registered($user));
         Auth::login($user);
 
-        return redirect(RouteServiceProvider::HOME)->with('success', 'برجاء فحص بريدك الإلكتروني واتباع الرابط المرسل لتفعيل الحساب الخاص بك');
+        return redirect(RouteServiceProvider::HOME)->with('success', 'تم التسجيل بنجاح');
     }
 }

@@ -147,8 +147,12 @@
         <div class="sub-card animate">
             <label>صور السيارة المختلفة:</label>
             <img width="100" src="{{ asset($order->car_front_image) }}" alt="صورة السيارة من الامام">
+            @if($order->car_back_image !=null)
             <img width="100" src="{{ asset($order->car_back_image) }}" alt="صورة السيارة من الخلف ">
+            @endif
+            @if($order->camera_image !=null)
             <img width="100" src="{{ asset($order->camera_image) }}" alt="صورة الكاميرا او الحساس">
+            @endif
         </div>
 
         @if($order->longitude !=null)

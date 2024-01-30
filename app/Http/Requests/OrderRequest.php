@@ -27,10 +27,10 @@ class OrderRequest extends FormRequest
             'carType' => ['required', 'string'],
             'carModel' => ['required', 'string'],
             'carMadeYear' => ['required', 'numeric'],
-            'glassType' => ['required_if:serviceType,process,change', 'string'],
+            'glassType' => ['required_if:serviceType,change', 'string'],
             'glassPosition' =>
                 [
-                    'required_if:serviceType,process,change',
+                    'required_if:serviceType,change',
                     'string',
                     'in:front,back,front-left-door,front-right-door,back-left-door,back-right-door,front-left-air,front-right-air,back-left-air,back-right-air,upper,mirrors-left,mirrors-right,left-side,right-side,'
                 ],
@@ -44,12 +44,12 @@ class OrderRequest extends FormRequest
         ];
 
          if ($this->isMethod('put')) {
-             $rules['car_front_image_1'] = ['sometimes', 'mimes:png,jpg,jpeg'];
-             $rules['car_back_image_1'] = ['sometimes', 'mimes:png,jpg,jpeg'];
+             $rules['car_front_image_1'] = [ 'mimes:png,jpg,jpeg'];
+             $rules['car_back_image_1'] = [ 'mimes:png,jpg,jpeg'];
              $rules['camera_image_1'] = ['nullable', 'mimes:png,jpg,jpeg'];
          } else {
              $rules['car_front_image_1'] = ['required', 'mimes:png,jpg,jpeg'];
-             $rules['car_back_image_1'] = ['required', 'mimes:png,jpg,jpeg'];
+             $rules['car_back_image_1'] = [ 'mimes:png,jpg,jpeg'];
              $rules['camera_image_1'] = ['nullable', 'mimes:png,jpg,jpeg'];
          }
 

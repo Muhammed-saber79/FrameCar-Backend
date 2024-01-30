@@ -16,7 +16,7 @@
                     <h1><span>Frame Car</span> - إصلاح زجاج السيارات</h1>
                     <h2>شركة <span>Frame Car</span> - الحل النهائي لإصلاح زجاج سيارتك بكفاءة.</h2>
                     <div class="d-flex justify-content-center justify-content-lg-start">
-                        <a href="{{asset('site/')}}#about" class="btn-get-started scrollto">ابدأ الان</a>
+                        <a href="{{route('user.dashboard')}}" class="btn-get-started scrollto">ابدأ الان</a>
                     </div>
                 </div>
 

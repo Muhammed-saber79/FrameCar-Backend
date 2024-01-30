@@ -19,52 +19,25 @@
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">نوع السيارة</label>
-                                <input
-                                    type="text"
-                                    name="carType"
-                                    id="carType"
-                                    placeholder="ادخل نوع السيارة"
-                                    class="form-control col-xl-5"
-
-                                    value="{{ old('carType') }}"
-                                    @error('carType') style="border-color: red" @enderror
-                                >
+                                <input type="text" name="carType" id="carType" placeholder="ادخل نوع السيارة" class="form-control col-xl-5" value="{{ old('carType') }}" @error('carType') style="border-color: red" @enderror>
                                 @error('carType')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">موديل السيارة</label>
-                                <input
-                                    type="text"
-                                    name="carModel"
-                                    id="carModel"
-                                    placeholder="ادخل موديل السيارة"
-                                    class="form-control col-xl-5"
-
-                                    value="{{ old('carModel') }}"
-                                    @error('carModel') style="border-color: red" @enderror
-                                >
+                                <input type="text" name="carModel" id="carModel" placeholder="ادخل موديل السيارة" class="form-control col-xl-5" value="{{ old('carModel') }}" @error('carModel') style="border-color: red" @enderror>
                                 @error('carModel')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">تاريخ صنع السيارة</label>
-                                <input
-                                    type="text"
-                                    name="carMadeYear"
-                                    id="carMadeYear"
-                                    placeholder="ادخل سنة صنع السيارة"
-                                    class="form-control col-xl-5"
-
-                                    value="{{ old('carMadeYear') }}"
-                                    @error('carMadeYear') style="border-color: red" @enderror
-                                >
+                                <input type="text" name="carMadeYear" id="carMadeYear" placeholder="ادخل سنة صنع السيارة" class="form-control col-xl-5" value="{{ old('carMadeYear') }}" @error('carMadeYear') style="border-color: red" @enderror>
                                 @error('carMadeYear')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
@@ -162,19 +135,10 @@
                         <div class="col-xl-12 d-flex flex-column flex-xl-row mx-auto gap-2">
                             <div class="mb-3 col-xl-6">
                                 <label for="" class="form-label">تاريخ الصيانة</label>
-                                <input
-                                    type="date"
-                                    name="date"
-                                    id="date"
-                                    placeholder="ادخل نوع السيارة"
-                                    class="form-control col-xl-5"
-                                    value="{{ old('date') }}"
-                                    @error('date') style="border-color: red" @enderror
-                                    min="{{ now()->format('Y-m-d') }}"
-                                >
+                                <input type="date" name="date" id="date" placeholder="ادخل نوع السيارة" class="form-control col-xl-5" value="{{ old('date') }}" @error('date') style="border-color: red" @enderror min="{{ now()->format('Y-m-d') }}">
 
                                 @error('date')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
@@ -182,7 +146,7 @@
                                 <label class="form-label"> وقت الخدمة </label>
                                 <select id="timeSelect" name="time" class="form-select col-xl-5">
                                     <option value="" disabled selected>حدد الوقت المناسب لاجراء الخدمة </option>
-                                    <option disabled >برجاء اختيار اليوم اولا </option>
+                                    <option disabled>برجاء اختيار اليوم اولا </option>
                                 </select>
                                 @error('time')
                                 <small id="helpId" style="color: red; display: block">{{ $message }}</small>
@@ -194,52 +158,25 @@
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">صورة السيارة بالكامل من الأمام</label>
-                                <input
-                                    type="file"
-                                    name="car_front_image_1"
-                                    id="car_front_image_1"
-                                    placeholder="قم برفع صورة السيارة بالكامل من الأمام"
-                                    class="form-control  col-xl-5"
-                                    accept="image/*"
-
-                                    @error('car_front_image_1') style="border-color: red" @enderror
-                                >
+                                <input type="file" name="car_front_image_1" id="car_front_image_1" placeholder="قم برفع صورة السيارة بالكامل من الأمام" class="form-control  col-xl-5" accept="image/*" @error('car_front_image_1') style="border-color: red" @enderror>
                                 @error('car_front_image_1')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">صورة السيارة واضحة من الخلف</label>
-                                <input
-                                    type="file"
-                                    name="car_back_image_1"
-                                    id="car_back_image_1"
-                                    placeholder="قم برفع صورة السيارة واضحة من الخلف"
-                                    class="form-control  col-xl-5"
-                                    accept="image/*"
-
-                                    @error('car_back_image_1') style="border-color: red" @enderror
-                                >
+                                <input type="file" name="car_back_image_1" id="car_back_image_1" placeholder="قم برفع صورة السيارة واضحة من الخلف" class="form-control  col-xl-5" accept="image/*" @error('car_back_image_1') style="border-color: red" @enderror>
                                 @error('car_back_image_1')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
                             <div class="mb-3 col-md-12 col-xl-4">
                                 <label for="" class="form-label">صورة حساس أو كاميرا ان وجد</label>
-                                <input
-                                    type="file"
-                                    name="camera_image_1"
-                                    id="camera_image_1"
-                                    placeholder="قم برفع صورة حساس أو كاميرا ان وجد"
-                                    class="form-control  col-xl-5"
-                                    accept="image/*"
-
-                                    @error('camera_image_1') style="border-color: red" @enderror
-                                >
+                                <input type="file" name="camera_image_1" id="camera_image_1" placeholder="قم برفع صورة حساس أو كاميرا ان وجد" class="form-control  col-xl-5" accept="image/*" @error('camera_image_1') style="border-color: red" @enderror>
                                 @error('camera_image_1')
-                                    <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
                                 @enderror
                             </div>
 
@@ -247,33 +184,33 @@
 
                         <div class="col-xl-12" id="location">
                             <label style="display: block; margin-top: 15px;">الموقع:<br></label>
-                                <!-- <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label> -->
-                                @error('latitude')
-                                <small id="helpId" style="color: red; display: block">{{ $message }}</small>
-                                @enderror
+                            <!-- <span style="font-size: smaller;">قم بتحريك العلامة وضعها على موقعك الحالي</span></label> -->
+                            @error('latitude')
+                            <small id="helpId" style="color: red; display: block">{{ $message }}</small>
+                            @enderror
 
-                                <input type="hidden" id="latitude" name="latitude">
-                                <!-- value="{{ old('latitude') }}"> -->
-                                <input type="hidden" id="longitude" name="longitude">
-                                <!-- value="{{ old('longitude') }}"> -->
-                                <a href="#" onclick="getLocation()" id="getLocation" class="btn btn-outline-success mb-3">
-                                    <script>
-                                        document.addEventListener('DOMContentLoaded', function() {
-                                            let lat = document.getElementById('latitude');
-                                            let long = document.getElementById('longitude');
-                                            let btn = document.getElementById('getLocation');
+                            <input type="hidden" id="latitude" name="latitude">
+                            <!-- value="{{ old('latitude') }}"> -->
+                            <input type="hidden" id="longitude" name="longitude">
+                            <!-- value="{{ old('longitude') }}"> -->
+                            <a href="#" onclick="getLocation()" id="getLocation" class="btn btn-outline-success mb-3">
+                                <script>
+                                    document.addEventListener('DOMContentLoaded', function() {
+                                        let lat = document.getElementById('latitude');
+                                        let long = document.getElementById('longitude');
+                                        let btn = document.getElementById('getLocation');
 
-                                            if (!lat.value) {
-                                                btn.innerText = 'اضغط هنا لتحديد موقعك الحالي';
-                                            } else {
-                                                btn.innerText = 'تم تحديد موقعك بالفعل';
-                                                btn.style.pointerEvents = 'none'; // Disable click events
-                                                btn.style.opacity = '0.5'; // Optionally reduce opacity for a disabled look
-                                            }
-                                        });
-                                    </script>
-                                </a>
-                                <div id="map" style="width: 100%; height: 400px;"></div>
+                                        if (!lat.value) {
+                                            btn.innerText = 'اضغط هنا لتحديد موقعك الحالي';
+                                        } else {
+                                            btn.innerText = 'تم تحديد موقعك بالفعل';
+                                            btn.style.pointerEvents = 'none'; // Disable click events
+                                            btn.style.opacity = '0.5'; // Optionally reduce opacity for a disabled look
+                                        }
+                                    });
+                                </script>
+                            </a>
+                            <div id="map" style="width: 100%; height: 400px;"></div>
 
 
                         </div>
@@ -285,7 +222,7 @@
 
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">إلغاء</button>
-                <button type="button" class="btn btn-outline-info" onclick="event.preventDefault(); document.getElementById('newOrder').submit()">إرسال</button>
+                <button type="button" class="btn btn-outline-info" onclick="validate()">إرسال</button>
             </div>
 
         </div>
@@ -339,7 +276,7 @@
 
     async function initMap(lat, long) {
         let defaultLatitude = 23.8859;
-            defaultLongitude = 45.0792;
+        defaultLongitude = 45.0792;
         let localLat = lat || defaultLatitude;
         let localLong = long || defaultLongitude;
 
@@ -459,9 +396,124 @@
 <script type='text/javascript' src='https://www.bing.com/api/maps/mapcontrol?callback=initMap' async defer></script>
 
 <script>
-     $(document).ready(function() {
-            // Hide custom divs by default
-            $("#glassType").hide();
-            $("#glassPosition").hide();
-     })
+    $(document).ready(function() {
+        // Hide custom divs by default
+        $("#glassType").hide();
+        $("#glassPosition").hide();
+    })
+</script>
+
+<script>
+    function validate() {
+
+
+
+        // Prevent the default form submission
+        event.preventDefault();
+
+        console.log($("#serviceType").val());
+        // Remove existing error messages
+        $(".error-message").remove();
+
+        // Perform form validation
+        if (validateForm()) {
+            // If validation passes, you can submit the form or perform other actions
+            document.getElementById('newOrder').submit();
+        }
+
+    }
+
+
+
+
+    function validateForm() {
+        var isValid = true;
+
+        // Validate username
+        var carType = $("#carType").val();
+        if (carType === "") {
+            displayErrorMessage("#carType", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var carModel = $("#carModel").val();
+        if (carModel === "") {
+            displayErrorMessage("#carModel", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var carMadeYear = $("#carMadeYear").val();
+        if (carMadeYear === "") {
+            displayErrorMessage("#carMadeYear", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var serviceType = $("#serviceType").val();
+        if (serviceType == null) {
+            displayErrorMessage("#serviceType", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var glassType = $("#glassType").val();
+        if (glassType ==null && serviceType =="change") {
+            displayErrorMessage("#glassType", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var glassPosition = $("#glassPosition").val();
+        if (glassPosition ==null && serviceType == "change" ) {
+            displayErrorMessage("#glassPosition", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var servicePlace = $("#servicePlace").val();
+        if (servicePlace == null) {
+            displayErrorMessage("#servicePlace", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var date = $("#date").val();
+        if (date === "") {
+            displayErrorMessage("#date", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var time = $("#timeSelect").val();
+        if (time ==null) {
+            displayErrorMessage("#timeSelect", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var paymentMethod = $("#paymentMethod").val();
+        if (paymentMethod ==null) {
+            displayErrorMessage("#paymentMethod", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var car_front_image_1 = $("#car_front_image_1").val();
+        if (car_front_image_1 === "") {
+            displayErrorMessage("#car_front_image_1", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        var servicePlace = $("#servicePlace").val();
+        if (servicePlace === "") {
+            displayErrorMessage("#servicePlace", "هذا الحقل مطلوب");
+            isValid = false;
+        }
+        
+       
+
+
+
+        // Additional validation checks can be added based on your requirements
+
+        return isValid; // If all validations pass
+    }
+
+    function displayErrorMessage(fieldSelector, message) {
+        // Create and append error message
+        var errorMessage = $("<p>").text(message).addClass("error-message");
+        errorMessage.css({
+            'color': 'red',
+            'font-size': '14px', // Adjust the font size as needed
+            'margin-top': '5px',
+            'margin-right': '5px'
+        });
+        
+        $(fieldSelector).css({
+            'border': '1px solid red'
+        });
+
+        $(fieldSelector).after(errorMessage);
+    }
 </script>

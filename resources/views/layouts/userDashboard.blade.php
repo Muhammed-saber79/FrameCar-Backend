@@ -160,7 +160,7 @@
 
                 
                 // Show the selected div
-                if (selectedValue === "process" || selectedValue === "change") {
+                if (selectedValue === "change") {
                     $("#glassType").show();
                     $("#glassPosition").show();
                 } else {
