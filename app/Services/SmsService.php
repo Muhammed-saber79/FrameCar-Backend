@@ -17,7 +17,7 @@ class SmsService
         ]);
 
         $jsonData = $response->json();
-        dd($jsonData);
+        // dd($jsonData);
         return true;
     }
     public function sendSmsToUser($data)
@@ -52,7 +52,7 @@ class SmsService
         ]);
 
         $jsonData = $response->json();
-        dd($jsonData);
+        // dd($jsonData);
         return true;
     }
 }
