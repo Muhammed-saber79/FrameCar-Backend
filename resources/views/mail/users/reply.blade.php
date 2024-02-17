@@ -90,12 +90,7 @@
                 <li><strong>التكلفة:</strong> {{ $data['cost'] }} ريال سعودي</li>
                 <li><strong>بعض الملاحظات:</strong> {{ $data['message'] }}</li>
             </ul>
-            {{-- <form action="http://localhost:8000/pay" method="POST">
-                @csrf
-                <input type="hidden"  name="amount" value="{{ $data['cost'] }}">
-                <input type="hidden"  name="order_id" value="{{ $data['order_id'] }}">
-                <button type="submit" class="button">المتابعة إلى عملية الدفع</button>
-            </form> --}}
+            
 
             @if($data['paymentMethod'] == 'online')
             <p>
