@@ -9,6 +9,35 @@
     <meta content="" name="description">
     <meta content="" name="keywords">
 
+    <style>
+        /*--------------------------------------------------------------
+        # Whatsapp Button
+        --------------------------------------------------------------*/
+        /* Style for the WhatsApp button */
+        .whatsapp-button {
+            position: fixed;
+            bottom: 15px;
+            right: 15px;
+            background-color: #25d366; /* Change this to your desired button color */
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: #fff; /* Change this to your desired icon color */
+            transition: background-color 0.3s ease;
+        }
+
+        /* Style for the WhatsApp button on hover (optional) */
+        .whatsapp-button:hover {
+            background-color: #128c7e; /* Change this to your desired hover color */
+        }
+    </style>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
 
@@ -98,6 +127,12 @@
 
     @yield('content')
 
+    <!-- WhatsApp Button -->
+    <div class="whatsapp-button">
+        <a href="https://api.whatsapp.com/send?phone=45655578788" style="text-decoration: none; color: #fff;" target="_blank">
+            <i class="bi bi-whatsapp"></i>
+        </a>
+    </div>
     <div id="preloader"></div>
     <a href="{{ route('site') . '#' }}" class="back-to-top d-flex align-items-center justify-content-center">
         <i class="bi bi-arrow-up-short"></i>
@@ -153,12 +188,12 @@
     <script>
         $(document).ready(function() {
             // Hide custom divs by default
-     
+
             // Show/hide custom divs based on the selected value
             $("#serviceType").change(function() {
                 var selectedValue = $(this).val();
 
-                
+
                 // Show the selected div
                 if (selectedValue === "change") {
                     $("#glassType").show();
@@ -186,7 +221,7 @@
             console.log(datatimes);
 
             function isOptionDisabled(hour) {
-              
+
                 let selectedDate = $('#date').val();
 
                 return datatimes.some(item => {

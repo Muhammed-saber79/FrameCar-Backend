@@ -63,6 +63,5 @@ class AdminOrdersController extends Controller
         $order->status = $status ;
         $order->save();
         return redirect()->back()->with('success','تم تعديل حالة الطلب بنجاح');
-
     }
 }
