@@ -5,15 +5,18 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\Order;
 use App\Services\EmailService;
+use App\Services\SmsService;
 use Illuminate\Http\Request;
 
 class AdminOrdersController extends Controller
 {
     protected $emailService;
+    protected $smsService;
 
-    public function __construct(EmailService $emailService)
+    public function __construct(EmailService $emailService , SmsService $smsService)
     {
         $this->emailService = $emailService;
+        $this->smsService = $smsService;
     }
 
     public function index(){
@@ -23,6 +26,7 @@ class AdminOrdersController extends Controller
 
     public function reply(Request $request, Order $order)
     {
+        
         $request->validate([
             'email' => ['required', 'email', 'exists:users,email'],
             'cost' => ['required', 'numeric', 'min:0'],
@@ -47,11 +51,12 @@ class AdminOrdersController extends Controller
             'paymentMethod'=>$order->paymentMethod,
             'servicePlace' => $order->servicePlace
         ];
+        $this->smsService->sendSmsToUser($data);
         $order->cost = $request->cost ;
         $order->status = 'replied';
         $order->save();
 
-        if ( $this->emailService->sendReplyEmail($data) ) {
+        if ( $this->smsService->sendSmsToUser($data) ) {
             return redirect()->back()->with('success', 'تم إرسال الرد الى العميل بنجاح.');
         } else {
             return redirect()->back()->with('error', 'حدث خطأ اثناء ارسال الرد الى العميل. يمكنك المحاولة مجددا.');

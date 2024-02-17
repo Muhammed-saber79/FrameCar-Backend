@@ -10,12 +10,19 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Requests\OrderRequest;
 use App\Http\Controllers\Controller;
+use App\Services\SmsService;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class OrderController extends Controller
 {
+    private $smsService ;
+
+    public function  __construct(SmsService $smsService){
+
+        $this->smsService = $smsService ;
+    }
 
     public function edit($id)
     {
@@ -32,31 +39,9 @@ class OrderController extends Controller
 
     public function store(OrderRequest $request)
     {
-        // $receiverNumber = "+966509049316";
-        // $message = "This is testing from ItSolutionStuff.com";
-  
-        // try {
-  
-        //     $account_sid = getenv("TWILIO_SID");
-        //     $auth_token = getenv("TWILIO_TOKEN");
-        //     $twilio_number = getenv("TWILIO_FROM");
-  
-        //     $client = new Client($account_sid, $auth_token);
-        //     $client->messages->create($receiverNumber, [
-        //         'from' => $twilio_number, 
-        //         'body' => $message]);
-  
-        //     dd('SMS Sent Successfully.');
-  
-        // } catch (\Exception $e) {
-        //     dd("Error: ". $e->getMessage());
-        // }
+        
         try {
            
-
-
-
-
 
 
             $car_front_image_path = $this->storeImage('car_front_image_1', $request, 'public');
@@ -80,6 +65,7 @@ class OrderController extends Controller
                     'time' => $order->time
                 ]);
             }
+            $this->smsService->sendSmsToAdmin();
 
 
             return redirect()->route('user.dashboard')->with('success', 'تم إرسال الطلب بنجاح');
